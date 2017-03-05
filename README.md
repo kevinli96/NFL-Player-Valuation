@@ -43,22 +43,22 @@ Our methodology seeks to answer, how much is a player worth?
 This is an important question because building a team is equivalent to maximizing the return of the limited spending budget (salary cap).
 
 Our constraints are as follows:
-  A player’s true value should be roughly proportional to his AV (approximate value)
-  Whatever the salary cap is (168 million per team for 2017)
-  Roster cap of 53 players. 
+  * A player’s true value should be roughly proportional to his AV (approximate value)
+  * Whatever the salary cap is (168 million per team for 2017)
+  * Roster cap of 53 players. 
 
 Under these constraints, a rough way we can calculate a player’s fair salary is as follows:
-  Assumption: The amount practice squad players are paid is negligible, and we will ignore it for now for simplicity
-  There are 1696 players on NFL rosters (32 teams, 53 players per team).
-  Thus we scrape the top 1696 players in Approximate Value for a given year from Pro-Football-Reference.com
-  Let P_player represent the proportion of a player’s AV to the total AV of all 1696 players. P_player does not necessarily have to refer to a player in the top 1696 in AV!
-  We take the total salary cap between all 32 teams (for 2017 that would be 168 million times 32). Let this total value be T.
+  * Assumption: The amount practice squad players are paid is negligible, and we will ignore it for now for simplicity
+  * There are 1696 players on NFL rosters (32 teams, 53 players per team).
+  * Thus we scrape the top 1696 players in Approximate Value for a given year from Pro-Football-Reference.com
+  * Let P_player represent the proportion of a player’s AV to the total AV of all 1696 players. P_player does not necessarily have to refer to a player in the top 1696 in AV!
+  * We take the total salary cap between all 32 teams (for 2017 that would be 168 million times 32). Let this total value be T.
   Then a player’s fair contract value is P_player*T. 
 
 There are limitations to this method:
-  By the way AV is calculated, talented backup players will be valued less than terrible starting players.
-  For instance, Martellus Bennett is now one of the league’s best tight ends, but years earlier he was sitting behind Jason Witten and barely getting playing time.
-  In terms of AV, he may have been like 28th amongst tight ends, even if he was a top 15 tight end at the time.
-  Another limitation is that fair value should probably be thought of from an opportunity cost standpoint. For instance, if we purged the league of good quarterbacks, except for one average quarterback, that average quarterback would probably end up getting a handsome raise even though their AV might not have changed.
+  * By the way AV is calculated, talented backup players will be valued less than terrible starting players.
+  * For instance, Martellus Bennett is now one of the league’s best tight ends, but years earlier he was sitting behind Jason Witten and barely getting playing time.
+  * In terms of AV, he may have been like 28th amongst tight ends, even if he was a top 15 tight end at the time.
+  * Another limitation is that fair value should probably be thought of from an opportunity cost standpoint. For instance, if we purged the league of good quarterbacks, except for one average quarterback, that average quarterback would probably end up getting a handsome raise even though their AV might not have changed.
 
 After discovering a player’s fair value, we can analyze it on a positional basis. Which positions have the highest value (highest average AV), and thus are ‘most valuable’? Which positions have the highest variance in AV, and is this reflected in the variance in market values? How does AV per position vary between players who have played 4 years or less versus more than 4 years, and how does that affect which positions we should draft (draft picks are cheap labor for 4 years, usually)? Most of these do not require advanced methodologies (i.e. just analyzing distributions / basic Statistics). We anticipate poking around with some of these questions and perhaps finding opportunities for further analysis which would use more advanced methodologies covered in this course.
