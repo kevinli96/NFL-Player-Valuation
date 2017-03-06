@@ -1,5 +1,7 @@
 # CSCI 1951a - Data Science Final Project
 
+Project website hosted on github pages: https://kevinli96.github.io/cs1951a_project/ 
+
 ## Blog Post 1:
 
 Trade and draft data from [http://www.prosportstransactions.com/football/]. 
