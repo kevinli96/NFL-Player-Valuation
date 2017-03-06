@@ -4,21 +4,20 @@ from urllib.request import urlopen
 import csv
 import json
 
-begin_date = "1994-01-01"
-end_date = "1995-01-01"
+begin_date = "1995-01-01"
+end_date = "1996-01-01"
 
 prefixUrl = "http://www.prosportstransactions.com/football/Search/SearchResults.php?Player=&Team=&BeginDate="+ begin_date +"&EndDate="+end_date+"&PlayerMovementChkBx=yes&submit=Search&start=" 
 
 start = 0
-  
 soup = BeautifulSoup(urlopen(prefixUrl + str(start)).read(), 'lxml')
-
 rows = soup.find("table", { "class" : "datatable"}).findChildren()
 links = soup.find_all("p", { "class" : "bodyCopy"})[2].findChildren()
-
 end = len(links)*25 + 25
 
-with open("prosportstransaction.csv", 'w') as outfile:
+csvFile = "transaction_" + begin_date + "_" + end_date + ".csv"
+
+with open(csvFile, 'w') as outfile:
   writer = csv.writer(outfile)
   writer.writerow(["Date", "Team", "Acquired", "Relinquished", "Notes"])
 

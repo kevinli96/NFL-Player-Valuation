@@ -2,8 +2,9 @@
 
 ## Blog Post 1:
 
-Trade and draft data from [http://www.prosportstransactions.com/football/] 
+Trade and draft data from [http://www.prosportstransactions.com/football/]. 
 AV (approximate value) data from pro-football-reference.
+Salary data: TBD (for tomorrow's meeting)
 
 ## Midterm Report:
 
