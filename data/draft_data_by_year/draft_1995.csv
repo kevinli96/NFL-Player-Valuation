@@ -1,0 +1,504 @@
+Year,Rnd,Pick,Tm,Player,Player Clean,Pos,Age,To,St,CarAV,DrAV,G
+1995,1,1,CIN,Ki-Jana Carter\CartKi00,Ki-Jana Carter,RB,22,2004,0,12,9,59
+1995,1,2,JAX,Tony Boselli\BoseTo00,Tony Boselli,T,23,2001,6,64,64,91
+1995,1,3,HOU,Steve McNair\McNaSt00,Steve McNair,QB,22,2007,10,100,93,161
+1995,1,4,WAS,Michael Westbrook\WestMi00,Michael Westbrook,WR,23,2002,6,38,38,89
+1995,1,5,CAR,Kerry Collins\CollKe00,Kerry Collins,QB,22,2011,11,81,12,198
+1995,1,6,STL,Kevin Carter\CartKe00,Kevin Carter,DE,22,2008,14,90,46,224
+1995,1,7,PHI,Mike Mamula\MamuMi20,Mike Mamula,DE,22,2000,4,33,33,77
+1995,1,8,SEA,Joey Galloway\GallJo00,Joey Galloway,WR,23,2010,10,77,42,198
+1995,1,9,NYJ,Kyle Brady\BradKy00,Kyle Brady,TE,23,2007,13,26,6,197
+1995,1,10,SFO,J.J. Stokes\StokJ.00,J.J. Stokes,WR,22,2003,4,40,40,118
+1995,1,11,MIN,Derrick Alexander\AlexDe20,Derrick Alexander,DE,21,1999,5,26,21,73
+1995,1,12,TAM,Warren Sapp HOF\SappWa00,Warren Sapp HOF,DT,22,2007,12,120,107,198
+1995,1,13,NOR,Mark Fields\FielMa99,Mark Fields,LB,22,2004,8,53,36,136
+1995,1,14,BUF,Ruben Brown\BrowRu00,Ruben Brown,G,23,2007,13,82,69,181
+1995,1,15,IND,Ellis Johnson\JohnEl20,Ellis Johnson,DT,21,2004,5,36,31,149
+1995,1,16,NYJ,Hugh Douglas\DougHu00,Hugh Douglas,DE,24,2004,7,70,12,138
+1995,1,17,NYG,Tyrone Wheatley\WheaTy00,Tyrone Wheatley,RB,23,2004,3,39,8,124
+1995,1,18,OAK,Napoleon Kaufman\KaufNa00,Napoleon Kaufman,RB,22,2000,3,39,39,91
+1995,1,19,JAX,James Stewart\StewJa00,James Stewart,RB,23,2002,5,45,22,101
+1995,1,20,DET,Luther Elliss\ElliLu00,Luther Elliss,DT,22,2004,8,52,52,134
+1995,1,21,CHI,Rashaan Salaam\SalaRa00,Rashaan Salaam,RB,20,1999,1,13,13,33
+1995,1,22,CAR,Tyrone Poole\PoolTy20,Tyrone Poole,DB,23,2008,6,45,21,144
+1995,1,23,NWE,Ty Law\LawxTy00,Ty Law,DB,21,2009,11,87,67,203
+1995,1,24,MIN,Korey Stringer\StriKo00,Korey Stringer,T,21,2000,6,46,46,93
+1995,1,25,MIA,Billy Milner\MilnBi21,Billy Milner,T,23,1996,1,7,6,30
+1995,1,26,ATL,Devin Bush\BushDe20,Devin Bush,DB,22,2002,4,29,13,116
+1995,1,27,PIT,Mark Bruener\BrueMa00,Mark Bruener,TE,23,2008,10,10,9,188
+1995,1,28,TAM,Derrick Brooks HOF\BrooDe00,Derrick Brooks HOF,LB,22,2008,13,144,144,224
+1995,1,29,CAR,Blake Brockermeyer\BrocBl20,Blake Brockermeyer,T,22,2003,7,40,21,136
+1995,1,30,CLE,Craig Powell\PoweCr20,Craig Powell,LB,23,1998,0,1,1,14
+1995,1,31,KAN,Trezelle Jenkins\JenkTr20,Trezelle Jenkins,T,22,1997,0,1,1,9
+1995,1,32,GNB,Craig Newsome\NewsCr20,Craig Newsome,DB,24,1999,3,18,18,53
+1995,2,33,NYJ,Matt O'Dwyer\ODwyMa20,Matt O'Dwyer,G,23,2004,7,41,23,122
+1995,2,34,SDG,Terrance Shaw\ShawTe20,Terrance Shaw,DB,21,2004,5,32,23,140
+1995,2,35,HOU,Anthony Cook\CookAn20,Anthony Cook,DE,23,1999,2,20,17,67
+1995,2,36,CAR,Shawn King\KingSh20,Shawn King,DE,23,1999,1,10,5,48
+1995,2,37,WAS,Cory Raymer\RaymCo20,Cory Raymer,C,22,2005,5,37,33,98
+1995,2,38,STL,Zach Wiegert\WiegZa20,Zach Wiegert,G,23,2006,8,46,16,145
+1995,2,39,SEA,Christian Fauria\FaurCh00,Christian Fauria,TE,24,2007,9,17,12,191
+1995,2,40,JAX,Brian DeMarco\DeMaBr20,Brian DeMarco,G,23,1999,3,22,20,63
+1995,2,41,ATL,Ron Davis\DaviRo24,Ron Davis,DB,23,1995,0,2,2,12
+1995,2,42,MIN,Orlando Thomas\ThomOr20,Orlando Thomas,DB,22,2001,6,37,37,98
+1995,2,43,TAM,Melvin Johnson\JohnMe20,Melvin Johnson,DB,23,1998,1,13,13,50
+1995,2,44,NOR,Ray Zellars\ZellRa00,Ray Zellars,RB,22,1998,1,10,10,48
+1995,2,45,BUF,Todd Collins\CollTo00,Todd Collins,QB,23,2010,1,11,8,50
+1995,2,46,DAL,Sherman Williams\WillSh00,Sherman Williams,RB,22,1999,0,10,10,60
+1995,2,47,ARI,Frank Sanders\SandFr00,Frank Sanders,WR,22,2003,8,44,43,136
+1995,2,48,IND,Ken Dilger\DilgKe00,Ken Dilger,TE,24,2004,10,35,30,156
+1995,2,49,OAK,Barret Robbins\RobbBa00,Barret Robbins,C,22,2003,7,55,55,121
+1995,2,50,PHI,Bobby Taylor\TaylBo00,Bobby Taylor,DB,21,2004,7,50,49,129
+1995,2,51,SDG,Terrell Fletcher\FletTe00,Terrell Fletcher,RB,22,2002,0,22,22,111
+1995,2,52,CHI,Pat Riley\RilePa20,Pat Riley,DE,23,1995,0,0,0,1
+1995,2,53,MIA,Andrew Greene\GreeAn20,Andrew Greene,G,26,1998,0,1,1,10
+1995,2,54,NYG,Scott Gragg\GragSc20,Scott Gragg,T,23,2005,9,60,21,172
+1995,2,55,MIN,Corey Fuller\FullCo20,Corey Fuller,DB,24,2004,9,41,19,152
+1995,2,56,CHI,Todd Sauerbrun\SaueTo20,Todd Sauerbrun,P,22,2007,10,25,6,178
+1995,2,57,NWE,Ted Johnson\JohnTe20,Ted Johnson,LB,22,2004,6,46,46,125
+1995,2,58,PHI,Barrett Brooks\BrooBa20,Barrett Brooks,T,23,2005,4,29,19,118
+1995,2,59,DAL,Kendell Watkins\WatkKe20,Kendell Watkins,TE,22,1995,0,0,0,16
+1995,2,60,PIT,Kordell Stewart\StewKo00,Kordell Stewart,QB,22,2005,4,59,58,125
+1995,2,61,SDG,Jimmy Oliver,Jimmy Oliver,WR,,,0,,,
+1995,2,62,STL,Jesse James\JameJe21,Jesse James,C,24,1996,0,0,0,2
+1995,2,63,DAL,Shane Hannah,Shane Hannah,G,,,0,,,
+1995,2,64,JAX,Bryan Schwartz\SchwBr20,Bryan Schwartz,LB,23,1999,3,17,17,55
+1995,3,65,GNB,Darius Holland\HollDa20,Darius Holland,DT,21,2004,1,19,5,111
+1995,3,66,GNB,William Henderson\HendWi00,William Henderson,FB,24,2006,9,23,23,188
+1995,3,67,HOU,Chris Sanders\SandCh00,Chris Sanders,WR,23,2001,4,29,29,97
+1995,3,68,WAS,Darryl Pounds\PounDa20,Darryl Pounds,DB,23,2000,0,8,8,78
+1995,3,69,CIN,Melvin Tuten\TuteMe20,Melvin Tuten,T,23,2002,0,10,7,66
+1995,3,70,DET,David Sloan\SloaDa00,David Sloan,TE,23,2003,5,17,16,110
+1995,3,71,JAX,Chris Hudson\HudsCh20,Chris Hudson,DB,23,2001,4,28,18,77
+1995,3,72,PHI,Greg Jefferson\JeffGr20,Greg Jefferson,DE,24,1999,3,21,21,57
+1995,3,73,GNB,Brian Williams\WillBr24,Brian Williams,LB,22,2002,3,35,32,81
+1995,3,74,NWE,Curtis Martin HOF\MartCu00,Curtis Martin HOF,RB,22,2005,11,101,26,168
+1995,3,75,NOR,Mike Verstegen\VersMi20,Mike Verstegen,G,23,1997,1,5,5,22
+1995,3,76,BUF,Marlon Kerner\KernMa20,Marlon Kerner,DB,22,1998,0,7,7,43
+1995,3,77,ATL,Lorenzo Styles\StylLo20,Lorenzo Styles,LB,21,2000,0,5,2,70
+1995,3,78,PHI,Chris Jones\JoneCh01,Chris Jones,WR,24,1997,1,10,10,32
+1995,3,79,IND,Zack Crockett\CrocZa00,Zack Crockett,FB,22,2007,1,13,5,175
+1995,3,80,ARI,Stoney Case\CaseSt00,Stoney Case,QB,23,2000,0,4,1,20
+1995,3,81,KAN,Tamarick Vanover\VanoTa00,Tamarick Vanover,WR,21,2002,0,12,12,77
+1995,3,82,STL,Steve McLaughlin\mclauste01,Steve McLaughlin,K,23,1995,1,-1,-1,8
+1995,3,83,CHI,Sean Harris\HarrSe20,Sean Harris,LB,23,2001,3,20,20,83
+1995,3,84,CLE,Eric Zeier\ZeieEr00,Eric Zeier,QB,23,2000,0,6,-2,28
+1995,3,85,NYG,Rodney Young\YounRo21,Rodney Young,DB,22,1998,0,3,3,33
+1995,3,86,OAK,Joe Aska\AskaJo00,Joe Aska,RB,23,1997,0,3,3,23
+1995,3,87,CHI,Evan Pilgrim\PilgEv20,Evan Pilgrim,G,23,2000,0,4,3,32
+1995,3,88,NWE,Jimmy Hitchcock\HitcJi20,Jimmy Hitchcock,DB,24,2002,3,31,9,101
+1995,3,89,HOU,Rodney Thomas\ThomRo00,Rodney Thomas,RB,22,2001,1,17,17,103
+1995,3,90,GNB,Antonio Freeman\FreeAn00,Antonio Freeman,WR,23,2003,6,64,60,132
+1995,3,91,PIT,Brendan Stai\StaiBr20,Brendan Stai,G,23,2002,6,39,26,105
+1995,3,92,DAL,Charlie Williams\WillCh22,Charlie Williams,DB,23,2000,0,9,9,81
+1995,3,93,SDG,Don Sasa\SasaDo20,Don Sasa,DT,23,1998,0,0,0,14
+1995,3,94,CLE,Mike Frederick\FredMi20,Mike Frederick,DE,23,1999,1,8,1,71
+1995,3,95,HOU,Torey Hunter\HuntTo21,Torey Hunter,DB,23,1995,0,1,1,12
+1995,3,96,BUF,Damien Covington\CoviDa20,Damien Covington,LB,22,1997,1,6,6,30
+1995,3,97,KAN,Troy Dumas\DumaTr20,Troy Dumas,LB,23,1997,0,1,1,16
+1995,3,98,SDG,Preston Harrison,Preston Harrison,LB,,,0,,,
+1995,4,99,JAX,Rob Johnson\JohnRo00,Rob Johnson,QB,22,2003,1,19,2,48
+1995,4,100,SDG,Chris Cowart,Chris Cowart,LB,,,0,,,
+1995,4,101,HOU,Michael Roan\RoanMi00,Michael Roan,TE,23,2000,1,4,4,62
+1995,4,102,CIN,Sam Shade\ShadSa20,Sam Shade,DB,22,2002,5,31,10,117
+1995,4,103,WAS,Larry Jones,Larry Jones,RB,,,0,,,
+1995,4,104,SDG,Aaron Hayden\HaydAa00,Aaron Hayden,RB,22,1998,0,5,4,32
+1995,4,105,TAM,Jerry Wilson\WilsJe22,Jerry Wilson,DB,22,2005,2,17,,120
+1995,4,106,NYJ,Melvin Hayes\HayeMe20,Melvin Hayes,T,22,1996,0,0,0,4
+1995,4,107,NYJ,Tyrone Davis\DaviTy00,Tyrone Davis,TE,23,2002,1,8,0,75
+1995,4,108,NOR,Dameian Jeffries\JeffDa20,Dameian Jeffries,DE,22,1995,0,0,0,2
+1995,4,109,BUF,Ken Irvin\IrviKe20,Ken Irvin,DB,23,2005,3,34,27,147
+1995,4,110,DAL,Eric Bjornson\BjorEr00,Eric Bjornson,TE,23,2000,2,11,10,82
+1995,4,111,MIN,Chad May,Chad May,QB,,,0,,,
+1995,4,112,NWE,Dave Wohlabaugh\WohlDa20,Dave Wohlabaugh,C,23,2003,9,49,24,128
+1995,4,113,BUF,Justin Armour\ArmoJu00,Justin Armour,WR,22,1999,1,7,3,39
+1995,4,114,IND,Ray McElroy\McElRa20,Ray McElroy,DB,23,2001,0,7,7,81
+1995,4,115,STL,Lovell Pinkney\PinkLo20,Lovell Pinkney,TE,23,1995,0,0,0,8
+1995,4,116,CHI,Jack Jackson\JackJa20,Jack Jackson,WR,22,1996,0,0,0,12
+1995,4,117,GNB,Jeff Miller,Jeff Miller,T,,,0,,,
+1995,4,118,OAK,Mike Morton\MortMi20,Mike Morton,LB,23,2001,1,12,10,103
+1995,4,119,PHI,Dave Barr\BarrDa20,Dave Barr,QB,23,1995,0,0,,2
+1995,4,120,PIT,Oliver Gibson\GibsOl20,Oliver Gibson,DT,23,2003,4,27,4,133
+1995,4,121,DEN,Jamie Brown\BrowJa22,Jamie Brown,T,23,1999,0,8,5,38
+1995,4,122,MIA,Pete Mitchell\MitcPe00,Pete Mitchell,TE,23,2002,3,23,,114
+1995,4,123,JAX,Mike Thompson\ThomMi21,Mike Thompson,DT,23,2000,0,1,0,34
+1995,4,124,DEN,Ken Brown\BrowKe21,Ken Brown,LB,24,1995,0,0,0,2
+1995,4,125,PIT,Donta Jones\JoneDo22,Donta Jones,LB,23,2000,0,8,7,91
+1995,4,126,SEA,Jason Kyle\KyleJa20,Jason Kyle,LB,23,2010,0,9,2,203
+1995,4,127,SFO,Tim Hanshaw\HansTi20,Tim Hanshaw,G,25,1998,0,4,4,30
+1995,4,128,NYG,Rob Zatechka\ZateRo20,Rob Zatechka,G,23,1997,0,5,5,47
+1995,4,129,DAL,Alundis Brice\BricAl20,Alundis Brice,DB,25,1996,0,2,2,24
+1995,4,130,DAL,Linc Harden,Linc Harden,LB,,,0,,,
+1995,4,131,BUF,Tony Cline\ClinTo00,Tony Cline,TE,23,1999,1,2,2,52
+1995,4,132,CAR,Frank Garcia\GarcFr21,Frank Garcia,C,23,2003,5,41,38,125
+1995,4,133,NYG,Ben Talley\TallBe20,Ben Talley,LB,23,1998,0,1,0,12
+1995,4,134,KAN,Steve Stenstrom\StenSt00,Steve Stenstrom,QB,23,1999,0,6,,17
+1995,5,135,CAR,Michael Senters,Michael Senters,DB,,,0,,,
+1995,5,136,CLE,Tau Pupua,Tau Pupua,DT,,,0,,,
+1995,5,137,WAS,Jamie Asher\AsheJa00,Jamie Asher,TE,22,1998,3,12,12,48
+1995,5,138,OAK,Matt Dyson\DysoMa20,Matt Dyson,LB,23,1995,0,0,0,4
+1995,5,139,CIN,David Dunn\DunnDa00,David Dunn,WR,23,2001,0,13,12,88
+1995,5,140,STL,Mike Scurlock\ScurMi20,Mike Scurlock,DB,23,1999,0,4,4,65
+1995,5,141,DET,Stephen Boyd\BoydSt00,Stephen Boyd,LB,23,2001,4,41,41,86
+1995,5,142,NYJ,Carl Greenwood\GreeCa20,Carl Greenwood,DB,23,1996,0,2,2,24
+1995,5,143,TAM,Clifton Abraham\AbraCl20,Clifton Abraham,DB,23,1997,0,0,0,9
+1995,5,144,BUF,John Holecek\HoleJo20,John Holecek,LB,23,2002,3,29,24,81
+1995,5,145,ATL,Roell Preston\PresRo00,Roell Preston,WR,23,1999,0,6,3,53
+1995,5,146,DEN,Phil Yeboah-Kodie\YeboPh20,Phil Yeboah-Kodie,LB,24,1996,0,0,,2
+1995,5,147,CLE,Mike Miller,Mike Miller,WR,,,0,,,
+1995,5,148,NOR,William Strong\StroWi20,William Strong,DB,23,1996,0,1,1,9
+1995,5,149,IND,Derek West\WestDe20,Derek West,T,23,1997,0,0,0,5
+1995,5,150,ARI,Cedric Davis,Cedric Davis,DB,,,0,,,
+1995,5,151,PIT,Lee Flowers\FlowLe20,Lee Flowers,DB,22,2002,4,38,38,112
+1995,5,152,WAS,Rich Owens\OwenRi20,Rich Owens,DE,23,2002,3,31,16,97
+1995,5,153,NYG,Roderick Mullen\MullRo20,Roderick Mullen,DB,22,1999,0,4,,53
+1995,5,154,OAK,Jeff Kysar,Jeff Kysar,T,,,0,,,
+1995,5,155,KAN,Mike Pelton,Mike Pelton,DT,,,0,,,
+1995,5,156,DET,Kez McCorvey\McCoKe20,Kez McCorvey,WR,23,1997,0,0,0,9
+1995,5,157,MIN,James Stewart\StewJa20,James Stewart,RB,23,1995,0,1,1,4
+1995,5,158,MIA,Norman Hand\HandNo20,Norman Hand,DT,23,2004,6,38,1,115
+1995,5,159,HOU,Gary Walker\WalkGa00,Gary Walker,DT,22,2005,9,64,21,155
+1995,5,160,GNB,Jay Barker,Jay Barker,QB,,,0,,,
+1995,5,161,PIT,Lance Brown\BrowLa20,Lance Brown,DB,23,2001,1,5,2,58
+1995,5,162,SDG,'Omar Ellison\ElliOm20,'Omar Ellison,WR,23,1996,0,0,0,12
+1995,5,163,DET,Ronald Cherry,Ronald Cherry,T,,,0,,,
+1995,5,164,KAN,Jerrott Willard\WillJe20,Jerrott Willard,LB,23,1998,0,0,0,1
+1995,5,165,ARI,Lance Scott\ScotLa20,Lance Scott,C,23,1998,2,12,,32
+1995,5,166,DAL,Edward Hervey,Edward Hervey,WR,,,0,,,
+1995,5,167,ARI,Tito Paul\PaulTi20,Tito Paul,DB,22,1999,0,6,3,67
+1995,5,168,DAL,Dana Howard\HowaDa20,Dana Howard,LB,23,1996,0,1,,19
+1995,5,169,JAX,Ryan Christopherson\ChriRy20,Ryan Christopherson,RB,23,1996,0,0,0,19
+1995,5,170,GNB,Travis Jervey\JervTr00,Travis Jervey,RB,23,2003,1,4,4,109
+1995,5,171,CAR,Andrew Peterson\PeteAn21,Andrew Peterson,T,23,1995,0,1,1,4
+1995,6,172,JAX,Marcus Price\PricMa20,Marcus Price,T,23,2004,0,9,,77
+1995,6,173,GNB,Charlie Simmons,Charlie Simmons,WR,,,0,,,
+1995,6,174,HOU,Hicham El-Mashtoub\El-MHi20,Hicham El-Mashtoub,C,23,1996,0,0,0,3
+1995,6,175,CIN,Ryan Grigson,Ryan Grigson,T,,,0,,,
+1995,6,176,WAS,Brian Thure\ThurBr20,Brian Thure,T,22,1995,0,0,0,4
+1995,6,177,SDG,Troy Sienkiewicz\SienTr20,Troy Sienkiewicz,G,23,1998,0,2,2,28
+1995,6,178,NYJ,Eddie Mason\MasoEd20,Eddie Mason,LB,23,2002,0,6,1,80
+1995,6,179,TAM,Wardell Rouse\RousWa20,Wardell Rouse,LB,23,1995,0,1,1,16
+1995,6,180,SEA,Henry McMillian\McMiHe20,Henry McMillian,DT,23,1996,0,0,0,3
+1995,6,181,ATL,Travis Hall\HallTr20,Travis Hall,DT,23,2005,6,42,41,150
+1995,6,182,DEN,Fritz Fequiere,Fritz Fequiere,G,,,0,,,
+1995,6,183,SDG,Brandon Harrison,Brandon Harrison,WR,,,0,,,
+1995,6,184,NOR,Lee DeRamus\DeRaLe00,Lee DeRamus,WR,23,1996,0,2,2,23
+1995,6,185,BUF,Shannon Clavelle\ClavSh20,Shannon Clavelle,DE,21,1997,0,1,,16
+1995,6,186,DET,Kevin Hickman\HickKe00,Kevin Hickman,TE,24,1998,0,0,0,13
+1995,6,187,IND,Brian Gelzheiser,Brian Gelzheiser,LB,,,0,,,
+1995,6,188,CAR,Steve Strahan,Steve Strahan,DT,,,0,,,
+1995,6,189,MIN,John Solomon,John Solomon,LB,,,0,,,
+1995,6,190,OAK,Eli Herring,Eli Herring,T,,,0,,,
+1995,6,191,CAR,Jerry Colquitt,Jerry Colquitt,QB,,,0,,,
+1995,6,192,DET,Cory Schlesinger\SchlCo00,Cory Schlesinger,FB,23,2006,6,13,13,181
+1995,6,193,CHI,Kenny Gales,Kenny Gales,DB,,,0,,,
+1995,6,194,MIA,Jeff Kopp\KoppJe20,Jeff Kopp,LB,24,1999,0,4,1,63
+1995,6,195,NWE,Dino Philyaw\PhilDi00,Dino Philyaw,RB,24,1999,0,0,,23
+1995,6,196,DEN,Terrell Davis HOF\DaviTe00,Terrell Davis HOF,RB,22,2001,4,72,72,78
+1995,6,197,SDG,Craig Whelihan\WhelCr00,Craig Whelihan,QB,24,1998,1,1,1,19
+1995,6,198,CHI,Carl Reeves\ReevCa20,Carl Reeves,DE,23,1998,1,6,6,31
+1995,6,199,PIT,Barron Miles,Barron Miles,DB,,,0,,,
+1995,6,200,SDG,Tony Berti\BertTo20,Tony Berti,T,23,1997,2,11,11,33
+1995,6,201,SFO,Antonio Armstrong\ArmsAn20,Antonio Armstrong,LB,21,1995,0,0,,4
+1995,6,202,KAN,Bryan Proby\ProbBr20,Bryan Proby,DT,23,1995,0,0,0,3
+1995,6,203,SEA,Eddie Goines,Eddie Goines,WR,,,0,,,
+1995,6,204,NYG,Jamal Duff\DuffJa20,Jamal Duff,DE,23,1998,0,7,2,41
+1995,6,205,ARI,Anthony Bridges,Anthony Bridges,DB,,,0,,,
+1995,6,206,NYG,Charles Way\WayxCh00,Charles Way,RB,22,1999,3,15,15,75
+1995,6,207,KAN,Tom Barndt\BarnTo20,Tom Barndt,DT,23,2001,2,22,18,81
+1995,6,208,PHI,Fred McCrary\McCrFr00,Fred McCrary,FB,23,2007,4,6,1,128
+1995,7,209,CAR,Chad Cota\CotaCh20,Chad Cota,DB,24,2002,5,36,12,125
+1995,7,210,PHI,Kevin Bouie\BouiKe20,Kevin Bouie,RB,24,1997,0,0,,6
+1995,7,211,HOU,C.J. Richardson\RichC.20,C.J. Richardson,DB,23,1997,0,1,,15
+1995,7,212,ARI,Billy Williams\WillBi20,Billy Williams,WR,24,1996,0,0,,1
+1995,7,213,CIN,John Walsh,John Walsh,QB,,,0,,,
+1995,7,214,STL,Gerald McBurrows\McBuGe20,Gerald McBurrows,DB,21,2003,2,17,6,122
+1995,7,215,TAM,Steve Ingram\IngrSt20,Steve Ingram,T,24,1999,0,0,0,8
+1995,7,216,SEA,Keif Bryant,Keif Bryant,DE,,,0,,,
+1995,7,217,NYJ,Curtis Ceaser\CeasCu20,Curtis Ceaser,WR,23,1995,0,0,0,4
+1995,7,218,DEN,Steve Russ\RussSt20,Steve Russ,LB,23,2000,0,1,1,24
+1995,7,219,JAX,Curtis Marsh\MarsCu00,Curtis Marsh,WR,24,1997,0,1,1,15
+1995,7,220,STL,Herman O'Berry\OBerHe20,Herman O'Berry,DB,24,1996,0,0,0,9
+1995,7,221,BUF,Tom Nutten\NuttTo20,Tom Nutten,G,24,2005,4,38,0,78
+1995,7,222,DEN,Byron Chamberlain\ChamBy00,Byron Chamberlain,TE,23,2003,2,17,7,106
+1995,7,223,IND,Jessie Cox,Jessie Cox,LB,,,0,,,
+1995,7,224,ARI,Wesley Leasy\LeasWe20,Wesley Leasy,LB,24,1996,0,2,2,28
+1995,7,225,NYG,Bryne Diehl,Bryne Diehl,P,,,0,,,
+1995,7,226,WAS,Scott Turner\TurnSc20,Scott Turner,DB,23,2003,0,10,4,101
+1995,7,227,TAM,Jeff Rodgers,Jeff Rodgers,DE,,,0,,,
+1995,7,228,DET,Hessley Hempstead\HempHe20,Hessley Hempstead,G,23,1997,0,3,3,31
+1995,7,229,CHI,Jamal Cox,Jamal Cox,LB,,,0,,,
+1995,7,230,GNB,Adam Timmerman\TimmAd20,Adam Timmerman,G,24,2006,11,81,21,187
+1995,7,231,CLE,A.C. Tellison,A.C. Tellison,WR,,,0,,,
+1995,7,232,MIN,Jose White\WhitJo20,Jose White,DT,22,1998,0,2,,18
+1995,7,233,MIA,Corey Swinson,Corey Swinson,DT,,,0,,,
+1995,7,234,NWE,Carlos Yancy\YancCa20,Carlos Yancy,DB,25,1995,0,0,0,4
+1995,7,235,PIT,Henry Bailey\BailHe00,Henry Bailey,WR,22,1996,0,0,,8
+1995,7,236,DAL,Oscar Sturgis\SturOs20,Oscar Sturgis,DE,24,1995,0,0,0,1
+1995,7,237,SDG,Mark Montreuil\MontMa21,Mark Montreuil,DB,23,1997,0,3,3,35
+1995,7,238,SFO,Herbert Coleman,Herbert Coleman,DE,,,0,,,
+1995,7,239,STL,Bronzell Miller\MillBr22,Bronzell Miller,DE,23,1995,0,0,,3
+1995,7,240,STL,J.T. Thomas\ThomJ.00,J.T. Thomas,WR,23,1998,0,2,2,51
+1995,7,241,ARI,Chad Eaton\EatoCh20,Chad Eaton,DT,23,2004,4,40,,103
+1995,7,242,NOR,Travis Davis\DaviTr20,Travis Davis,DB,22,1999,2,26,,73
+1995,7,243,MIN,Jason Fisk\FiskJa20,Jason Fisk,DT,23,2006,7,47,6,182
+1995,7,244,BUF,Darick Holmes\HolmDa00,Darick Holmes,RB,24,1999,0,16,11,60
+1995,7,245,ATL,John Burrough\BurrJo20,John Burrough,DE,23,2002,0,9,6,89
+1995,7,246,MIA,Shannon Myers,Shannon Myers,WR,,,0,,,
+1995,7,247,PIT,Cole Ford\fordxcol01,Cole Ford,K,22,1998,2,4,,38
+1995,7,248,PHI,Howard Smothers,Howard Smothers,T,,,0,,,
+1995,7,249,CAR,Michael Reed\ReedMi20,Michael Reed,DB,23,1996,0,0,0,3
+1996,1,1,NYJ,Keyshawn Johnson\JohnKe00,,WR,24,2006,10,78,34,167
+1996,1,2,JAX,Kevin Hardy\HardKe00,,LB,23,2004,9,64,47,134
+1996,1,3,ARI,Simeon Rice\RiceSi00,,DE,22,2007,11,88,28,174
+1996,1,4,BAL,Jonathan Ogden HOF\OgdeJo00,,T,22,2007,11,94,94,177
+1996,1,5,NYG,Cedric Jones\JoneCe20,,DE,22,2000,2,20,20,73
+1996,1,6,STL,Lawrence Phillips\PhilLa00,,RB,21,1999,2,11,9,35
+1996,1,7,NWE,Terry Glenn\GlenTe00,,WR,22,2007,9,67,36,137
+1996,1,8,CAR,Tim Biakabutuka\BiakTi00,,RB,22,2001,2,24,24,50
+1996,1,9,OAK,Rickey Dudley\DudlRi00,,TE,24,2004,5,24,22,108
+1996,1,10,CIN,Willie Anderson\AndeWi00,,T,21,2008,12,90,88,195
+1996,1,11,NOR,Alex Molden\MoldAl20,,DB,23,2003,3,23,15,98
+1996,1,12,TAM,Regan Upshaw\UpshRe20,,DE,21,2004,5,36,23,110
+1996,1,13,CHI,Walt Harris\HarrWa21,,DB,22,2008,11,60,30,193
+1996,1,14,HOU,Eddie George\GeorEd00,,RB,23,2004,9,77,75,141
+1996,1,15,DEN,John Mobley\MoblJo20,,LB,22,2003,5,52,52,105
+1996,1,16,MIN,Duane Clemons\ClemDu20,,DE,22,2005,4,39,11,142
+1996,1,17,DET,Reggie Brown\BrowRe22,,LB,22,1997,2,11,11,26
+1996,1,18,STL,Eddie Kennison\KennEd00,,WR,23,2008,9,70,11,179
+1996,1,19,IND,Marvin Harrison HOF\HarrMa00,,WR,24,2008,12,124,124,190
+1996,1,20,MIA,Daryl Gardener\GardDa20,,DT,23,2003,6,43,36,102
+1996,1,21,SEA,Pete Kendall\KendPe20,,G,23,2008,12,64,33,189
+1996,1,22,TAM,Marcus Jones\JoneMa20,,DE,23,2001,1,19,19,85
+1996,1,23,DET,Jeff Hartings\HartJe55,,C,24,2006,11,75,26,162
+1996,1,24,BUF,Eric Moulds\MoulEr00,,WR,23,2007,11,76,71,186
+1996,1,25,PHI,Jermane Mayberry\MaybJe00,,G,23,2005,7,44,42,123
+1996,1,26,BAL,Ray Lewis\LewiRa00,,LB,21,2012,14,160,160,228
+1996,1,27,GNB,John Michels\MichJo21,,T,23,1997,1,9,9,24
+1996,1,28,KAN,Jerome Woods\WoodJe00,,DB,23,2005,7,43,43,128
+1996,1,29,PIT,Jamain Stephens\StepJa20,,T,22,2001,1,6,5,40
+1996,1,30,WAS,Andre Johnson\JohnAn20,,T,23,1998,0,0,,3
+1996,2,31,NYJ,Alex Van Dyke\VanDAl00,,WR,22,2000,0,1,1,42
+1996,2,32,ARI,Leeland McElroy\McElLe00,,RB,22,1997,1,5,5,30
+1996,2,33,JAX,Tony Brackens\BracTo00,,DE,21,2003,4,52,52,107
+1996,2,34,NYG,Amani Toomer\ToomAm00,,WR,22,2008,10,66,66,190
+1996,2,35,TAM,Mike Alstott\AlstMi00,,RB,22,2006,8,48,48,158
+1996,2,36,NWE,Lawyer Milloy\MillLa00,,DB,22,2010,14,79,54,234
+1996,2,37,DAL,Kavika Pittman\PittKa20,,DE,21,2003,4,37,21,108
+1996,2,38,HOU,Bryant Mix\MixxBr20,,DE,24,1997,0,1,1,7
+1996,2,39,CIN,Marco Battaglia\BattMa00,,TE,23,2003,0,5,5,96
+1996,2,40,NOR,Je'Rod Cherry\CherJe20,,DB,23,2004,0,7,3,127
+1996,2,41,SDG,Bryan Still\StilBr00,,WR,22,1999,1,8,8,52
+1996,2,42,STL,Tony Banks\BankTo00,,QB,23,2005,5,42,24,96
+1996,2,43,CAR,Muhsin Muhammad\MuhaMu00,,WR,23,2009,12,81,69,202
+1996,2,44,DEN,Tory James\JameTo99,,DB,23,2006,5,36,2,158
+1996,2,45,MIN,James Manley\ManlJa21,,DT,22,1996,0,0,0,0
+1996,2,46,SFO,Israel Ifeanyi\IfeaIs20,,DE,25,1996,0,0,0,3
+1996,2,47,SEA,Fred Thomas\ThomFr20,,DB,23,2007,5,32,3,156
+1996,2,48,HOU,Jason Layman\LaymJa20,,G,23,1999,1,9,9,61
+1996,2,49,DAL,Randall Godfrey\GodfRa20,,LB,23,2007,9,72,28,170
+1996,2,50,SDG,Patrick Sapp\SappPa20,,LB,23,1999,1,9,5,63
+1996,2,51,IND,Dedric Mathis\MathDe20,,DB,23,1997,0,5,5,29
+1996,2,52,CHI,Bobby Engram\EngrBo00,,WR,23,2009,6,52,16,176
+1996,2,53,BUF,Gabe Northern\NortGa20,,LB,22,2000,2,21,20,73
+1996,2,54,PHI,Jason Dunn\DunnJa00,,TE,22,2007,2,7,5,160
+1996,2,55,BAL,DeRon Jenkins\JenkDe20,,DB,22,2001,1,19,14,93
+1996,2,56,GNB,Derrick Mayes\MayeDe00,,WR,22,2000,1,16,7,58
+1996,2,57,OAK,Lance Johnstone\JohnLa23,,DE,23,2006,4,42,31,166
+1996,2,58,KAN,Reggie Tongue\TongRe20,,DB,23,2005,7,48,21,145
+1996,2,59,STL,Ernie Conwell\ConwEr00,,TE,24,2006,7,17,12,125
+1996,2,60,JAX,Michael Cheever\CheeMi20,,C,23,1997,0,5,5,17
+1996,2,61,PHI,Brian Dawkins\DawkBr00,,DB,22,2011,14,101,90,224
+1996,3,62,NYJ,Ray Mickens\MickRa20,,DB,23,2006,2,21,20,146
+1996,3,63,JAX,Aaron Beasley\BeasAa20,,DB,23,2004,7,45,33,121
+1996,3,64,ARI,Johnny McWilliams\McWiJo00,,TE,23,2000,1,6,4,74
+1996,3,65,DEN,Detron Smith\SmitDe00,,RB,22,2003,0,1,1,113
+1996,3,66,NYG,Roman Oben\ObenRo20,,T,23,2007,9,51,18,143
+1996,3,67,DAL,Clay Shiver\ShivCl20,,C,23,1998,2,13,13,44
+1996,3,68,KAN,John Browning\BrowJo24,,DT,23,2005,4,40,40,121
+1996,3,69,CIN,Ken Blackman\BlacKe20,,G,23,1998,3,17,17,35
+1996,3,70,NOR,Brady Smith\SmitBr21,,DE,23,2005,6,41,13,143
+1996,3,71,TAM,Donnie Abraham\AbraDo00,,DB,22,2004,6,55,40,132
+1996,3,72,PIT,Steve Conley\ConlSt20,,LB,24,1998,0,1,1,21
+1996,3,73,CAR,Winslow Oliver\OlivWi00,,RB,23,2000,0,6,4,64
+1996,3,74,HOU,Terry Killens\KillTe20,,LB,22,2002,0,6,4,98
+1996,3,75,MIN,Moe Williams\WillMo00,,RB,22,2005,0,28,25,132
+1996,3,76,DET,Ryan Stewart\StewRy20,,DB,23,2000,0,3,3,41
+1996,3,77,SEA,Robert Barr,,T,,,0,,,
+1996,3,78,DEN,Mark Campbell\CampMa20,,DT,24,1997,0,0,,5
+1996,3,79,MIA,Dorian Brew\BrewDo20,,DB,22,1997,0,0,,16
+1996,3,80,MIA,Karim Abdul-Jabbar\AbduKa00,,RB,22,2000,3,24,21,61
+1996,3,81,SDG,Brian Roche\RochBr00,,TE,23,1998,0,1,1,22
+1996,3,82,IND,Scott Slutzker\SlutSc00,,TE,23,1999,0,1,0,41
+1996,3,83,STL,Jerald Moore\MoorJe00,,RB,21,2000,0,5,4,42
+1996,3,84,ATL,Shannon Brown,,DT,,,0,,,
+1996,3,85,PHI,Bobby Hoying\HoyiBo00,,QB,24,2000,1,3,3,22
+1996,3,86,NWE,Tedy Bruschi\BrusTe99,,LB,23,2008,8,71,71,189
+1996,3,87,BUF,Matt Stevens\StevMa22,,DB,23,2003,2,22,7,108
+1996,3,88,CAR,J.C. Price,,DT,,,0,,,
+1996,3,89,SFO,Terrell Owens\OwenTe00,,WR,22,2010,13,119,72,219
+1996,3,90,GNB,Mike Flanagan\FlanMi00,,C,22,2007,5,42,33,121
+1996,3,91,SEA,Reggie Brown\BrowRe00,,RB,23,2000,0,2,2,61
+1996,3,92,PIT,Jon Witman\WitmJo00,,RB,24,2001,3,3,3,85
+1996,3,93,GNB,Tyrone Williams\WillTy20,,DB,23,2004,6,43,42,120
+1996,3,94,DAL,Stepfret Williams\WillSt00,,WR,23,1998,0,3,2,26
+1996,3,95,DAL,Mike Ulufale\UlufMi20,,DT,24,1996,0,0,0,3
+1996,4,96,TAM,Jason Odom\OdomJa20,,T,22,1999,2,16,16,46
+1996,4,97,MIN,Hunter Goodwin\GoodHu00,,TE,23,2003,2,1,1,119
+1996,4,98,KAN,Donnie Edwards\EdwaDo20,,LB,23,2008,11,84,46,197
+1996,4,99,SEA,Phillip Daniels\DaniPh20,,DE,23,2010,11,69,17,201
+1996,4,100,DEN,Jeff Lewis\LewiJe01,,QB,23,2000,0,2,1,12
+1996,4,101,NWE,Heath Irwin\IrwiHe20,,G,23,2002,1,17,9,87
+1996,4,102,WAS,Stephen Davis\DaviSt00,,RB,22,2006,7,56,40,143
+1996,4,103,NOR,Ricky Whittle\WhitRi00,,RB,24,1996,0,2,2,10
+1996,4,104,TAM,Eric Austin\AustEr20,,DB,23,1996,0,0,0,2
+1996,4,105,STL,Percell Gaskins\GaskPe20,,LB,24,1997,0,3,2,27
+1996,4,106,CAR,Norbert Davidds-Garrido\DaviNo20,,T,23,2000,3,18,17,68
+1996,4,107,HOU,Kendrick Burton\BurtKe20,,DE,23,1996,0,1,1,4
+1996,4,108,CIN,Jevon Langford\LangJe20,,DE,22,2001,0,9,9,66
+1996,4,109,HOU,Jon Runyan\RunyJo20,,T,22,2009,12,79,22,207
+1996,4,110,JAX,Reggie Barlow\BarlRe00,,WR,23,2003,0,8,8,82
+1996,4,111,CAR,Emmanuel McDaniel\McDaEm20,,DB,24,2003,0,10,4,75
+1996,4,112,ARI,Aaron Graham\GrahAa20,,C,23,2002,2,21,19,92
+1996,4,113,MIA,Kirk Pointer,,DB,,,0,,,
+1996,4,114,SDG,Charlie Jones\JoneCh00,,WR,23,1999,2,13,13,54
+1996,4,115,IND,Brian Milne\MilnBr00,,RB,23,2000,2,3,,63
+1996,4,116,CHI,Paul Grasmanis\GrasPa20,,DT,22,2005,0,14,4,104
+1996,4,117,ATL,Richard Huntley\HuntRi00,,RB,24,2002,1,14,0,63
+1996,4,118,MIA,Stanley Pritchett\PritSt00,,FB,22,2004,4,13,7,120
+1996,4,119,NWE,Chris Sullivan\SullCh20,,DE,23,2000,1,13,11,78
+1996,4,120,BUF,Sean Moran\MoraSe20,,LB,23,2003,0,11,6,120
+1996,4,121,PHI,Ray Farmer\FarmRa20,,LB,22,1998,1,9,9,32
+1996,4,122,DEN,Darrius Johnson\JohnDa23,,DB,23,2003,0,4,4,63
+1996,4,123,GNB,Chris Darkins\DarkCh00,,DB,22,1997,0,1,1,14
+1996,4,124,NWE,Kantroy Barber\BarbKa20,,RB,22,1999,0,0,,2
+1996,4,125,MIA,LaCurtis Jones\JoneLa20,,LB,24,1996,0,1,,10
+1996,4,126,PIT,Earl Holmes\HolmEa20,,LB,23,2005,9,60,42,140
+1996,4,127,ATL,Juran Bolden\BoldJu20,,DB,22,2006,2,14,7,109
+1996,4,128,SFO,Daryl Price\PricDa20,,DE,23,1997,0,1,1,19
+1996,4,129,DET,Brad Ford\FordBr20,,DB,22,1996,0,1,1,14
+1996,4,130,NYG,Danny Kanell\KaneDa00,,QB,22,2003,2,13,9,43
+1996,4,131,SEA,Eric Unverzagt\UnveEr20,,LB,23,1997,0,0,0,9
+1996,4,132,PIT,Jahine Arnold\ArnoJa00,,WR,23,1999,0,1,1,13
+1996,5,133,NYJ,Marcus Coleman\ColeMa20,,DB,22,2006,7,42,25,152
+1996,5,134,MIA,Jerris McPhail\McPhJe00,,RB,24,1998,0,7,7,26
+1996,5,135,KAN,Joe Horn\HornJo00,,WR,24,2007,8,69,5,163
+1996,5,136,NOR,Mercury Hayes\HayeMe21,,WR,23,1997,0,1,1,13
+1996,5,137,ARI,James Dexter\DextJa20,,T,23,2000,2,16,14,49
+1996,5,138,WAS,Leomont Evans\EvanLe20,,DB,22,1999,2,14,14,59
+1996,5,139,NWE,John Elmore,,G,,,0,,,
+1996,5,140,TAM,Jason Maniecki\ManiJa20,,DT,24,1998,0,1,1,18
+1996,5,141,STL,Fred Miller\MillFr21,,T,23,2008,10,65,17,192
+1996,5,142,CAR,Marquette Smith,,RB,,,0,,,
+1996,5,143,HOU,Rayna Stewart\StewRa21,,DB,23,2000,1,10,4,71
+1996,5,144,CIN,Greg Myers\MyerGr20,,DB,24,2000,2,12,11,64
+1996,5,145,NOR,Tom Ackerman\AckeTo20,,G,24,2003,1,14,10,105
+1996,5,146,JAX,Jimmy Herndon\HernJi20,,T,23,2002,0,5,,54
+1996,5,147,PHI,Whit Marshall\MarsWh20,,LB,23,1999,0,0,0,16
+1996,5,148,MIN,Sean Boyd\BoydSe20,,DB,23,1996,0,0,,2
+1996,5,149,NWE,Christian Peter\PeteCh20,,DT,23,2002,1,20,,81
+1996,5,150,MIA,Shane Burton\BurtSh20,,DE,22,2003,2,28,8,125
+1996,5,151,IND,Steve Martin\MartSt21,,DT,22,2004,2,27,3,127
+1996,5,152,CHI,Chris Villarrial\VillCh20,,G,23,2006,10,50,34,155
+1996,5,153,BAL,Jermaine Lewis\LewiJe00,,WR,21,2004,2,22,21,111
+1996,5,154,MIA,Zach Thomas\ThomZa01,,LB,23,2008,11,118,115,184
+1996,5,155,SDG,Junior Soli,,DT,,,0,,,
+1996,5,156,BUF,Raymond Jackson\JackRa22,,DB,23,2001,0,4,3,73
+1996,5,157,DAL,Kenneth McDaniel,,T,,,0,,,
+1996,5,158,DET,Kerwin Waldroup\WaldKe20,,DE,22,1998,3,16,16,40
+1996,5,159,DEN,Patrick Jeffers\JeffPa00,,WR,23,2001,1,16,0,46
+1996,5,160,SFO,Iheanyi Uwaezuoke\UwaeIh00,,WR,23,2000,0,5,4,60
+1996,5,161,ARI,Harry Stamps,,T,,,0,,,
+1996,5,162,ARI,Dell McGee\McGeDe20,,DB,23,1998,0,0,0,3
+1996,5,163,PIT,Israel Raybon\RaybIs20,,DE,23,1997,0,1,0,12
+1996,5,164,ATL,Gary Bandy,,DE,,,0,,,
+1996,5,165,NOR,Terry Guess\GuesTe00,,WR,22,1996,0,1,1,3
+1996,5,166,OAK,La'Roi Glover\GlovLa00,,DT,22,2008,10,91,0,193
+1996,5,167,DAL,Alan Campos\CampAl21,,LB,23,1996,0,1,1,15
+1996,6,168,NYJ,Hugh Hunter,,DE,,,0,,,
+1996,6,169,ARI,Mike Foley,,DT,,,0,,,
+1996,6,170,JAX,John Fisher,,DB,,,0,,,
+1996,6,171,NYG,Doug Colman\ColmDo20,,LB,23,2000,0,3,3,64
+1996,6,172,BAL,Dexter Daniels\DaniDe20,,LB,22,1996,0,0,0,4
+1996,6,173,NWE,Chris Griffin,,TE,,,0,,,
+1996,6,174,WAS,Kelvin Kinney\KinnKe20,,DE,23,1998,1,6,6,18
+1996,6,175,STL,Derrick Harris\HarrDe00,,RB,24,2001,2,1,1,44
+1996,6,176,KAN,Dietrich Jells\JellDi00,,WR,24,1999,0,1,,41
+1996,6,177,HOU,Anthony Dorsett\DorsAn20,,DB,23,2003,2,20,2,118
+1996,6,178,CIN,Tom Tumulty\TumuTo20,,LB,23,1998,1,7,7,31
+1996,6,179,NOR,Keno Hills\HillKe21,,G,23,1998,0,3,3,22
+1996,6,180,TAM,Nilo Silvan\SilvNi20,,WR,22,1996,0,0,0,7
+1996,6,181,DEN,Tony Veland\VelaTo20,,DB,23,1998,0,3,1,27
+1996,6,182,NYG,Scott Galyon\GalySc20,,LB,22,2002,0,8,4,95
+1996,6,183,OAK,Tim Hall\HallTi20,,RB,22,1997,0,1,1,18
+1996,6,184,SEA,Reggie Green,,G,,,0,,,
+1996,6,185,JAX,Chris Doering\DoerCh00,,WR,23,2004,0,3,,40
+1996,6,186,BAL,James Roe\RoexJa00,,WR,23,1998,0,2,2,23
+1996,6,187,CHI,Jon Clark\ClarJo20,,T,23,1999,0,0,0,10
+1996,6,188,ATL,Craig Sauer\SaueCr20,,LB,23,2000,0,6,6,73
+1996,6,189,MIA,Shawn Wooden\WoodSh20,,DB,22,2003,2,18,17,104
+1996,6,190,SDG,Jim Mills\MillJi24,,G,23,1997,0,0,0,2
+1996,6,191,IND,Keith Conlin,,T,,,0,,,
+1996,6,192,SDG,Bryan Stoltenberg\StolBr20,,C,24,2000,1,12,1,50
+1996,6,193,CAR,Scott Greene\GreeSc00,,RB,24,1999,1,3,3,34
+1996,6,194,PHI,Steve White\WhitSt21,,DE,22,2002,1,16,,94
+1996,6,195,NWE,Marrio Grier\GrieMa00,,RB,24,1997,0,2,2,32
+1996,6,196,BUF,Leon Neal\NealLe20,,RB,24,1997,0,0,,1
+1996,6,197,PHI,Tony Johnson\JohnTo00,,TE,24,1998,0,1,,27
+1996,6,198,SFO,Stephen Pitts,,RB,,,0,,,
+1996,6,199,PHI,Phillip Riley\RilePh20,,WR,24,1996,0,0,,1
+1996,6,200,PIT,Orpheus Roye\RoyeOr20,,DT,23,2008,8,56,18,180
+1996,6,201,STL,Hayward Clay\ClayHa00,,TE,23,1998,0,0,0,14
+1996,6,202,BUF,Dusty Zeigler\ZeigDu20,,C,23,2002,5,35,22,80
+1996,6,203,PIT,Spence Fischer,,QB,,,0,,,
+1996,6,204,NOR,Toderick Malone,,WR,,,0,,,
+1996,6,205,IND,Mike Cawley,,QB,,,0,,,
+1996,6,206,NWE,Devin Wyman\WymaDe20,,DT,23,1997,0,2,2,15
+1996,6,207,DAL,Wendell Davis\DaviWe20,,DB,23,1999,0,2,2,34
+1996,6,208,GNB,Marco Rivera\RiveMa01,,G,24,2006,9,73,61,155
+1996,6,209,SEA,T.J. Cunningham\CunnT.20,,DB,23,1996,0,1,1,9
+1996,7,210,NYJ,Chris Hayes\HayeCh20,,DB,24,2002,0,8,8,84
+1996,7,211,KAN,Ben Lynch\LyncBe20,,C,23,2002,0,4,,52
+1996,7,212,ARI,Jarius Hayes\HayeJa00,,TE,23,1998,0,0,0,20
+1996,7,213,DEN,Leslie Ratliffe,,T,,,0,,,
+1996,7,214,NYG,Conrad Hamilton\HamiCo20,,DB,21,2001,1,10,10,54
+1996,7,215,WAS,Jeremy Asher,,LB,,,0,,,
+1996,7,216,NWE,Lovett Purnell\PurnLo00,,TE,24,1999,0,2,2,36
+1996,7,217,CAR,Donnell Baker,,WR,,,0,,,
+1996,7,218,HOU,Mike Archie\ArchMi00,,RB,23,1998,0,0,0,23
+1996,7,219,CIN,Rod Jones\JoneRo23,,T,22,2001,2,18,17,61
+1996,7,220,OAK,Sedric Clark\ClarSe20,,LB,23,1996,0,0,,6
+1996,7,221,TAM,Reggie Rusk\RuskRe20,,DB,23,2000,0,1,0,23
+1996,7,222,STL,Chuck Osborne\OsboCh20,,DT,22,1999,0,2,1,37
+1996,7,223,MIN,Jon Merrill,,G,,,0,,,
+1996,7,224,OAK,Darius Smith,,C,,,0,,,
+1996,7,225,SEA,Johnie Church,,DE,,,0,,,
+1996,7,226,DEN,Chris Banks\BankCh20,,G,23,2000,0,2,0,28
+1996,7,227,JAX,Clarence Jones,,WR,,,0,,,
+1996,7,228,JAX,Gregory Spann,,WR,,,0,,,
+1996,7,229,ATL,Ethan Brooks\BrooEt20,,T,24,2005,1,11,0,76
+1996,7,230,MIA,Jeff Buckey\BuckJe20,,G,22,1999,1,11,11,45
+1996,7,231,SDG,Freddie Bradley\BradFr00,,RB,26,1996,0,1,1,10
+1996,7,232,IND,Adrian Robinson,,DB,,,0,,,
+1996,7,233,CHI,Marcus Keyes\KeyeMa20,,DT,22,1996,0,0,0,2
+1996,7,234,CAR,Kerry Hicks\HickKe20,,DE,23,1997,0,0,,2
+1996,7,235,DEN,L.T. Levine,,RB,,,0,,,
+1996,7,236,DEN,Brian Gragert,,P,,,0,,,
+1996,7,237,BUF,Dan Brandenburg\BranDa20,,LB,23,1999,0,2,2,42
+1996,7,238,BAL,Jon Stark,,QB,,,0,,,
+1996,7,239,SFO,Sean Manuel\ManuSe20,,TE,22,1996,0,0,0,11
+1996,7,240,GNB,Kyle Wachholtz,,QB,,,0,,,
+1996,7,241,KAN,Jeff Smith\SmitJe21,,C,23,2001,2,13,2,59
+1996,7,242,PIT,Carlos Emmons\EmmoCa20,,LB,23,2006,9,56,19,147
+1996,7,243,DAL,Ryan Wood,,RB,,,0,,,
+1996,7,244,BUF,Jay Riemersma\RiemJa00,,TE,23,2004,3,19,18,112
+1996,7,245,KAN,Darrell Williams,,DB,,,0,,,
+1996,7,246,NOR,Henry Lusk\LuskHe00,,TE,24,1998,0,2,2,19
+1996,7,247,NWE,J.R. Conrad\ConrJ.20,,G,22,1997,0,1,,12
+1996,7,248,OAK,Joey Wylie,,G,,,0,,,
+1996,7,249,BUF,Eric Smedley\SmedEr20,,DB,23,1999,0,3,3,42
+1996,7,250,WAS,DeAndre Maxwell,,WR,,,0,,,
+1996,7,251,MIA,Brice Hunter\HuntBr00,,WR,22,1998,0,1,,13
+1996,7,252,GNB,Keith McKenzie\McKeKe20,,DE,22,2003,1,16,6,95
+1996,7,253,CHI,Michael Hicks\HickMi20,,RB,23,1997,0,1,1,7
+1996,7,254,SFO,Sam Manuel,,LB,,,0,,,
