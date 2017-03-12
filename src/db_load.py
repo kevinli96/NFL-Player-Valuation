@@ -34,7 +34,7 @@ def load():
                 player_id int not null,
                 year int,
                 cap_hit int,
-                team_id int,
+                team_id text,
                 position_id int,
                 FOREIGN KEY (player_id) REFERENCES player(id),
                 FOREIGN KEY (team_id) REFERENCES team(id),
@@ -46,7 +46,7 @@ def load():
                 player_id int not null,
                 year int,
                 av_value int,
-                team_id int,
+                team_id text,
                 position_id int,
                 FOREIGN KEY (player_id) REFERENCES player(id),
                 FOREIGN KEY (team_id) REFERENCES team(id),
@@ -55,7 +55,7 @@ def load():
 
     c.execute('''
             CREATE TABLE team(
-                id int not null,
+                id text not null,
                 name text not null,
                 PRIMARY KEY(id))
                 ''')
@@ -71,7 +71,7 @@ def load():
             CREATE TABLE plays(
                 player_id int not null,
                 year int,
-                team_id int,
+                team_id text,
                 position_id int,
                 FOREIGN KEY (player_id) REFERENCES player(id),
                 FOREIGN KEY (team_id) REFERENCES team(id),
@@ -82,42 +82,79 @@ def load():
             CREATE TABLE draft(
                 player_id int not null,
                 year int,
-                team_id int,
+                team_id text,
                 round int,
                 pick int,
+                position_id text,
                 FOREIGN KEY (player_id) REFERENCES player(id),
-                FOREIGN KEY (team_id) REFERENCES team(id))
+                FOREIGN KEY (team_id) REFERENCES team(id),
+                FOREIGN KEY (position_id) REFERENCES position(id))
                 ''')
 
     conn.commit()
 
-    team_data = {}
+    player_data = {}
 
-    with open('team_data.csv','r',encoding='utf-8') as csvfile:
+    with open('team_data.csv', 'r', encoding='utf-8') as csvfile:
         csv_reader = csv.reader(csvfile)
         next(csv_reader, None)
+        for row in csv_reader:
+            team_id = row[0]
+            team_name = row[1]
 
-    with open('draft_data.csv','r', encoding='utf-8') as csvfile:
+            c.execute('''
+                INSERT INTO team
+                VALUES (?, ?)''',
+                (team_id,team_name))
+
+    with open('position_data.csv', 'r', encoding='utf-8') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        next(csv_reader, None)
+        for row in csv_reader:
+            position_id = row[0]
+            position_name = row[1]
+
+            c.execute('''
+                INSERT INTO position
+                VALUES (?, ?)''',
+                (position_id,position_name))
+
+    with open('draft_data.csv', 'r', encoding='utf-8') as csvfile:
         csv_reader = csv.reader(csvfile)
         next(csv_reader, None)
         for row in csv_reader:
             year = row[0]
             draft_round = row[1]
             pick = row[2]
-            player_name = row[3]
+            team_id = row[3]
+            player_name = row[4]
+            position_id = row[5]
 
             player_id = str(year) + str(pick)
+
+            player_data[player_id] = player_name
 
             c.execute('''
                 INSERT INTO player
                 VALUES (?, ?)''',
-                (plyaer_id,player_name))
+                (player_id,player_name))
 
             c.execute('''
                 INSERT INTO draft
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                (song_id,song_name,popularity,duration,explicit,
-                tag1,tag2,tag3,tag4,tag5))
+                VALUES (?, ?, ?, ?, ?)''',
+                (player_id, year, team_id, draft_round, pick, position_id))
+
+    with open('av_data.csv', 'r', encoding='utf-8') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        next(csv_reader, None)
+        for row in csv_reader:
+            player_id = row[0]
+            team_name = row[1]
+
+            c.execute('''
+                INSERT INTO av
+                VALUES (?, ?)''',
+                (team_id,team_name))
 
     conn.commit()
     conn.close()
