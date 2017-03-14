@@ -28,8 +28,7 @@
 
  function drawChart(chartId, position) {
      var bardata = [];
-     d3.tsv('data/' + position
-      + '_AV_counts.tsv', function(data) {
+     d3.tsv('data/' + position + '_AV_counts.tsv', function(data) {
          for (key in data) {
              bardata.push(parseInt(data[key].value))
          }
