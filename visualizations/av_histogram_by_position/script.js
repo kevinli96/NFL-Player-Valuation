@@ -28,7 +28,8 @@
 
  function drawChart(chartId, position) {
      var bardata = [];
-     d3.tsv(position + '_AV_counts.tsv', function(data) {
+     d3.tsv('../visualizations/av_histogram_by_position/' + position
+      + '_AV_counts.tsv', function(data) {
          for (key in data) {
              bardata.push(parseInt(data[key].value))
          }
@@ -85,18 +86,6 @@
          .attr("text-anchor", "middle")
          .style("font-size", "24px")
          .text(position + " AV Counts");
-
-     d3.select('svg').append("g")
-         .attr("class", "legendLinear")
-         .attr("transform", "translate(20,20)");
-
-     var legendLinear = d3.legendColor()
-         .shapeWidth(30)
-         .orient('horizontal')
-         .scale(colors);
-
-     svg.select(".legendLinear")
-         .call(legendLinear);
 
      // ABOVE: height and y are sort of counterintuitive, because of SVG graphics
      // centering everything around a (0,0) coordinate at the top left of the SVG.
