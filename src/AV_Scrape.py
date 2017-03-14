@@ -1,5 +1,5 @@
 from urllib.request import urlopen
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, SoupStrainer
 import csv
 import sys 
 
@@ -8,7 +8,7 @@ def AVScrape(csv_file):
 	Submits the data to the inputted CSV file"""
 	pre_url = "http://www.pro-football-reference.com/play-index/psl_finder.cgi?request=1&match=single&year_min=1994&year_max=2016&season_start=1&season_end=-1&age_min=0&age_max=0&pos=qb&pos=rb&pos=wr&pos=te&pos=e&pos=t&pos=g&pos=c&pos=ol&pos=dt&pos=de&pos=dl&pos=ilb&pos=olb&pos=lb&pos=cb&pos=s&pos=db&pos=k&pos=p&c1stat=choose&c1comp=gt&c2stat=choose&c2comp=gt&c3stat=choose&c3comp=gt&c4stat=choose&c4comp=gt&c5comp=choose&c5gtlt=lt&c6mult=1.0&c6comp=choose&order_by=av&draft=0&draft_year_min=1936&draft_year_max=2016&draft_slot_min=1&draft_slot_max=500&draft_pick_in_round=pick_overall&conference=any&draft_pos=qb&draft_pos=rb&draft_pos=wr&draft_pos=te&draft_pos=e&draft_pos=t&draft_pos=g&draft_pos=c&draft_pos=ol&draft_pos=dt&draft_pos=de&draft_pos=dl&draft_pos=ilb&draft_pos=olb&draft_pos=lb&draft_pos=cb&draft_pos=s&draft_pos=db&draft_pos=k&draft_pos=p&offset="	
 
-	with open(csv_file, "a", newline="") as myfile:
+	with open("newData.csv", "w", newline="") as myfile:
 		wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
 		#wr.writerow(['Rk', 'Player', 'URL', 'Year', 'Age', 'Draft', 'Tm',
 		#	'Lg', 'G', 'GS', 'Yrs', 'PB', 'AP1', 'AV', 'Position'])
@@ -28,6 +28,7 @@ def pageScrape(season_url, wr):
 	# we take the rows in the table's children
 	# But we make sure to ignore the first two, since they're unrelated
 	table = soup.find(id = 'results').findChildren("tr")[2:]
+	soup.decompose()
 	for elem in table:
 		desired_row = []
 		if not elem.has_attr('class'): # There are some rows we don't want
@@ -66,12 +67,10 @@ def pageScrape(season_url, wr):
 				draft, tm, lg, g, gs, yrs, pb, AP1, AV, Position))
 			wr.writerow(desired_row)
 
-	soup.decompose()
-
 
 def getPosition(player_url, year):
 	'''Gets a player's position from his personal URL page'''
-
+	print("player_url: " + player_url)
 	base_url = "http://www.pro-football-reference.com"
 	# Now we need to get each player's position
 	html_player = urlopen(base_url + player_url)
@@ -93,6 +92,6 @@ def getPosition(player_url, year):
 	
 
 # Url we will be scraping
-file = "C:\\Users\\Steven\\Desktop\\AVdata3.csv"
-AVScrape(file)
+
+AVScrape("../data/AVdata_with_position.csv")
 
