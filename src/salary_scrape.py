@@ -21,13 +21,15 @@ def salary_scrape(csv_file, team_csv_file):
         wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
         wr.writerow(['year','team','player','position','base_salary','signing_bonus','roster_bonus','option_bonus','workout_bonus','restructured_bonus','dead_cap','cap_hit','cap_percentage'])
         for year in range(1994, 2022):
+            duplicate_set = set()
             for team in team_map:
+                # print(duplicate_set)
                 print (str(year) + " " + team)
                 sys.stdout.flush() # make sure number is printed out in real time
                 new_url = url.format(team = team, year = year)
-                pageScrape(new_url, year, team_map[team], wr)
+                pageScrape(new_url, year, team_map[team], wr, duplicate_set)
 
-def pageScrape(url, year, team, wr):
+def pageScrape(url, year, team, wr, duplicate_set):
     """ Takes in a URL to a page of salary data"""
 
     html = urlopen(url)
@@ -90,17 +92,20 @@ def pageScrape(url, year, team, wr):
             if vals[11].string is not None and vals[11].string != '-':
                 cap_percentage = float(vals[11].string)
 
-            desired_row.extend((year, team, player, position, base_salary, \
-                signing_bonus, roster_bonus, option_bonus, workout_bonus, \
-                restructured_bonus, dead_cap, cap_hit, cap_percentage))
+            player_tuple = (year, team, player, position, base_salary, \
+                    signing_bonus, roster_bonus, option_bonus, workout_bonus, \
+                    restructured_bonus, dead_cap, cap_hit, cap_percentage)
 
-            wr.writerow(desired_row)
+            if player_tuple not in duplicate_set:
+                duplicate_set.add(player_tuple)
+                desired_row.extend(player_tuple)
+                wr.writerow(desired_row)
 
         soup.decompose()
 
 if __name__ == '__main__':
     salary_csv_file = "../data/salary_data.csv"
-    team_csv_file = "../data/team_data.csv"
+    team_csv_file = "../data/team_data_simplified.csv"
     salary_scrape(salary_csv_file, team_csv_file)
 
 
