@@ -25,11 +25,19 @@ def load():
 
     c.execute('''
             CREATE TABLE salary(
-                player_id int not null,
                 year int,
-                cap_hit int,
                 team_id text,
+                player_id int not null,
                 position_id int,
+                base_salary int,
+                signing_bonus int,
+                roster_bonus int,
+                option_bonus int,
+                workout_bonus int,
+                restructured_bonus int,
+                dead_cap int,
+                cap_hit int,
+                cap_percentage real,
                 FOREIGN KEY (player_id) REFERENCES player(id),
                 FOREIGN KEY (team_id) REFERENCES team(id),
                 FOREIGN KEY (position_id) REFERENCES position(id))
@@ -56,9 +64,10 @@ def load():
             CREATE TABLE team(
                 id text not null,
                 name text not null,
-                PRIMARY KEY(id))
+                PRIMARY KEY(name))
                 ''')
 
+    # NEED TO FIGURE OUT THIS SCHEMATIC
     c.execute('''
             CREATE TABLE position(
                 id int not null,
@@ -172,16 +181,20 @@ def load():
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
                 (player_id, year, team_id, position_id, age, av_value, games_played, games_started, pro_bowler, all_pro))       
 
-    # with open('../data/salary_data.csv', 'r', encoding='utf-8') as csvfile:
-    #     csv_reader = csv.reader(csvfile)
-    #     next(csv_reader, None)
-    #     for row in csv_reader:
-    #         NEED TO DO THIS
+    with open('../data/salary_data.csv', 'r', encoding='utf-8') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        next(csv_reader, None)
+        for row in csv_reader:
+            #NEED TO FIGURE OUT PLAYER_ID
+            #NEED TO FIGURE OUT POSITION_ID
+            #EVERYTHING ELSE SHOULD BE SAME AS CSV FILE
 
-    #         c.execute('''
-    #             INSERT INTO salary
-    #             VALUES (?, ?, ?, ?, ?)''',
-    #             (player_id, year, team_id, position_id, salary))     
+            c.execute('''
+                INSERT INTO salary
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                (year, team, player, position, base_salary, \
+                signing_bonus, roster_bonus, option_bonus, workout_bonus, \
+                restructured_bonus, dead_cap, cap_hit, cap_percentage))     
 
     conn.commit()
     conn.close()
