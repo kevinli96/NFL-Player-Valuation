@@ -23,7 +23,6 @@ def salary_scrape(csv_file, team_csv_file):
         for year in range(1994, 2022):
             duplicate_set = set()
             for team in team_map:
-                # print(duplicate_set)
                 print (str(year) + " " + team)
                 sys.stdout.flush() # make sure number is printed out in real time
                 new_url = url.format(team = team, year = year)
@@ -35,9 +34,6 @@ def pageScrape(url, year, team, wr, duplicate_set):
     html = urlopen(url)
     soup = BeautifulSoup(html, "lxml")
 
-    # our desired table has id = 'results'
-    # we take the rows in the table's children
-    # But we make sure to ignore the first two, since they're unrelated
     table = soup.find('table')
     table_body = None
     table_rows = None
