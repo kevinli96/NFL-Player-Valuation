@@ -266,29 +266,39 @@
                                     <p>
                                         Teams can either pay market value for the player - i.e. through free agency - or they can pay far less than market value. Thus, the value of the draft pick can, in theory, be equal to the added value above what the draft pick is actually paid. See more precise calculations in the actual writeup (see below).
                                     </p>
-                                </li>
                                 <li>
                                     <p>
                                         <h4>Improved AV Data Scraping</h4>
-                                        <li>
+                                       
                                           <p>There were three problems with our previous AV Data:</p>
+                                         <ul>
+                                            <li>1. The draft position (i.e. Round 1 Pick 5) were shown as dates, as opposed to strings (i.e. 1-5 would translate to January 5, 2017).</li>
 
-                                            <p>1. The draft position (i.e. Round 1 Pick 5) were shown as dates, as opposed to strings (i.e. 1-5 would translate to January 5, 2017).</p>
+                                            <li>2. We had no unique ID for players. What if two players had the same name? They may have been drafted </li>
 
-                                            <p>2. We had no unique ID for players. What if two players had the same name? They may have been drafted </p>
-
-                                            <p>3. We didn&rsquo;t have the players&rsquo; position. This was key for our planned analysis - checking AV by position, for instance. It was also useful for linking players between datasets - if in both datasets, there was a player of the same name playing for the same team at the same position at the same time, we can be pretty sure they were the same player.</p>
-
+                                            <li>3. We didn&rsquo;t have the players&rsquo; position. This was key for our planned analysis - checking AV by position, for instance. It was also useful for linking players between datasets - if in both datasets, there was a player of the same name playing for the same team at the same position at the same time, we can be pretty sure they were the same player.</li>
+                                        </ul>
                                             <p>Thusly, we had to get a unique ID for each player - write the draft position to the CSV file as a string (easy) - and get the position for each player.</p>
 
                                             <p>For the unique ID, we noticed that every player on Pro-Football-Reference has a unique player page. So we took the URL of their player page when scraping.</p>
 
                                             <p>Getting the position was much more difficult:</p>
 
-                                            <p>1. The player&rsquo;s position is not shown on the table in the Pro-Football-Reference Link. Thus, while scraping, we had to open the href link to every player&rsquo;s profile to get their position. On each player&rsquo;s profile page, there was a listed position - but we also had to consider that some players switch positions over their career, so we couldn&rsquo;t use the listed position. We had to find their year-log (career stats for each year) and draw the position from there. 2. However, this was impractical. Before, we had to open 427 URLs - one for each page we were scraping from. Now, for every URL from before, we had to open a player&rsquo;s URL for all 100 players on the page - thus making our scraping process take approximately 100 times as long (20 minutes to ~2000 minutes or 30+ hours).  3. In practice, this also crashed my computer. 4. So we had to opt for a different strategy. On the Pro-Football-Reference AV rankings page, we could filter by position. 5. So we filtered each position individually, and scraped from every single one of those. 6. This necessarily created duplicates in our dataset - for example, a cornerback might show up as both a cornerback and a defensive back.</p>
+                                       <ul>  
+                                            <li>1. The player&rsquo;s position is not shown on the table in the Pro-Football-Reference Link. Thus, while scraping, we had to open the href link to every player&rsquo;s profile to get their position. On each player&rsquo;s profile page, there was a listed position - but we also had to consider that some players switch positions over their career, so we couldn&rsquo;t use the listed position. We had to find their year-log (career stats for each year) and draw the position from there.</li>
 
+                                            <li>2. However, this was impractical. Before, we had to open 427 URLs - one for each page we were scraping from. Now, for every URL from before, we had to open a player&rsquo;s URL for all 100 players on the page - thus making our scraping process take approximately 100 times as long (20 minutes to ~2000 minutes or 30+ hours). </li>
+
+                                            <li>3. In practice, this also crashed my computer.</li>
+
+                                            <li>4. So we had to opt for a different strategy. On the Pro-Football-Reference AV rankings page, we could filter by position.</li>
+
+                                            <li>5. So we filtered each position individually, and scraped from every single one of those.</li>
+
+                                            <li>6. This necessarily created duplicates in our dataset - for example, a cornerback might show up as both a cornerback and a defensive back.</li>
+                                       </ul>
+                                           
                                             <p>Kevin was a major assistance in creating functional BeautifulSoup code for this section.</p>
-                                        </li>
                                     </p>    
                             </li>
                             </ol>
