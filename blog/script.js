@@ -41,8 +41,6 @@
      bardata = bardata.slice(0, 32)
 
      var tooltip = d3.select('body').append('div').attr("class", "tooltip")
-         // linear color scale - feel free to play around with the color_range 
-         // array defined above
      var colors = d3.scaleLinear()
          .domain([0, bardata.length * .5, bardata.length])
          .range(color_range)
@@ -79,19 +77,16 @@
          })
 
 
-     d3.select('svg').append("text")
+     d3.select('#' + chartId).select('svg').append("text")
          .attr("x", (width / 2))
          .attr("y", 50)
          .attr("text-anchor", "middle")
          .style("font-size", "24px")
          .text(position + " AV Counts");
 
-     // ABOVE: height and y are sort of counterintuitive, because of SVG graphics
-     // centering everything around a (0,0) coordinate at the top left of the SVG.
-
      var xAxis = d3.axisBottom(xScale).tickValues(d3.range(MIN_AV, MAX_AV + 1))
 
-     var horizontal = d3.select('svg').append('g')
+     var horizontal = d3.select('#' + chartId).select('svg').append('g')
          .attr("class", "x axis")
          .attr('transform', 'translate(' + margin.left + ', ' + (height + margin.top) + ')')
          .call(xAxis)
@@ -112,3 +107,4 @@
  }
  
  drawChart("chart", "QB")
+ drawChart("chart2", "RB")

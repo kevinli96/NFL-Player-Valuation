@@ -70,58 +70,58 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div id="blog_post1">
                         <h2 class="post-title">
-                            Blog Post 1
+                        Blog Post 1
                         </h2>
                         <h3 class="post-subtitle">
-                            Data collection and integration.
+                        Data collection and integration.
                         </h3>
                         <p>
-                        <h4>
+                            <h4>
                             <strong>Introduction</strong>
-                        </h4>
-                            Summarizing our “big data” vision from our pre-proposal, our main goal for this project revolves around aiming to answer the question of whether professional athletes are over/undervalued taking into account their salary as well as a metric for analyzing their relative importance to their team. Our main league of interest is the National Football League, in which quarterbacks are without question viewed as the single player with the most influence over the course of a game. To get the notion of player valuation, the metric we are using to analyze NFL players is Appropriate Value (AV), a metric that is widely used to measure the level of contribution and/or impact a player has had on the league. This metric, as with any, can be examined at a statistical level later on, however for this first blog post we will not get into the details of the structure of it. 
-                        <br><br>
+                            </h4>
+                            Summarizing our “big data” vision from our pre-proposal, our main goal for this project revolves around aiming to answer the question of whether professional athletes are over/undervalued taking into account their salary as well as a metric for analyzing their relative importance to their team. Our main league of interest is the National Football League, in which quarterbacks are without question viewed as the single player with the most influence over the course of a game. To get the notion of player valuation, the metric we are using to analyze NFL players is Appropriate Value (AV), a metric that is widely used to measure the level of contribution and/or impact a player has had on the league. This metric, as with any, can be examined at a statistical level later on, however for this first blog post we will not get into the details of the structure of it.
+                            <br><br>
                             Player valuation is important at many levels, one of which is for organizations as a tool to measure if GMs can better utilize the data available to them to make more informed decisions about whom to draft/trade, and how to optimally allocate their salary cap. At first glance then, relevant data are those pertaining to transactions, drafts, salaries as well as appropriate value statistics. For purposes of analyzing budgetary spending and salary caps, we must also keep in mind that such data are limited to years in which the salary cap came into effect. There is no restriction on how far back we go in the data if we wish to conduct further analysis on player valuation with purely AV data, and disregard salary comparisons completely.
                         </p>
                         <h4>
-                            <strong>Division of Labor</strong>
+                        <strong>Division of Labor</strong>
                         </h4>
                         <p>
                             Since we’re still in the initial steps of our project, currently we plan to work on data extraction and cleansing together. As we move further along, we plan to implement a division of labor that takes advantage of each team member’s passions and strengths. The exact division has yet to be determined, but for now we will tentatively assign the three main components of our project as follows:
-                        <ul>
-                            <li>
-                                Data Warehousing and Integration - All
-                            </li>
-                            <li>
-                                Machine Learning - Edan, Isaiah
-                            </li>
-                            <li>
-                                Visualization - Kevin, Steven
-                            </li>
-                        </ul>
+                            <ul>
+                                <li>
+                                    Data Warehousing and Integration - All
+                                </li>
+                                <li>
+                                    Machine Learning - Edan, Isaiah
+                                </li>
+                                <li>
+                                    Visualization - Kevin, Steven
+                                </li>
+                            </ul>
                         </p>
                         <h4>
-                            <strong>Completed Steps</strong>
+                        <strong>Completed Steps</strong>
                         </h4>
                         <p>
                             <h4>
-                                Transaction Data
+                            Transaction Data
                             </h4>
                             To get at a basic understanding of player valuation, we looked at data from three different sources - transaction data, AV (appropriate value) data, and salary data. A quick google search of NFL transaction and draft data led us to prosportstransaction.com, a repository of transaction/draft data for baseball, basketball, football, among other sports. The filters on prosportstransaction were incredible, and allowed for searches by player name, teams, and start/end date.
                         </p>
-                            <img src='img/pro_sports_transactions1.png' width='600px' height='300px'>
+                        <img src='img/pro_sports_transactions1.png' width='600px' height='300px'>
                         <p>
-                            Upon a valid query, e.g. for the Bears from 1994-01-01 to 1995-01-01, the results are listed in table format: 
+                            Upon a valid query, e.g. for the Bears from 1994-01-01 to 1995-01-01, the results are listed in table format:
                         </p>
-                            <img src='img/pro_sports_transactions2.png' width='600px' height='300px'>
+                        <img src='img/pro_sports_transactions2.png' width='600px' height='300px'>
                         <p>
                             We used Python’s BeautifulSoup library for the scraping here, the source code itself was very short - about 40 lines. Minimal cleaning was done, as the unicode character for the bullet points persists in our csv. This and other unnecessary details will simply be removed through regular expression matching or modifying the scraping code. Regardless, the cleaning task here will not prove to be too difficult.
                             <br><br>
-                            Transaction data proves useful for us especially in the context of historical analyses of player trades and drafts. The ‘Notes’ column of the search results may contain pertinent information for predictive analysis, or constructing visualizations with the notes column as categorical variables, based on different round draft picks or free agent signings. 
+                            Transaction data proves useful for us especially in the context of historical analyses of player trades and drafts. The ‘Notes’ column of the search results may contain pertinent information for predictive analysis, or constructing visualizations with the notes column as categorical variables, based on different round draft picks or free agent signings.
                         </p>
                         <p>
                             <h4>
-                                AV Data
+                            AV Data
                             </h4>
                             In doing this part, we collected AV data per year for all players from 1994 to 2016. For instance, the highest AV over this time period was achieved by Ladainian Tomlinson in 2006, with an AV of 26, while the lowest was achieved by Ryan Lindley in 2012, with an AV of -5.
                             <br><br>
@@ -133,17 +133,17 @@
                         </p>
                         <p>
                             <h4>
-                                Salary Data
+                            Salary Data
                             </h4>
-                            We’re currently working to collect ‘cap-hit’ data for all the players referenced in our AV data. Cap-hits measure each player’s annual compensation and contribution to the salary cap. Thus far we haven’t been able to find a dataset that accounts for all the players that we we’ll be using. Most readily available data only covers the highest paid individuals from a team for a given season. 
+                            We’re currently working to collect ‘cap-hit’ data for all the players referenced in our AV data. Cap-hits measure each player’s annual compensation and contribution to the salary cap. Thus far we haven’t been able to find a dataset that accounts for all the players that we we’ll be using. Most readily available data only covers the highest paid individuals from a team for a given season.
                             <br><br>
                             Scraping data from multiple data sources and integrating the results may be necessary in order to piece together adequate salary data for our analyses.
                         </p>
                         <h4>
-                            <strong>Next Steps</strong>
+                        <strong>Next Steps</strong>
                         </h4>
                         <p>
-                            Our immediate next steps will involve cleaning the AV and transaction data that we have extracted from profootballreference.com and prosportstransaction.com, respectively. This is necessary because we acquired an enormous amount of data from both of these sources and we need to make sure that it is in a consistent and legible format. Once we clean this data, we plan to move it into a SQL database so that we can query it in order to draw conclusions regarding the importance of different positions in the NFL and analyze the value that teams have obtained from transactions that have taken place since the salary cap was implemented. 
+                            Our immediate next steps will involve cleaning the AV and transaction data that we have extracted from profootballreference.com and prosportstransaction.com, respectively. This is necessary because we acquired an enormous amount of data from both of these sources and we need to make sure that it is in a consistent and legible format. Once we clean this data, we plan to move it into a SQL database so that we can query it in order to draw conclusions regarding the importance of different positions in the NFL and analyze the value that teams have obtained from transactions that have taken place since the salary cap was implemented.
                             <br><br>
                             Once we finish this, we need to figure out how to obtain salary data - ideally we’d obtain the salary cap of each team for every year since 1993. As discussed above, we’ve had some trouble finding easily-extractable salary data, but since we consider this to be an important part of our analysis, our goal is to find a data source that would allow us to obtain the aforementioned salary data through either an API, a CSV file download, or web scraping. One route we could go, which we plan to explore before the midterm report, is scraping spotrac.com for its extensive salary data. As can be seen below, it has data for the salary cap of each team in the NFL. The one downside is that it only seems to contain salary cap data since 2011, so we’d have to either find another source for salary cap data before that year or pivot the scope of our project. Once we are able to obtain this data, we will clean it and add it to our SQL database as well - just as we plan to do with our AV and transaction data.
                         </p>
@@ -153,120 +153,157 @@
                         <p>
                             Once we are done with the aforementioned data warehousing and integration aspects of our project, we hope to begin work on the visualization and machine learning aspects of our project. Although we haven’t delved too deeply into these aspects yet, some ideas we’ve had for each aspect are listed below:
                             <ul>
-                            <li>
-                                Machine Learning
-                                <ul>
-                                    <li>
-                                        Carmelo ranking of various players/positions - this is a predictive analysis of the future performance of players based on historical statistics. It could help us more accurately predict the value of different positions in the NFL. It could also help us analyze the quality of trades and the fairness of current salaries.
-                                    </li>
-                                    <li>
-                                        Prediction of the 2017 NFL draft using our data.
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                Visualization
-                                <ul>
-                                    <li>
-                                        Heat map of expected value of different position.
-                                    </li>
-                                    <li>
-                                        Heat map showing with which frequencies different positions are taken at different spots in the draft.
-                                    </li>
-                                    <li>
-                                        Visualization of whether each position is underpaid or overpaid, and by how much (i.e. bar graph showing average pay and what pay should be for the average player at each position).
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                                <li>
+                                    Machine Learning
+                                    <ul>
+                                        <li>
+                                            Carmelo ranking of various players/positions - this is a predictive analysis of the future performance of players based on historical statistics. It could help us more accurately predict the value of different positions in the NFL. It could also help us analyze the quality of trades and the fairness of current salaries.
+                                        </li>
+                                        <li>
+                                            Prediction of the 2017 NFL draft using our data.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Visualization
+                                    <ul>
+                                        <li>
+                                            Heat map of expected value of different position.
+                                        </li>
+                                        <li>
+                                            Heat map showing with which frequencies different positions are taken at different spots in the draft.
+                                        </li>
+                                        <li>
+                                            Visualization of whether each position is underpaid or overpaid, and by how much (i.e. bar graph showing average pay and what pay should be for the average player at each position).
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </p>
                     </div>
+                    <hr>
                     <div id="midterm">
                         <h2 class="post-title">
-                            Midterm Report
+                        Midterm Report
                         </h2>
                         <h3 class="post-subtitle">
-                            More data integration, visualizations, and next steps.
+                        More data integration, visualizations, and next steps.
                         </h3>
-                        <p>
-                        <h4>
-                            <strong>Completed Steps</strong>
-                        </h4>
-                        <p>
-                        <h4>Edan</h4>
-                        I worked on two main tasks between the submission of our first blog post and now. The first was scraping salary data from the web, and the second was creating a script that would load all of the data that we collected from various sources and have thus far stored in CSV files into a SQL database that followed the schema outlined in the ER diagram above. These two tasks were relatively open-ended and thus required me to navigate various challenges as I tried to complete them. The steps I took to complete these tasks and the challenges I encountered are outlined below.
-                        </p>
+                        <p>The hardest part of our project thus far has certainly been data extraction. We’ve run into issues with the availability of data and the amount of time that it would take to scrape data from profootballreference. Salary data has been particularly difficult to find. Spotrac has more complete salary data for recent years but no players have complete salary data for the timespan that we have selected for AV data. Other difficulties arose when trying to scrape player positions and URLs (to serve as id’s) from profootballreference. Our initial approach would have taken about 20hrs to complete given the way that data is organized on the website. An alternative approach that we pursued only took 20 minutes but required deeper exploration of the site and collective effort on the part of the team to make things feasible.</p>
+                        <p><b>Challenges: </b> Some of the greatest challenges that we’ll be facing moving forward will be how we utilize transaction and salary data to gain the most insight from relatively sparse salary data. Fortunately we’ve been able to find near complete salary data for the past 7 years. However, this may affect the type of insights that we want to make using this data.</p>
                         <ol>
-                        <li>
-                        <p>
-                        <h4>Scraping Salary Data</h4>
-                        I decided to scrape salary data from spotrac.com using BeautifulSoup. Spotrac.com, which despite only officially displaying salary data for NFL teams since 2011, has some data from prior years that can be accessed by changing the year in the URL. Still, the farther away the years got from 2011, the less players that showed up on each team’s payroll - meaning that in the 1990s we only have salary data for a few players from each team. Unfortunately, we weren’t able to find any more comprehensive data from those years, so the data that we got from spotrac.com will have to suffice for earlier years as well. Another challenge that I encountered was duplicate removal. This entailed removng players that showed up more than once on the same team as well as players that showed up twice when scraping the data because teams that have had different names in the past could have two different pages on spotrac representing the same franchise - for example, if I put los-angeles-chargers in the URL and later san-diego-chargers in the URL, spotrac would return the same page for certain years, giving me duplicate data for the Chargers in that year. This also meant that I had to make sure that when I got salary data from teams using their old names, that this data was associated with the present-day name of the team. Finally, various players had hyphens in various sections - representing 0s - and I had to be careful when scraping this data with BeautifulSoup so as to not return nulls when I encountered these values.
-                        </p>
-                        </li>
-                        <li>
-                        <p>
-                        <h4>Loading Data into a Database</h4>
-                        In order to load data into SQL databases, I first had to create tables that mimic the schema that we decided on as a group. Unfortunately, as we continued to scrape data and figure out what information was available to us, this schema, and hence these tables, had to be continuously updated. I also had to make sure the primary keys and foreign keys that we had decided on in our schema fit the data that we had, and I had to declare these when creating each table and update them as the data available to us became clearer. In terms of primary keys, the main issue was coming up with consistent ID’s for players, positions, and teams that we could store in our tables. Since we got our data from various sources, this step was crucial for unifying our data. For example, team names, and thus their abbreviations, have changed multiple times between 1993 and 2017. In fact, the team that is currently known as the Los Angeles Rams, with an abbreviation of LAR on pro-football-reference.com, was known as the Los Angeles Rams until 1994 with an abbreviation of RAM on pro-football-reference.com and as the St. Louis Rams between 1994 and 2016 with an abbreviation of STL on pro-football-reference.com. Despite these different names, they still represent the same franchise, and thus I had to ensure that my database loading script changed all older team abbreviations to the abbreviation currently associated with that franchise. I then used the current team abbreviations as the team ID in my team table (which is referenced as a foreign key in various other tables). 
-                        </p>
-                        <p>
-                        We also had to figure out a feasible way to assign player ID’s to players. This was especially difficult considering various players in the NFL between 1993 and now have shared the same name - and might have even played on the same team at the same time. Thus, we decided to look at when a player was drafted in order to differentiate between players with the same name. This necessitated the assumption that no two players with the same name were drafted in the same round with the same pick. Since we were able to get the round and pick a player was drafted in when scraping our AV data, this allowed us to easily create unique player ID’s for all players drafted between 1993 and now and to make sure that these same ID’s were assigned to the same players in the AV table and the draft table. For drafted players, we decided to simply make their player IDs the year they were drafted combined with the pick they were drafted with. Still, this meant that we had various undrafted players/players that were drafted before 1993 in our AV dataset that didn’t have player IDs we could assign to them. We handled this by grabbing a unique URL for each player when scraping our AV Data. This allowed us to do the following: for each player in the AV dataset that didn’t have a player ID from the draft table, we checked if the unique URL associated with him had a player ID associated with it. If it did, it meant that we had already invented a player ID for that player and we simply assigned it to him. Otherwise, we created a player ID for that player in the same format as the player IDs used for the drafted players, using 0000 as the draft year and incrementing a counter to assign a unique pick to each undrafted player ID. Finally, we had to make sure that these player IDs were assigned to the right players in our salary data. Unfortunately, we weren’t able to find draft information associated with players in our salary data - so in order to assign the correct player IDs to these players, we had to assume that no two players with the same name played for the same team in the same year with the same position. We were then able to use a dictionary that mapped a tuple consisting of player name, team, year, and position to a player ID in order to assign that player ID to the player in the salary data.
-                        </p>
-                        <p>
-                        This brings us to the final ID we had to figure out - position IDs. There are various positions in football, and these can be broken up into even more specific positions. For instance, the Offensive Line position, which is abbreviate OL, can be broken down into Guard (G) - which can be further broken down into Right Guard (RG) and Left Guard (LG), Tackle (T) - which can be further broken down into Right Tackle (RT) and Left Tackle (LT), and Center (C). Thus, when extracting data from various sources, we had to decide on a consistent way to identify all of these different positions. The final touches to this are still being applied, and we will discuss the decisions we came to in the next blog post. Furthermore, since certain players also played various positions throughout their careers, for the sake of simplicity, we decided to assign the position that the player started out with in the NFL as their position for their entire career.
-                        </p>
-                        <p>
-                        Once all of this was figured out, the rest of the database loading was fairly simple - all I had to do was follow the schema, look at the order of the columns in the CSV that we were reading the data in from, and assign the values from the CSVs to the correct columns in each table.
-                        </p>
-                        </li>
+                            <li><a href="#scraping_data">Spotrac.com salary data scraping</a></li>
+                            <li><a href="#playerIDS">Assigning player IDs to players</a></li>
+                            <li><a href="#positions">Creating a standard for position names</a></li>
                         </ol>
-                        <div id="chart">
+                        <p><b>Concrete results/initial insights: </b>Our challenges with data cleaning and integration were plenty, resulting in us diverting our resources to answering how we would approach answering some of the initial questions we proposed in our methodology. In addition to determining the fair value of a player (according to the methodology described in the pre-proposal), one area of interest we turned our attention to is valuing draft picks.</p>
+                        <p>Take, for example, the Browns trading 16 million for a second round pick. Good or nah?</p>
+                        <strong>Motivation:</strong>
+                        <p>Drafting is the edge every NFL team has. In theory, the amount of value every team gets out of its free agency spending is the same, in that there is a salary cap and we can assume each contract is ‘fair.’ Drafting, however, is where teams can get cheap labor - i.e. salary is far less than fair salary. Cheap labor only lasts 4-5 years - the length of the rookie contract. We can assume that afterwards, the price the team pays for the player is equal to the fair salary of the player.</p>
+                        <p>
+                            This is why draft picks are worth so much - they increase the talent per dollar spent for a team.
+                            In other words, a great draft, in theory, should give the team a boost for the next 4-5 years only.
+                        Example: The Patriots were docked their first round pick in 2016. They will be feeling this loss until 2021, when that player in theory would have begun their second contract.</p>
+                        <ul><li>The Seahawks drafted extremely well between 2010 - 2012. This draft gave them a big boost in spending efficiency - i.e. talent per dollar paid until they had to give second contracts to those players. So now that all those players are on their second contracts, the edge they have is now the 2013 or 2014 drafts - which the Seahawks haven’t been doing so well on, and thus their performance has dropped correspondingly.</li>
+                        <li>In theory, we can predict how good a team will be in a given season based on its past 4-5 drafts alone. This is actually something we can look into as a predictor. This, however, operates under the assumption that no team has an edge in free agency (not necessarily true), continuity does not matter (i.e. for culture purposes it might), and coaching is equal across teams (almost definitely not true).</li></ul><br>
+                        <strong>Case Study - Chandler Jones</strong>
+                        <p>Chandler Jones was traded for a second round pick (plus Jonathan Cooper, but let’s ignore that for simplicity), even though that second round pick would almost certainly not be as good as Chandler Jones (i.e. comparing expected Career AV for that pick with Chandler Jones’ expected Career AV). If we consider this trade from the Patriots' perspective, Chandler Jones had just one year left on his rookie deal - i.e. one more year of cheap talent. After the one year, he would have to be compensated fairly, and a second round pick would have four years left on his rookie deal - four years of cheap talent.</p>
+                        <p>Chandler Jones was paid 7.79 million in 2016. Suppose his fair contract value was 13.79 million. Then Chandler Jones offered an additional 6 million dollars above fair value. Over the four years from that second round pick, would the dollars above fair value sum to over 6 million dollars? We can parlay this into a value system for draft picks.</p>
+                        <strong>Assumptions:</strong>
+                        <ul><br>
+                        <li>A team’s goal is to maximize talent per dollar spent.</li>
+                        <li>Talent per dollar spent is equal for all teams in free agency.</li>
+                        <li>The value of a draft pick is its dollars above fair value summed over all years of its contract.</li></ul>
+                        <p>For example, suppose using the above, not including draft picks, the Brown’s total assets are worth 170 million for 2017. Total assets includes fair value for all the players, plus free salary cap space. Suppose on average, the first overall pick outperforms his rookie contract by 4 million dollars in Year 1, 5 million dollars in Year 2, 6 million dollars in Year 3, 8 million dollars in Year 4, and 4 million dollars in Year 5. Then by using the first overall pick, we expect the Brown’s total assets to increase by 4 million to 174 million in 2017, and increase by 5, 6, 8, and 4 million dollars respectively in 2018, 2019, 2020, and 2021. We can then value the first overall pick at 4 + 5 + 6 + 8 + 4 million dollars - or $27 million dollars.</p>
+                        <strong>Methodology:</strong>
+                        <p>
+                        Contract values are relatively fixed for draft picks in terms of both length and value (i.e. a player drafted Round 2, pick 35 will sign a 4 year deal worth roughly 6.38 million), due to constraints in the CBA (Collective Bargaining Agreement) signed in 2011.</p>
+                        <p>For a given unused draft pick: We know the approximate contract values over each year of the rookie contract for that draft pick, and can approximate the fair salaries for each year of the rookie contract based on data for that pick in previous years. Since the salary cap affects fair contract values, and the salary cap is increasing for the NFL, we may need to adjust our fair salaries for projected salary cap increases. We sum the difference between each year’s fair salary and actual salary to determine the draft pick’s worth.</p>
+                        <hr>
+                        <p>
+                            <h3>
+                            <strong>Completed Steps - Midterm Report</strong>
+                            </h3>
+                            <p>
+                                <h4>Edan</h4>
+                                I worked on two main tasks between the submission of our first blog post and now. The first was scraping salary data from the web, and the second was creating a script that would load all of the data that we collected from various sources and have thus far stored in CSV files into a SQL database that followed the schema outlined in the ER diagram above. These two tasks were relatively open-ended and thus required me to navigate various challenges as I tried to complete them. The steps I took to complete these tasks and the challenges I encountered are outlined below.
+                            </p>
+                            <ol>
+                                <li>
+                                    <p id="scraping_data">
+                                        <h4>Scraping Salary Data</h4>
+                                        I decided to scrape salary data from spotrac.com using BeautifulSoup. Spotrac.com, which despite only officially displaying salary data for NFL teams since 2011, has some data from prior years that can be accessed by changing the year in the URL. Still, the farther away the years got from 2011, the less players that showed up on each team’s payroll - meaning that in the 1990s we only have salary data for a few players from each team. Unfortunately, we weren’t able to find any more comprehensive data from those years, so the data that we got from spotrac.com will have to suffice for earlier years as well. Another challenge that I encountered was duplicate removal. This entailed removng players that showed up more than once on the same team as well as players that showed up twice when scraping the data because teams that have had different names in the past could have two different pages on spotrac representing the same franchise - for example, if I put los-angeles-chargers in the URL and later san-diego-chargers in the URL, spotrac would return the same page for certain years, giving me duplicate data for the Chargers in that year. This also meant that I had to make sure that when I got salary data from teams using their old names, that this data was associated with the present-day name of the team. Finally, various players had hyphens in various sections - representing 0s - and I had to be careful when scraping this data with BeautifulSoup so as to not return nulls when I encountered these values.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <h4>Loading Data into a Database</h4>
+                                        In order to load data into SQL databases, I first had to create tables that mimic the schema that we decided on as a group. Unfortunately, as we continued to scrape data and figure out what information was available to us, this schema, and hence these tables, had to be continuously updated. I also had to make sure the primary keys and foreign keys that we had decided on in our schema fit the data that we had, and I had to declare these when creating each table and update them as the data available to us became clearer. In terms of primary keys, the main issue was coming up with consistent ID’s for players, positions, and teams that we could store in our tables. Since we got our data from various sources, this step was crucial for unifying our data. For example, team names, and thus their abbreviations, have changed multiple times between 1993 and 2017. In fact, the team that is currently known as the Los Angeles Rams, with an abbreviation of LAR on pro-football-reference.com, was known as the Los Angeles Rams until 1994 with an abbreviation of RAM on pro-football-reference.com and as the St. Louis Rams between 1994 and 2016 with an abbreviation of STL on pro-football-reference.com. Despite these different names, they still represent the same franchise, and thus I had to ensure that my database loading script changed all older team abbreviations to the abbreviation currently associated with that franchise. I then used the current team abbreviations as the team ID in my team table (which is referenced as a foreign key in various other tables).
+                                    </p>
+                                    <p id="playerIDs">
+                                        We also had to figure out a feasible way to assign player ID’s to players. This was especially difficult considering various players in the NFL between 1993 and now have shared the same name - and might have even played on the same team at the same time. Thus, we decided to look at when a player was drafted in order to differentiate between players with the same name. This necessitated the assumption that no two players with the same name were drafted in the same round with the same pick. Since we were able to get the round and pick a player was drafted in when scraping our AV data, this allowed us to easily create unique player ID’s for all players drafted between 1993 and now and to make sure that these same ID’s were assigned to the same players in the AV table and the draft table. For drafted players, we decided to simply make their player IDs the year they were drafted combined with the pick they were drafted with. Still, this meant that we had various undrafted players/players that were drafted before 1993 in our AV dataset that didn’t have player IDs we could assign to them. We handled this by grabbing a unique URL for each player when scraping our AV Data. This allowed us to do the following: for each player in the AV dataset that didn’t have a player ID from the draft table, we checked if the unique URL associated with him had a player ID associated with it. If it did, it meant that we had already invented a player ID for that player and we simply assigned it to him. Otherwise, we created a player ID for that player in the same format as the player IDs used for the drafted players, using 0000 as the draft year and incrementing a counter to assign a unique pick to each undrafted player ID. Finally, we had to make sure that these player IDs were assigned to the right players in our salary data. Unfortunately, we weren’t able to find draft information associated with players in our salary data - so in order to assign the correct player IDs to these players, we had to assume that no two players with the same name played for the same team in the same year with the same position. We were then able to use a dictionary that mapped a tuple consisting of player name, team, year, and position to a player ID in order to assign that player ID to the player in the salary data.
+                                    </p>
+                                    <p id="positions">
+                                        This brings us to the final ID we had to figure out - position IDs. There are various positions in football, and these can be broken up into even more specific positions. For instance, the Offensive Line position, which is abbreviate OL, can be broken down into Guard (G) - which can be further broken down into Right Guard (RG) and Left Guard (LG), Tackle (T) - which can be further broken down into Right Tackle (RT) and Left Tackle (LT), and Center (C). Thus, when extracting data from various sources, we had to decide on a consistent way to identify all of these different positions. The final touches to this are still being applied, and we will discuss the decisions we came to in the next blog post. Furthermore, since certain players also played various positions throughout their careers, for the sake of simplicity, we decided to assign the position that the player started out with in the NFL as their position for their entire career.
+                                    </p>
+                                    <p>
+                                        Once all of this was figured out, the rest of the database loading was fairly simple - all I had to do was follow the schema, look at the order of the columns in the CSV that we were reading the data in from, and assign the values from the CSVs to the correct columns in each table.
+                                    </p>
+                                </li>
+                            </ol>
+                            <h3>Visualization</h3><hr>
+                            <h4>Kevin and Isaiah</h4>
+                            <p>For our visualization we decided to look at the distribution of AV scores across quarterbacks. The script was abstracted out such that it is straightforward to replicate for a different position, and we chose to examine a histogram of quarterback AV counts. This visualization is particularly interesting because it allows us to examine the numerical basis of the notion that the quarterback is the most important player for the success of a team. One noteworthy component of this visualization is that it shows us that the distribution for QB AV’s actually tends to follow a somewhat trimodal distribution with peaks at 0, 9 and 12. When we talk about quarterbacks colloquially, we  tend to classify them into two classes ‘elite’ and ‘not elite’, focusing on a player’s ability to meet a certain threshold to transition between the two. In reality however, considering a quarterback’s ability in the context of 3 or 4 different classes may be of more utility to us and may be something that we can do with relative ease by fitting different normal curves to each peak and assessing the probability that a player’s performance is derived from one of those distributions. We could conduct a similar analysis for other positions to assess if how they are stratified in terms of performance. Additionally, we’d like to look at how these distributions change over time to assess the relative importance of each position through the 23 year period that we consider for our data.</p>
+                            <div id="chart"></div>
+                            <div id="chart2"></div>
+                            <p>We feel that we’re making good progress on our project but need to devote some time to formalizing what type of machine learning insights we’d like to make. Specifically, selecting appropriate features and classifiers for supervised learning tasks and deciding whether we would like to pursue and unsupervised learning tasks.</p>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Post Content -->
+            <article>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <!--  BLOG POST 1 -->
                         </div>
                     </div>
-                    
-                    
                 </div>
-            </div>
-        </div>
-        <!-- Post Content -->
-        <article>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <!--  BLOG POST 1 -->
+            </article>
+            <hr>
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <ul class="list-inline text-center">
+                                <li>
+                                    <a href="https://github.com/kevinli96/cs1951a_project">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-        <hr>
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <ul class="list-inline text-center">
-                            <li>
-                                <a href="https://github.com/kevinli96/cs1951a_project">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- jQuery -->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
-        <!-- Contact Form JavaScript -->
-        <script src="js/jqBootstrapValidation.js"></script>
-        <script src="js/contact_me.js"></script>
-        <script src="script.js"></script>
-        <!-- Theme JavaScript -->
-        <script src="js/clean-blog.min.js"></script>
-    </body>
-</html>
+            </footer>
+            <!-- jQuery -->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <!-- Bootstrap Core JavaScript -->
+            <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src="https://d3js.org/d3.v4.min.js"></script>
+            <!-- Contact Form JavaScript -->
+            <script src="js/jqBootstrapValidation.js"></script>
+            <script src="js/contact_me.js"></script>
+            <script src="script.js"></script>
+            <!-- Theme JavaScript -->
+            <script src="js/clean-blog.min.js"></script>
+        </body>
+    </html>

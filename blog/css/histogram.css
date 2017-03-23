@@ -3,9 +3,8 @@
     text-align: center;
     width: 30px;
     height: 25px;
-    padding: 3px;
-    padding-left: 8px;
-    font: 10px sans-serif;
+    padding: auto;
+    font: 15px sans-serif;
     background: #ddd;
     pointer-events: none;
 }
