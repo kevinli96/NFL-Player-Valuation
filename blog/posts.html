@@ -271,37 +271,35 @@
                                         <h4>Improved AV Data Scraping</h4>
                                        
                                           <p>There were three problems with our previous AV Data:</p>
-                                         <ul>
-                                            <li>1. The draft position (i.e. Round 1 Pick 5) were shown as dates, as opposed to strings (i.e. 1-5 would translate to January 5, 2017).</li>
+                                         <ol>
+                                            <li>The draft position (i.e. Round 1 Pick 5) were shown as dates, as opposed to strings (i.e. 1-5 would translate to January 5, 2017).</li>
 
-                                            <li>2. We had no unique ID for players. What if two players had the same name? They may have been drafted </li>
+                                            <li>We had no unique ID for players. What if two players had the same name? They may have been drafted </li>
 
-                                            <li>3. We didn&rsquo;t have the players&rsquo; position. This was key for our planned analysis - checking AV by position, for instance. It was also useful for linking players between datasets - if in both datasets, there was a player of the same name playing for the same team at the same position at the same time, we can be pretty sure they were the same player.</li>
-                                        </ul>
+                                            <li>We didn&rsquo;t have the players&rsquo; position. This was key for our planned analysis - checking AV by position, for instance. It was also useful for linking players between datasets - if in both datasets, there was a player of the same name playing for the same team at the same position at the same time, we can be pretty sure they were the same player.</li>
+                                        </ol>
                                             <p>Thusly, we had to get a unique ID for each player - write the draft position to the CSV file as a string (easy) - and get the position for each player.</p>
 
                                             <p>For the unique ID, we noticed that every player on Pro-Football-Reference has a unique player page. So we took the URL of their player page when scraping.</p>
 
                                             <p>Getting the position was much more difficult:</p>
 
-                                       <ul>  
-                                            <li>1. The player&rsquo;s position is not shown on the table in the Pro-Football-Reference Link. Thus, while scraping, we had to open the href link to every player&rsquo;s profile to get their position. On each player&rsquo;s profile page, there was a listed position - but we also had to consider that some players switch positions over their career, so we couldn&rsquo;t use the listed position. We had to find their year-log (career stats for each year) and draw the position from there.</li>
+                                       <ol>  
+                                            <li>The player&rsquo;s position is not shown on the table in the Pro-Football-Reference Link. Thus, while scraping, we had to open the href link to every player&rsquo;s profile to get their position. On each player&rsquo;s profile page, there was a listed position - but we also had to consider that some players switch positions over their career, so we couldn&rsquo;t use the listed position. We had to find their year-log (career stats for each year) and draw the position from there.</li>
 
-                                            <li>2. However, this was impractical. Before, we had to open 427 URLs - one for each page we were scraping from. Now, for every URL from before, we had to open a player&rsquo;s URL for all 100 players on the page - thus making our scraping process take approximately 100 times as long (20 minutes to ~2000 minutes or 30+ hours). </li>
+                                            <li>However, this was impractical. Before, we had to open 427 URLs - one for each page we were scraping from. Now, for every URL from before, we had to open a player&rsquo;s URL for all 100 players on the page - thus making our scraping process take approximately 100 times as long (20 minutes to ~2000 minutes or 30+ hours). </li>
 
-                                            <li>3. In practice, this also crashed my computer.</li>
+                                            <li>In practice, this also crashed my computer.</li>
 
-                                            <li>4. So we had to opt for a different strategy. On the Pro-Football-Reference AV rankings page, we could filter by position.</li>
+                                            <li>So we had to opt for a different strategy. On the Pro-Football-Reference AV rankings page, we could filter by position.</li>
 
-                                            <li>5. So we filtered each position individually, and scraped from every single one of those.</li>
+                                            <li>So we filtered each position individually, and scraped from every single one of those.</li>
 
-                                            <li>6. This necessarily created duplicates in our dataset - for example, a cornerback might show up as both a cornerback and a defensive back.</li>
-                                       </ul>
+                                            <li>This necessarily created duplicates in our dataset - for example, a cornerback might show up as both a cornerback and a defensive back.</li>
+                                       </ol>
                                            
-                                            <p>Kevin was a major assistance in creating functional BeautifulSoup code for this section.</p>
-                                    </p>    
+                                            <p>Kevin was a major assistance in creating functional BeautifulSoup code for this section.</p>                                       
                             </li>
-                            </ol>
                             <h3>Visualization</h3><hr>
                             <h4>Kevin and Isaiah</h4>
                             <p>For our visualization we decided to look at the distribution of AV scores across quarterbacks. The script was abstracted out such that it is straightforward to replicate for a different position, and we chose to examine a histogram of quarterback AV counts. This visualization is particularly interesting because it allows us to examine the numerical basis of the notion that the quarterback is the most important player for the success of a team. One noteworthy component of this visualization is that it shows us that the distribution for QB AV’s actually tends to follow a somewhat trimodal distribution with peaks at 0, 9 and 12. When we talk about quarterbacks colloquially, we  tend to classify them into two classes ‘elite’ and ‘not elite’, focusing on a player’s ability to meet a certain threshold to transition between the two. In reality however, considering a quarterback’s ability in the context of 3 or 4 different classes may be of more utility to us and may be something that we can do with relative ease by fitting different normal curves to each peak and assessing the probability that a player’s performance is derived from one of those distributions. We could conduct a similar analysis for other positions to assess if how they are stratified in terms of performance. Additionally, we’d like to look at how these distributions change over time to assess the relative importance of each position through the 23 year period that we consider for our data.</p>
