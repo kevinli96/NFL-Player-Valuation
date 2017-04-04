@@ -148,7 +148,7 @@ def load():
             position_id = fix_position_id(position_id)
 
             player_data[(player_name, draft_round, pick)] = player_id
-            player_data_salary[(player_name, team_id, year, position_id)] = player_id
+            player_data_salary[(player_name, team_id, year)] = player_id
 
             c.execute('''
                 INSERT INTO player
@@ -181,7 +181,7 @@ def load():
             position_id = row[14]
 
             draft_split = draft.split('-')
-            player_id = player_data[(player_name,draft_split[0],draft_split[1])]
+            player_id = player_data[(player_name,draft_split[0],draft_split[1].replace("abc",""))]
             team_id = fix_team_id(team_id, year)
             position_id = fix_position_id(position_id)
 
@@ -197,7 +197,7 @@ def load():
                 else:
                     player_id = undrafted_player_data[player_url]
 
-            player_data_salary[(player_name, team_id, year, position_id)] = player_id
+            player_data_salary[(player_name, team_id, year)] = player_id
 
             if av_data_repeats[(player_url, team_id, year)] is None:
                 av_data_repeats[(player_url, team_id, year)] = position_id
@@ -236,7 +236,7 @@ def load():
 
             team_id = fix_team_id(team_id, year)
             position_id = fix_position_id(position_id)
-            player_id = player_data_salary[(player_name, team_id, year, position_id)]
+            player_id = player_data_salary[(player_name, team_id, year)]
 
             c.execute('''
                 INSERT INTO salary
