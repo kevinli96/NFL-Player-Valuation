@@ -194,7 +194,7 @@ def load():
                 else:
                     player_id = undrafted_player_data[player_url]
 
-            player_data_salary[player_id] = (player_name, team_id, year, position_id)
+            player_data_salary[(player_name, team_id, year, position_id)] = player_id
 
             c.execute('''
                 INSERT INTO av
@@ -246,6 +246,10 @@ def fix_team_id(team_id):
     return team_id
 
 def fix_position_id(position_id):
+    if position_id == "NT":
+        position_id = "DT"
+    elif position_id == "LT" or position_id == "RT":
+        position_id = "T"
     return position_id
 
 if __name__ == '__main__':
