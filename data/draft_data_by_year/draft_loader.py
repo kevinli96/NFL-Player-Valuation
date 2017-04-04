@@ -8,6 +8,8 @@ def main():
             with open('draft_' + str(year) + '.csv', 'r') as g:
                 reader = csv.reader(g)
                 for line in reader:
+                    if (len(line[3].split("\\")) > 1):
+                        line[3] = line[3].split("\\")[0]
                     line = [x.replace(' HOF', '') for x in line]
                     writer.writerow([year] + line)
 
