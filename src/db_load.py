@@ -4,7 +4,7 @@ import csv
 
 def load():
 
-    conn = sqlite3.connect('nfl_valuation_data.db')
+    conn = sqlite3.connect('nfl_data.db')
     c = conn.cursor()
 
     # Delete table if already exists
@@ -74,6 +74,7 @@ def load():
                 PRIMARY KEY(id))
                 ''')
 
+    #last_year is equal to last year they played, current year if still playing, blank if never played?
     c.execute('''
             CREATE TABLE draft(
                 year int,
@@ -83,7 +84,7 @@ def load():
                 player_id int not null,
                 position_id text,
                 age int,
-                last_year int, #Equal to last year they played, current year if still playing, blank if never played?
+                last_year int, 
                 games_started int,
                 career_av int,
                 draft_team_av int,
@@ -143,7 +144,7 @@ def load():
             games_played = row[11]
 
             player_id = str(year) + str(pick)
-            team_id = fix_team_id(team_id)
+            team_id = fix_team_id(team_id, year)
             position_id = fix_position_id(position_id)
 
             player_data[(player_name, draft_round, pick)] = player_id
@@ -159,6 +160,8 @@ def load():
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
                 (year, draft_round, pick, team_id, player_id, position_id, age, \
                     last_year, games_started, career_av, draft_team_av, games_played))
+
+    av_data_repeats = {}
 
     with open('../data/av_data.csv', 'r', encoding='utf-8') as csvfile:
         csv_reader = csv.reader(csvfile)
@@ -179,7 +182,7 @@ def load():
 
             draft_split = draft.split('-')
             player_id = player_data[(player_name,draft_split[0],draft_split[1])]
-            team_id = fix_team_id(team_id)
+            team_id = fix_team_id(team_id, year)
             position_id = fix_position_id(position_id)
 
             if player_id is None:
@@ -196,10 +199,22 @@ def load():
 
             player_data_salary[(player_name, team_id, year, position_id)] = player_id
 
-            c.execute('''
-                INSERT INTO av
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                (player_id, year, team_id, position_id, age, av_value, games_played, games_started, pro_bowler, all_pro))       
+            if av_data_repeats[(player_url, team_id, year)] is None:
+                av_data_repeats[(player_url, team_id, year)] = position_id
+                c.execute('''
+                    INSERT INTO av
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                    (player_id, year, team_id, position_id, age, av_value, games_played, games_started, pro_bowler, all_pro))       
+            else:
+                curr_position_id = av_data_repeats[(player_url, team_id, year)]
+                new_position_id = fix_position_id_repeats(curr_position_id, position_id)
+                if new_position_id != curr_position_id:
+                    av_data_repeats[(player_url, team_id, year)] = new_position_id
+                    c.execute('''
+                        UPDATE av
+                        SET position_id == ?
+                        WHERE player_id = ?''',
+                        (new_position_id, player_id))
 
     with open('../data/salary_data.csv', 'r', encoding='utf-8') as csvfile:
         csv_reader = csv.reader(csvfile)
@@ -219,7 +234,7 @@ def load():
             cap_hit = row[11]
             cap_percentage = row[12]
 
-            team_id = fix_team_id(team_id)
+            team_id = fix_team_id(team_id, year)
             position_id = fix_position_id(position_id)
             player_id = player_data_salary[(player_name, team_id, year, position_id)]
 
@@ -233,14 +248,14 @@ def load():
     conn.commit()
     conn.close()
 
-def fix_team_id(team_id):
+def fix_team_id(team_id, year):
     if team_id == 'RAM' or team_id == 'STL':
         team_id = 'LAR'
     elif team_id == 'SDG':
         team_id = 'LAC'
-    elif team_id = 'RAI':
+    elif team_id == 'RAI':
         team_id = 'OAK'
-    elif team_id = 'HOU' and year < 2000:
+    elif team_id == 'HOU' and int(year) < 2000:
         team_id = 'TEN'
 
     return team_id
@@ -251,6 +266,19 @@ def fix_position_id(position_id):
     elif position_id == "LT" or position_id == "RT":
         position_id = "T"
     return position_id
+
+def fix_position_id_repeats(curr_position_id,position_id):
+    if curr_position_id == "OL":
+        if position_id == "G" or position_id == "T" or position_id == "C":
+            return position_id
+    elif curr_position_id == "DL":
+        if position_id == "DE" or position_id == "DT":
+            return position_id
+    elif curr_position_id == "DB":
+        if position_id == "CB" or position_id == "S":
+            return position_id
+
+    return curr_position_id
 
 if __name__ == '__main__':
     load()
