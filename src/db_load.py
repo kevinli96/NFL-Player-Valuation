@@ -52,7 +52,7 @@ def load():
                 age int,
                 av_value int,
                 games_played int,
-                games_Started int,
+                games_started int,
                 pro_bowler int,
                 all_pro int,
                 FOREIGN KEY (player_id) REFERENCES player(id),
@@ -150,8 +150,9 @@ def load():
             player_id = str(year) + str(pick)
             team_id = fix_team_id(team_id, year)
             position_id = fix_position_id(position_id)
-            player_name = fix_player_name(player_name)
+            official_player_name = player_name;
 
+            player_name = fix_player_name(player_name)
             player_data[(player_name, draft_round, pick)] = player_id
             player_data_salary[(player_name, team_id, year)] = player_id
             player_data_salary_no_year[(player_name, team_id)] = player_id
@@ -162,7 +163,7 @@ def load():
             c.execute('''
                 INSERT INTO player
                 VALUES (?, ?)''',
-                (player_id, player_name))
+                (player_id, official_player_name))
 
             c.execute('''
                 INSERT INTO draft
@@ -191,6 +192,7 @@ def load():
 
             player_id = None
             draft_split = draft.split('-')
+            official_player_name = player_name
             player_name = fix_player_name(player_name)
             if len(draft_split) > 1 and (player_name,draft_split[0],draft_split[1].replace("abc","")) in player_data:
                 player_id = player_data[(player_name,draft_split[0],draft_split[1].replace("abc",""))]
@@ -205,7 +207,7 @@ def load():
                     c.execute('''
                             INSERT INTO player
                             VALUES (?, ?)''',
-                            (player_id,player_name))
+                            (player_id,official_player_name))
                 else:
                     player_id = undrafted_player_data[player_url]
 
@@ -232,6 +234,8 @@ def load():
                         WHERE player_id = ?''',
                         (new_position_id, player_id))
 
+    player_count = {}
+
     with open('../data/salary_data.csv', 'r', encoding='utf-8') as csvfile:
         csv_reader = csv.reader(csvfile)
         next(csv_reader, None)
@@ -254,39 +258,107 @@ def load():
             position_id = fix_position_id(position_id)
             player_name = fix_player_name(player_name)
 
-            if (player_name, team_id, year) in player_data_salary:
-                player_id = player_data_salary[(player_name, team_id, year)]
-            elif (player_name, "2TM", year) in player_data_salary:
-                player_id = player_data_salary[(player_name, "2TM", year)]
-            elif year > 2016 and (player_name, team_id, 2016) in player_data_salary:
-                player_id = player_data_salary[(player_name, team_id, 2016)]
-            elif (player_name, team_id, year - 1) in player_data_salary:
-                player_id = player_data_salary[(player_name, team_id, year - 1)]
-            elif (player_name, team_id, year + 1) in player_data_salary:
-                player_id = player_data_salary[(player_name, team_id, year + 1)]
-            elif (player_name, team_id) in player_data_salary_no_year:
-                player_id = player_data_salary_no_year[(player_name, team_id)]
-            elif (player_name, year) in player_data_salary_no_team:
-                player_id = player_data_salary_no_team[(player_name, year)]
-            elif (player_name, position_id) in player_data_salary_with_position:
-                player_id = player_data_salary_with_position[(player_name, position_id)]
-            elif player_name in player_data_salary_just_name:
-                player_id = player_data_salary_just_name[player_name]
-            else:
-                print ((player_name, team_id, year))
+            player_id = match_salary_data_with_av(player_name, team_id, year, position_id, player_data_salary, player_data_salary_no_year, player_data_salary_no_team, player_data_salary_with_position, player_data_salary_just_name)
 
-            c.execute('''
-                INSERT INTO salary
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                (year, team_id, player_id, position_id, base_salary, \
-                signing_bonus, roster_bonus, option_bonus, workout_bonus, \
-                restructured_bonus, dead_cap, cap_hit, cap_percentage))     
+            if player_id is None:
+                first_name = player_name.split(" ")[0]
+                last_name = player_name.split(" ")[1]
+                first_name = try_different_first_name(first_name)
+
+                player_name = first_name + " " + last_name
+                player_id = match_salary_data_with_av(player_name, team_id, year, position_id, player_data_salary, player_data_salary_no_year, player_data_salary_no_team, player_data_salary_with_position, player_data_salary_just_name)
+
+            if player_id is None:
+                if player_name in player_count:
+                    player_count[player_name] += 1
+                else:
+                    player_count[player_name] = 1
+                print ((player_name, team_id, year))
+            else:
+                c.execute('''
+                    INSERT INTO salary
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                    (year, team_id, player_id, position_id, base_salary, \
+                    signing_bonus, roster_bonus, option_bonus, workout_bonus, \
+                    restructured_bonus, dead_cap, cap_hit, cap_percentage))     
+
+    # for key in player_count:
+    #     if player_count[key] > 3:
+    #         print (key + ", " + str(player_count[key]))
 
     conn.commit()
     conn.close()
 
+def match_salary_data_with_av(player_name, team_id, year, position_id, player_data_salary, player_data_salary_no_year, player_data_salary_no_team, player_data_salary_with_position, player_data_salary_just_name):
+    player_id = None
+    if (player_name, team_id, year) in player_data_salary:
+        player_id = player_data_salary[(player_name, team_id, year)]
+    elif (player_name, "2TM", year) in player_data_salary:
+        player_id = player_data_salary[(player_name, "2TM", year)]
+    elif year > 2016 and (player_name, team_id, 2016) in player_data_salary:
+        player_id = player_data_salary[(player_name, team_id, 2016)]
+    elif (player_name, team_id, year - 1) in player_data_salary:
+        player_id = player_data_salary[(player_name, team_id, year - 1)]
+    elif (player_name, team_id, year + 1) in player_data_salary:
+        player_id = player_data_salary[(player_name, team_id, year + 1)]
+    elif (player_name, team_id) in player_data_salary_no_year:
+        player_id = player_data_salary_no_year[(player_name, team_id)]
+    elif (player_name, year) in player_data_salary_no_team:
+        player_id = player_data_salary_no_team[(player_name, year)]
+    elif (player_name, position_id) in player_data_salary_with_position:
+        player_id = player_data_salary_with_position[(player_name, position_id)]
+    elif player_name in player_data_salary_just_name:
+        player_id = player_data_salary_just_name[player_name]
+    return player_id
+
+def try_different_first_name(first_name):
+    if first_name == "michael":
+        first_name = "mike"
+    elif first_name == "mike":
+        first_name = "michael"
+    elif first_name == "ron":
+        first_name = "ronald"
+    elif first_name == "ronald":
+        first_name = "ron"
+    elif first_name == "will":
+        first_name = "william"
+    elif first_name == "william":
+        first_name = "will"
+    elif first_name == "nathan":
+        first_name = "nate"
+    elif first_name == "nate":
+        first_name = "nathan"
+    elif first_name == "vladimir":
+        first_name = "vlad"
+    elif first_name == "vlad":
+        first_name == "vladimir"
+    elif first_name == "stevie":
+        first_name = "steve"
+    elif first_name == "matthew":
+        first_name = "matt"
+    elif first_name == "matt":
+        first_name = "matthew"
+    elif first_name == "chris":
+        first_name = "christopher"
+    elif first_name == "christopher":
+        first_name = "chris"
+    elif first_name == "robert":
+        first_name = "rob"
+    elif first_name == "rob":
+        first_name = "robert"
+    elif first_name == "joshua":
+        first_name = "josh"
+    elif first_name == "josh":
+        first_name = "joshua"
+    elif first_name == "phillip":
+        first_name = "phil"
+    elif first_name == "phil":
+        first_name = "phillip"
+
+    return first_name
+
 def fix_player_name(name):
-    return name.replace("'","").replace(".","").replace(",","").replace("  "," ").replace(" Jr","").lower()
+    return name.replace("'","").replace(".","").replace(",","").replace("  "," ").replace("-","").replace(" Jr","").lower()
 
 def fix_team_id(team_id, year):
     if team_id == 'RAM' or team_id == 'STL':
