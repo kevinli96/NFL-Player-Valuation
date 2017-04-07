@@ -68,7 +68,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div id="blog_post1">
+                    <div id="blog-post-1">
                         <h2 class="post-title">
                         Blog Post 1
                         </h2>
@@ -308,363 +308,366 @@
                             
                         </div>
                         <hr>
-<div id="blog_post2">
-    <h2 class="post-title">
-    Blog Post 2
-    </h2>
-    <h3 class="post-subtitle">
-    Databases and Machine Learning
-    </h3>
-    <p>
-        <h4>
-        <strong>Introduction</strong>
-        </h4>
-        After the midterm report, we had scraped the bulk of our data:
-        <br><br>
-        <ul>
-			<li> AV data from 1994 until 2016 </li>
-			<li> Salary data (incomplete / spotty before 2011) </li>
-			<li> Draft data dating as far back as 1980. </li>
-		</ul>
-		We had also conducted a few elementary analyses, resulting in these visualizations from the midterm report:
 
-		<div id="chart"></div>
-		<div id="chart2"></div>
+                    <div id="blog-post-2">
+                        <h2 class="post-title">
+                        Blog Post 2
+                        </h2>
+                        <h3 class="post-subtitle">
+                        Database loading and machine learning.
+                        </h3>
 
-		For Blog Post Two, we worked on cleaning the data, loading it into a database, and tried our first hand at machine learning, creating a predictor for a player’s Career AV given the team they were drafted to, their position, and their draft pick.
-    </p>
-    <h4>
-    <strong>Database Loading</strong>
-    </h4>
-    <strong>Process and Challenges</strong>
-    <p>
-        I was finally able to run the database loading script that I had been working on due to the fact that we had recently finished acquiring and cleaning all of the data that we needed. This stage proved formidable on two fronts: 
-        <ol>
-        	<li> Deciding on the final set of position ID’s that we would employ so that the positions from our three main sources of data - draft data, AV data, and salary data - would match up</li>
-			<li>Assigning the correct player ID’s to players from these three different sources</li>
-		</ol>
+                        <p>
+                        <h4>
+                        <strong>Introduction</strong>
+                        </h4>
+                        After the midterm report, we had scraped the bulk of our data:
+                        <br><br>
+                        <ul>
+                			<li> AV data from 1994 to 2016. </li>
+                			<li> Salary data from 1994 to 2021 (although data is incomplete before 2011). </li>
+                			<li> Draft data from 1980 to 2016. </li>
+                		</ul>
+                		We also conducted a few elementary analyses, resulting in the following visualizations from the midterm report:
+                        </p>
+                		<div id="chart3"></div>
+                		<div id="chart4"></div>
+                        <p>
+                		For the second blog post, we worked on cleaning the data, loading it into a database, and tried our first hand at machine learning, creating a predictor for a player’s career AV given the team they were drafted to, their position, and their draft pick.
+                        </p>
 
-		Our three main sources of data (draft data, AV data, salary data) each had a different ‘set’ of positions they used to categorize players (with significant overlap, of course). For instance, one source classified players as both left tackles and right tackles - while the other two sources would lump both left and right tackles as ‘offensive tackles.’
+                        <h4>
+                        <strong>Database Loading</strong>
+                        </h4>
+                        <strong>Process and Challenges</strong>
+                        <p>
+                            I was finally able to run the database loading script that I had been working on due to the fact that we had recently finished acquiring and cleaning all of the data that we needed. This stage proved formidable on two fronts: 
+                            <ol>
+                            	<li> Deciding on the final set of position ID’s that we would employ so that the positions from our three main sources of data - draft data, AV data, and salary data - would match up</li>
+                    			<li>Assigning the correct player ID’s to players from these three different sources</li>
+                    		</ol>
 
-		<br><br>
-		Our general philosophy was that we preferred more specific position classifications. For instance, we preferred ‘defensive end’ and ‘defensive tackle’ to ‘defensive linemen.’ Favoring specific over broad classification allows us to perform more practical analysis down the road - for instance, lumping cornerbacks and safeties together as ‘defensive backs’ probably doesn’t make much sense given how different their roles are to teams (as seen by the average and maximum earnings; cornerbacks earn more).
-		<br><br>
-		So in loading data to the database, when matching players between the data sources (i.e. if ‘Jane Doe’ was drafted in 1998 in the draft data, and ‘Jane Doe’ was paid $500,000 in the salary data in 1998, how do we know if it’s the same Jane Doe), we defaulted the ‘position’ value to the more specific position.
-		<br><br>
-		However, we did not always opt for the more specific classification. In the case of nose tackles, we combined them with defensive tackles, as only one source used the ‘nose tackle’ classification (giving us a small sample size) and the difference between nose tackle and defensive tackles is not terribly large (most defensive tackles can play ‘nose tackle’ roles in a pinch). We also chose to combine left tackles and right tackles as ‘tackles’. 
-		<br><br>
-		Assigning the correct player ID’s to entries in the salary dataset proved more difficult than I initially anticipated. After running my database loading script and printing out the entries from the salary dataset that could not be matched up to entries in the AV dataset based on a tuple of (player_name, team, year), I obtained a list of around 3000 entries that could not be matched using this tuple. I investigated the list and realized that many of the issues occurred due to name variations - this could be anything from plain misspellings to the use of a nickname in one dataset and a full name in another to varying uses of punctuation and capitalizations in names between the two datasets. I decided to fix this by lower-casing all names and removing all punctuation from them when comparing names between the two datasets. This helped decrease the number of entries that could not be matched up, but there was still more that could be done. Next, I decided to relax the standards for comparing entries between the two tables - if my script couldn’t match up entries based on the aforementioned tuple, then it would try to match up on a different tuple that could plausibly link an entry from the salary table to an entry from the AV table. The order in which I compared tuples is listed below:
-		<br><br>
-		<ul>
-			<li>(player_name, team, year)</li>
-			<li>(player_name, ‘2TM’, year)
-				<ul>
-					<li>Since some players played on two teams in the same year and thus their team is listed as ‘2TM’ in the AV dataset</li>
-				</ul>
-			</li>
-			<li>(player_name, team, 2016) if salary_year > 2016
-				<ul>
-					<li>For players who are signed beyond 2016 but obviously cannot be in the AV table for seasons past 2016 since they haven’t occurred yet</li>
-				</ul>
-			</li>
-			<li>(player_name, team, year - 1) and (player_name, team, year + 1)
-				<ul>
-					<li>For players who were injured or otherwise didn’t play one year but were on the same team the year before or the year after</li>
-				</ul>
-			</li>
-			<li>(player_name, team)
-				<ul>
-					<li>If the player was on the team in another year but for some reason doesn’t appear in the AV dataset in that year, the year before it, or the year after it</li>
-				</ul>
-			</li>
-			<li>(player_name, year)
-				<ul>
-					<li>If the player was listed as being on a different team in the AV dataset during that year</li>
-				</ul>
-			</li>
-			<li>(player_name, position)
-				<ul>
-					<li>If the player is still unmatched, try to match him to any player in the AV dataset that has the same name and the same position as him</li>
-				</ul>
-			</li>
-			<li>(player_name)
-				<ul>
-					<li>If the player is still unmatched, try to match him to any entry in the AV dataset that has the same name as him</li>
-				</ul>
-			</li>
-		</ul>
-		After doing this, I still had about 1000 entries from the salary dataset that did not match up to any entries in the AV dataset. Next, I decided to try to change the names of the remaining entries to see if that would result in a match. I thought of various names that could go by a nickname and their reciprocals and implemented these changes to the remaining entries using an if-else statement comprised of dozens of lines that looked like this:
-		<br><br>
-	    if first_name == "michael":<br>
-	    &nbsp &nbspfirst_name = "mike"<br>
-	    elif first_name == "mike":<br>
-	    &nbsp &nbspfirst_name = "michael"
-	    <br><br>
-		After changing the names, I tried to match up entries between the two tables again using the sequence of tuples described above. Using this new trick, I was able to get the number of entries that were unmatched to around 800. Finally, I printed out all unmatched entries of players who played in the NFL for 5 seasons or more and manually changed their names in the salary csv to match their names in the AV csv. I was now left with 761 entries who were still unmatched and thus existed in the salary csv but were not inserted into the SQL database due to the fact that they could not be assigned the correct player_id. Although we might decide to change this in the future, for now, we decided that it would be best to leave these entries out of the salary table in the SQL database for two reasons. First, none of the players listed among those 761 entries played more than 4 seasons in the NFL, meaning they would have minimal impact on our data. Second, 475 of those 761 entries represent entries for cap hits for 2017 and beyond. These entries obviously don’t have associated AV values, and thus are less important for our analysis, which relies on a combination of AV and salary data.
-		<br><br>
-		Thus, we now have all of our cleaned data stored in a SQL database. The schema for this database, along with some interesting queries that we ran to gain previously unattainable insight into our data, are highlighted below.
-		<br><br>
-	</p>
-    <strong>Schema</strong>
-    <p>
-    <code>
-    	CREATE TABLE player(<br>
-        &nbsp &nbsp		id int not null,<br>
-        &nbsp &nbsp       name text not null,<br>
-        &nbsp &nbsp        PRIMARY KEY(id));<br>
-		CREATE TABLE salary(<br>
-        &nbsp &nbsp        year int,<br>
-        &nbsp &nbsp        team_id text,<br>
-        &nbsp &nbsp        player_id int not null,<br>
-        &nbsp &nbsp        position_id int,<br>
-        &nbsp &nbsp        base_salary int,<br>
-        &nbsp &nbsp        signing_bonus int,<br>
-        &nbsp &nbsp        roster_bonus int,<br>
-        &nbsp &nbsp        option_bonus int,<br>
-        &nbsp &nbsp        workout_bonus int,<br>
-        &nbsp &nbsp        restructured_bonus int,<br>
-        &nbsp &nbsp        dead_cap int,<br>
-        &nbsp &nbsp        cap_hit int,<br>
-        &nbsp &nbsp        cap_percentage real,<br>
-        &nbsp &nbsp        FOREIGN KEY (player_id) REFERENCES player(id),<br>
-        &nbsp &nbsp        FOREIGN KEY (team_id) REFERENCES team(id),<br>
-        &nbsp &nbsp        FOREIGN KEY (position_id) REFERENCES position(id));<br>
-		CREATE TABLE av(<br>
-        &nbsp &nbsp        player_id int not null,<br>
-        &nbsp &nbsp        year int,<br>
-        &nbsp &nbsp        team_id text,<br>
-        &nbsp &nbsp        position_id int,<br>
-        &nbsp &nbsp        age int,<br>
-        &nbsp &nbsp        av_value int,<br>
-        &nbsp &nbsp        games_played int,<br>
-        &nbsp &nbsp        games_started int,<br>
-        &nbsp &nbsp        pro_bowler int,<br>
-        &nbsp &nbsp        all_pro int,<br>
-        &nbsp &nbsp        FOREIGN KEY (player_id) REFERENCES player(id),<br>
-        &nbsp &nbsp        FOREIGN KEY (team_id) REFERENCES team(id),<br>
-        &nbsp &nbsp        FOREIGN KEY (position_id) REFERENCES position(id));<br>
-		CREATE TABLE team(<br>
-        &nbsp &nbsp        id text not null,<br>
-        &nbsp &nbsp        name text not null,<br>
-        &nbsp &nbsp        PRIMARY KEY(id));<br>
-		CREATE TABLE position(<br>
-        &nbsp &nbsp        id int not null,<br>
-        &nbsp &nbsp        name text not null,<br>
-        &nbsp &nbsp        PRIMARY KEY(id));<br>
-		CREATE TABLE draft(<br>
-        &nbsp &nbsp        year int,<br>
-        &nbsp &nbsp        round int,<br>
-        &nbsp &nbsp        pick int,<br>
-        &nbsp &nbsp        team_id text,<br>
-        &nbsp &nbsp        player_id int not null,<br>
-        &nbsp &nbsp        position_id text,<br>
-        &nbsp &nbsp        age int,<br>
-        &nbsp &nbsp        last_year int,<br>
-        &nbsp &nbsp        games_started int,<br>
-        &nbsp &nbsp        career_av int,<br>
-        &nbsp &nbsp        draft_team_av int,<br>
-        &nbsp &nbsp        games_played int,<br>
-        &nbsp &nbsp        FOREIGN KEY (player_id) REFERENCES player(id),<br>
-        &nbsp &nbsp        FOREIGN KEY (team_id) REFERENCES team(id),<br>
-        &nbsp &nbsp        FOREIGN KEY (position_id) REFERENCES position(id));<br>
-    </code>
-    </p>
-    <strong>Interesting Queries</strong>
-    <br><br>
-    Query: Players who had a cap hit of over $20,000,000 and had an AV value of less than 5 in any given year.
-    <ul>
-    	<li><code>select player.name, salary.cap_hit, av.av_value, av.year,av.position_id from player, salary, av where player.id = salary.player_id and player.id = av.player_id and salary.cap_hit > 20000000 and av.av_value < 5 and av.year = salary.year;</code></li>
-    	<li>Result: <br>
-		Charles Johnson|20020000|4|2015|DE<br>
-		Tony Romo|20835000|0|2016|QB<br>
-		</li>
-	</ul>
-	Query: Players who had a cap hit of over $20,000,000 and had an AV value of less than 10 in any given year.
-	<ul>
-		<li><code>select player.name, salary.cap_hit, av.av_value, av.year,av.position_id from player, salary, av where player.id = salary.player_id and player.id = av.player_id and salary.cap_hit > 20000000 and av.av_value < 10 and av.year = salary.year;</code></li>
-		<li>Result:<br>
-		Larry Fitzgerald|20500000|5|2012|WR<br>
-		Eli Manning|20850000|7|2013|QB<br>
-		Charles Johnson|20020000|4|2015|DE<br>
-		Joe Flacco|22550000|9|2016|QB<br>
-		Tony Romo|20835000|0|2016|QB<br>
-		Eli Manning|24200000|9|2016|QB<br>
-		</li>
-	</ul>
-	Query: Players who had a cap hit of less than $5,000,000 and had an AV value of more than 20 in any given year.
-	<ul>
-		<li><code>select player.name, salary.cap_hit, av.av_value, av.year,av.position_id from player, salary, av where player.id = salary.player_id and player.id = av.player_id and salary.cap_hit < 5000000 and av.av_value > 20 and av.year = salary.year;</code></li>
-		<li>Result:<br>
-		Jerry Rice|2380000|21|1994|WR<br>
-		Bruce Smith|3316666|21|1996|DE<br>
-		Terrell Davis|2533333|22|1998|RB<br>
-		Marshall Faulk|2440000|22|2000|RB<br>
-		Ray Lewis|3050000|23|2000|ILB<br>
-		Daunte Culpepper|1337500|21|2000|QB<br>
-		Samari Rolle|599668|22|2000|CB<br>
-		Marshall Faulk|4800000|22|2001|RB<br>
-		Brian Urlacher|1475000|21|2001|ILB<br>
-		Priest Holmes|2150000|23|2002|RB<br>
-		Derrick Brooks|3933333|22|2002|LB<br>
-		Priest Holmes|1235714|21|2003|RB<br>
-		Tiki Barber|4078334|21|2005|RB<br>
-		David Harris|810000|21|2009|ILB<br>
-		J.J. Watt|4575567|22|2014|DE<br>
-		</li>
-	</ul>
-	Query: Players who were undrafted who had a season with an AV of over 20.
-	<ul>
-		<li><code>select distinct player.name, av.av_value, av.year, av.position_id from player, draft, av where player.id not in (select player_id from draft) and player.id = av.player_id and av.av_value > 20;</code></li>
-		<li>Result:<br>
-		Priest Holmes|23|2002|RB<br>
-		Priest Holmes|21|2003|RB<br>
-		Steve Young|23|1994|QB<br>
-		</li>
-	</ul>
-	Query: The average seasonal AV of each position in our AV table.
-	<ul>
-		<li><code>select position_id, avg(av_value) from av group by position_id order by avg(av_value) desc;</code></li>
-		<li>Result:<br>
-		OLB|6.65141955835962<br>
-		ILB|6.15553522415371<br>
-		C|4.87241379310345<br>
-		QB|4.73963515754561<br>
-		T|4.67632850241546<br>
-		G|4.46118894358198<br>
-		DE|3.91317883085438<br>
-		DT|3.89477999453403<br>
-		OL|3.53333333333333<br>
-		WR|3.50335280121133<br>
-		DL|3.42857142857143<br>
-		CB|3.39380976346251<br>
-		S|3.02810246207411<br>
-		RB|2.90191570881226<br>
-		LB|2.56273384884011<br>
-		K|2.53722794959908<br>
-		P|1.94204685573366<br>
-		TE|1.63450760608487<br>
-		DB|0.855072463768116<br>
-		</li>
-	</ul>
-	Query: the average career AV of each position in our AV table.
-	<ul>
-		<li><code>select position_id, avg(av_sum) from (select *, sum(av_value) as av_sum from av group by player_id) group by pos<br>ition_id order by avg(av_sum) desc;</code></li>
-		<li>Result:<br>
-		ILB|36.1851851851852<br>
-		OLB|34.06<br>
-		QB|23.5824175824176<br>
-		C|22.2466666666667<br>
-		G|20.7159277504105<br>
-		T|20.2169117647059<br>
-		OL|17.9148936170213<br>
-		DT|17.8989218328841<br>
-		DE|16.0749625187406<br>
-		DL|15.8571428571429<br>
-		K|15.0533333333333<br>
-		CB|14.8658399098083<br>
-		S|14.3730061349693<br>
-		LB|14.1072530864198<br>
-		WR|13.5421276595745<br>
-		RB|11.1368421052632<br>
-		P|10.7361111111111<br>
-		TE|6.7392<br>
-		DB|2.60431654676259<br>
-		</li>
-	</ul>
-    <h4>
-    <strong>Machine Learning</strong>
-    </h4>
-    <strong>Process</strong>
-    <p>
-    Preprocessing:
-    <ul>
-    	<li>Removed rows with na's </li>
-    	<li>Remove player names</li>
-    	<li>Remove draft year and last season attributes</li>
-		<li>-Convert the positions into numbers</li>
-		<li>-Convert teams to numbers</li>
-		<li>-Only train on players w/ draft year < 2013 (rookie contract expired)</li>
-		<li>-Bin AV values into quintiles to increase coverage</li>
-	</ul><br>
-	Classifiers:
-	<ul>
-		<li>LinearSVM</li>
-		<li>GaussianNB</li>
-		<li>RandomForest</li>
-	</ul>
-	Objective:
-	<ul>
-		<li>Predict the draft and career av AV of the last draft class (2016)</li>
-	</ul>
+                    		Our three main sources of data (draft data, AV data, salary data) each had a different ‘set’ of positions they used to categorize players (with significant overlap, of course). For instance, one source classified players as both left tackles and right tackles - while the other two sources would lump both left and right tackles as ‘offensive tackles.’
 
-	Problems:
-	<ul>
-		<li>Training data is very imbalanced by class (av values); this can lead to issues in training and validation.</li>
-		<li>There aren't enough samples for each actual AV to do anything more than 1-fold cross validation correctly w/o binning</li>>
-		<li>-This means that reasonably precise estimates are outside the realm of possibility given just the current data</li>
-	</ul>
-	Solutions: 
-	<ul>
-		<li>binning AV values into classes, curating a balanced training set</li>
-		<li>Feature reduction signficantly reduces the validation scores of each model but allows for predictions of values other than '1.0'</li>
-	</ul>
-	Future Considerations:
-	<ul>
-		<li>Better feature selection using the player data</li>
-		<li>Better metrics for validation and model selection: ROC-AUC, Stratified K-folds (if not binning)</li>
-		<li>Finding most important features</li>
-		<li>Actually tuning the model parameters</li>
-	</ul>
+                    		<br><br>
+                    		Our general philosophy was that we preferred more specific position classifications. For instance, we preferred ‘defensive end’ and ‘defensive tackle’ to ‘defensive linemen.’ Favoring specific over broad classification allows us to perform more practical analysis down the road - for instance, lumping cornerbacks and safeties together as ‘defensive backs’ probably doesn’t make much sense given how different their roles are to teams (as seen by the average and maximum earnings; cornerbacks earn more).
+                    		<br><br>
+                    		So in loading data to the database, when matching players between the data sources (i.e. if ‘Jane Doe’ was drafted in 1998 in the draft data, and ‘Jane Doe’ was paid $500,000 in the salary data in 1998, how do we know if it’s the same Jane Doe), we defaulted the ‘position’ value to the more specific position.
+                    		<br><br>
+                    		However, we did not always opt for the more specific classification. In the case of nose tackles, we combined them with defensive tackles, as only one source used the ‘nose tackle’ classification (giving us a small sample size) and the difference between nose tackle and defensive tackles is not terribly large (most defensive tackles can play ‘nose tackle’ roles in a pinch). We also chose to combine left tackles and right tackles as ‘tackles’. 
+                    		<br><br>
+                    		Assigning the correct player ID’s to entries in the salary dataset proved more difficult than I initially anticipated. After running my database loading script and printing out the entries from the salary dataset that could not be matched up to entries in the AV dataset based on a tuple of (player_name, team, year), I obtained a list of around 3000 entries that could not be matched using this tuple. I investigated the list and realized that many of the issues occurred due to name variations - this could be anything from plain misspellings to the use of a nickname in one dataset and a full name in another to varying uses of punctuation and capitalizations in names between the two datasets. I decided to fix this by lower-casing all names and removing all punctuation from them when comparing names between the two datasets. This helped decrease the number of entries that could not be matched up, but there was still more that could be done. Next, I decided to relax the standards for comparing entries between the two tables - if my script couldn’t match up entries based on the aforementioned tuple, then it would try to match up on a different tuple that could plausibly link an entry from the salary table to an entry from the AV table. The order in which I compared tuples is listed below:
+                    		<br><br>
+                    		<ul>
+                    			<li>(player_name, team, year)</li>
+                    			<li>(player_name, ‘2TM’, year)
+                    				<ul>
+                    					<li>Since some players played on two teams in the same year and thus their team is listed as ‘2TM’ in the AV dataset</li>
+                    				</ul>
+                    			</li>
+                    			<li>(player_name, team, 2016) if salary_year > 2016
+                    				<ul>
+                    					<li>For players who are signed beyond 2016 but obviously cannot be in the AV table for seasons past 2016 since they haven’t occurred yet</li>
+                    				</ul>
+                    			</li>
+                    			<li>(player_name, team, year - 1) and (player_name, team, year + 1)
+                    				<ul>
+                    					<li>For players who were injured or otherwise didn’t play one year but were on the same team the year before or the year after</li>
+                    				</ul>
+                    			</li>
+                    			<li>(player_name, team)
+                    				<ul>
+                    					<li>If the player was on the team in another year but for some reason doesn’t appear in the AV dataset in that year, the year before it, or the year after it</li>
+                    				</ul>
+                    			</li>
+                    			<li>(player_name, year)
+                    				<ul>
+                    					<li>If the player was listed as being on a different team in the AV dataset during that year</li>
+                    				</ul>
+                    			</li>
+                    			<li>(player_name, position)
+                    				<ul>
+                    					<li>If the player is still unmatched, try to match him to any player in the AV dataset that has the same name and the same position as him</li>
+                    				</ul>
+                    			</li>
+                    			<li>(player_name)
+                    				<ul>
+                    					<li>If the player is still unmatched, try to match him to any entry in the AV dataset that has the same name as him</li>
+                    				</ul>
+                    			</li>
+                    		</ul>
+                    		After doing this, I still had about 1000 entries from the salary dataset that did not match up to any entries in the AV dataset. Next, I decided to try to change the names of the remaining entries to see if that would result in a match. I thought of various names that could go by a nickname and their reciprocals and implemented these changes to the remaining entries using an if-else statement comprised of dozens of lines that looked like this:
+                    		<br><br>
+                    	    if first_name == "michael":<br>
+                    	    &nbsp &nbspfirst_name = "mike"<br>
+                    	    elif first_name == "mike":<br>
+                    	    &nbsp &nbspfirst_name = "michael"
+                    	    <br><br>
+                    		After changing the names, I tried to match up entries between the two tables again using the sequence of tuples described above. Using this new trick, I was able to get the number of entries that were unmatched to around 800. Finally, I printed out all unmatched entries of players who played in the NFL for 5 seasons or more and manually changed their names in the salary csv to match their names in the AV csv. I was now left with 761 entries who were still unmatched and thus existed in the salary csv but were not inserted into the SQL database due to the fact that they could not be assigned the correct player_id. Although we might decide to change this in the future, for now, we decided that it would be best to leave these entries out of the salary table in the SQL database for two reasons. First, none of the players listed among those 761 entries played more than 4 seasons in the NFL, meaning they would have minimal impact on our data. Second, 475 of those 761 entries represent entries for cap hits for 2017 and beyond. These entries obviously don’t have associated AV values, and thus are less important for our analysis, which relies on a combination of AV and salary data.
+                    		<br><br>
+                    		Thus, we now have all of our cleaned data stored in a SQL database. The schema for this database, along with some interesting queries that we ran to gain previously unattainable insight into our data, are highlighted below.
+                    		<br><br>
+                    	</p>
+                        <strong>Schema</strong>
+                        <p>
+                        <code>
+                        	CREATE TABLE player(<br>
+                            &nbsp &nbsp		id int not null,<br>
+                            &nbsp &nbsp       name text not null,<br>
+                            &nbsp &nbsp        PRIMARY KEY(id));<br>
+                    		CREATE TABLE salary(<br>
+                            &nbsp &nbsp        year int,<br>
+                            &nbsp &nbsp        team_id text,<br>
+                            &nbsp &nbsp        player_id int not null,<br>
+                            &nbsp &nbsp        position_id int,<br>
+                            &nbsp &nbsp        base_salary int,<br>
+                            &nbsp &nbsp        signing_bonus int,<br>
+                            &nbsp &nbsp        roster_bonus int,<br>
+                            &nbsp &nbsp        option_bonus int,<br>
+                            &nbsp &nbsp        workout_bonus int,<br>
+                            &nbsp &nbsp        restructured_bonus int,<br>
+                            &nbsp &nbsp        dead_cap int,<br>
+                            &nbsp &nbsp        cap_hit int,<br>
+                            &nbsp &nbsp        cap_percentage real,<br>
+                            &nbsp &nbsp        FOREIGN KEY (player_id) REFERENCES player(id),<br>
+                            &nbsp &nbsp        FOREIGN KEY (team_id) REFERENCES team(id),<br>
+                            &nbsp &nbsp        FOREIGN KEY (position_id) REFERENCES position(id));<br>
+                    		CREATE TABLE av(<br>
+                            &nbsp &nbsp        player_id int not null,<br>
+                            &nbsp &nbsp        year int,<br>
+                            &nbsp &nbsp        team_id text,<br>
+                            &nbsp &nbsp        position_id int,<br>
+                            &nbsp &nbsp        age int,<br>
+                            &nbsp &nbsp        av_value int,<br>
+                            &nbsp &nbsp        games_played int,<br>
+                            &nbsp &nbsp        games_started int,<br>
+                            &nbsp &nbsp        pro_bowler int,<br>
+                            &nbsp &nbsp        all_pro int,<br>
+                            &nbsp &nbsp        FOREIGN KEY (player_id) REFERENCES player(id),<br>
+                            &nbsp &nbsp        FOREIGN KEY (team_id) REFERENCES team(id),<br>
+                            &nbsp &nbsp        FOREIGN KEY (position_id) REFERENCES position(id));<br>
+                    		CREATE TABLE team(<br>
+                            &nbsp &nbsp        id text not null,<br>
+                            &nbsp &nbsp        name text not null,<br>
+                            &nbsp &nbsp        PRIMARY KEY(id));<br>
+                    		CREATE TABLE position(<br>
+                            &nbsp &nbsp        id int not null,<br>
+                            &nbsp &nbsp        name text not null,<br>
+                            &nbsp &nbsp        PRIMARY KEY(id));<br>
+                    		CREATE TABLE draft(<br>
+                            &nbsp &nbsp        year int,<br>
+                            &nbsp &nbsp        round int,<br>
+                            &nbsp &nbsp        pick int,<br>
+                            &nbsp &nbsp        team_id text,<br>
+                            &nbsp &nbsp        player_id int not null,<br>
+                            &nbsp &nbsp        position_id text,<br>
+                            &nbsp &nbsp        age int,<br>
+                            &nbsp &nbsp        last_year int,<br>
+                            &nbsp &nbsp        games_started int,<br>
+                            &nbsp &nbsp        career_av int,<br>
+                            &nbsp &nbsp        draft_team_av int,<br>
+                            &nbsp &nbsp        games_played int,<br>
+                            &nbsp &nbsp        FOREIGN KEY (player_id) REFERENCES player(id),<br>
+                            &nbsp &nbsp        FOREIGN KEY (team_id) REFERENCES team(id),<br>
+                            &nbsp &nbsp        FOREIGN KEY (position_id) REFERENCES position(id));<br>
+                        </code>
+                        </p>
+                        <strong>Interesting Queries</strong>
+                        <br><br>
+                        Query: Players who had a cap hit of over $20,000,000 and had an AV value of less than 5 in any given year.
+                        <ul>
+                        	<li><code>select player.name, salary.cap_hit, av.av_value, av.year,av.position_id from player, salary, av where player.id = salary.player_id and player.id = av.player_id and salary.cap_hit > 20000000 and av.av_value < 5 and av.year = salary.year;</code></li>
+                        	<li>Result: <br>
+                    		Charles Johnson|20020000|4|2015|DE<br>
+                    		Tony Romo|20835000|0|2016|QB<br>
+                    		</li>
+                    	</ul>
+                    	Query: Players who had a cap hit of over $20,000,000 and had an AV value of less than 10 in any given year.
+                    	<ul>
+                    		<li><code>select player.name, salary.cap_hit, av.av_value, av.year,av.position_id from player, salary, av where player.id = salary.player_id and player.id = av.player_id and salary.cap_hit > 20000000 and av.av_value < 10 and av.year = salary.year;</code></li>
+                    		<li>Result:<br>
+                    		Larry Fitzgerald|20500000|5|2012|WR<br>
+                    		Eli Manning|20850000|7|2013|QB<br>
+                    		Charles Johnson|20020000|4|2015|DE<br>
+                    		Joe Flacco|22550000|9|2016|QB<br>
+                    		Tony Romo|20835000|0|2016|QB<br>
+                    		Eli Manning|24200000|9|2016|QB<br>
+                    		</li>
+                    	</ul>
+                    	Query: Players who had a cap hit of less than $5,000,000 and had an AV value of more than 20 in any given year.
+                    	<ul>
+                    		<li><code>select player.name, salary.cap_hit, av.av_value, av.year,av.position_id from player, salary, av where player.id = salary.player_id and player.id = av.player_id and salary.cap_hit < 5000000 and av.av_value > 20 and av.year = salary.year;</code></li>
+                    		<li>Result:<br>
+                    		Jerry Rice|2380000|21|1994|WR<br>
+                    		Bruce Smith|3316666|21|1996|DE<br>
+                    		Terrell Davis|2533333|22|1998|RB<br>
+                    		Marshall Faulk|2440000|22|2000|RB<br>
+                    		Ray Lewis|3050000|23|2000|ILB<br>
+                    		Daunte Culpepper|1337500|21|2000|QB<br>
+                    		Samari Rolle|599668|22|2000|CB<br>
+                    		Marshall Faulk|4800000|22|2001|RB<br>
+                    		Brian Urlacher|1475000|21|2001|ILB<br>
+                    		Priest Holmes|2150000|23|2002|RB<br>
+                    		Derrick Brooks|3933333|22|2002|LB<br>
+                    		Priest Holmes|1235714|21|2003|RB<br>
+                    		Tiki Barber|4078334|21|2005|RB<br>
+                    		David Harris|810000|21|2009|ILB<br>
+                    		J.J. Watt|4575567|22|2014|DE<br>
+                    		</li>
+                    	</ul>
+                    	Query: Players who were undrafted who had a season with an AV of over 20.
+                    	<ul>
+                    		<li><code>select distinct player.name, av.av_value, av.year, av.position_id from player, draft, av where player.id not in (select player_id from draft) and player.id = av.player_id and av.av_value > 20;</code></li>
+                    		<li>Result:<br>
+                    		Priest Holmes|23|2002|RB<br>
+                    		Priest Holmes|21|2003|RB<br>
+                    		Steve Young|23|1994|QB<br>
+                    		</li>
+                    	</ul>
+                    	Query: The average seasonal AV of each position in our AV table.
+                    	<ul>
+                    		<li><code>select position_id, avg(av_value) from av group by position_id order by avg(av_value) desc;</code></li>
+                    		<li>Result:<br>
+                    		OLB|6.65141955835962<br>
+                    		ILB|6.15553522415371<br>
+                    		C|4.87241379310345<br>
+                    		QB|4.73963515754561<br>
+                    		T|4.67632850241546<br>
+                    		G|4.46118894358198<br>
+                    		DE|3.91317883085438<br>
+                    		DT|3.89477999453403<br>
+                    		OL|3.53333333333333<br>
+                    		WR|3.50335280121133<br>
+                    		DL|3.42857142857143<br>
+                    		CB|3.39380976346251<br>
+                    		S|3.02810246207411<br>
+                    		RB|2.90191570881226<br>
+                    		LB|2.56273384884011<br>
+                    		K|2.53722794959908<br>
+                    		P|1.94204685573366<br>
+                    		TE|1.63450760608487<br>
+                    		DB|0.855072463768116<br>
+                    		</li>
+                    	</ul>
+                    	Query: the average career AV of each position in our AV table.
+                    	<ul>
+                    		<li><code>select position_id, avg(av_sum) from (select *, sum(av_value) as av_sum from av group by player_id) group by pos<br>ition_id order by avg(av_sum) desc;</code></li>
+                    		<li>Result:<br>
+                    		ILB|36.1851851851852<br>
+                    		OLB|34.06<br>
+                    		QB|23.5824175824176<br>
+                    		C|22.2466666666667<br>
+                    		G|20.7159277504105<br>
+                    		T|20.2169117647059<br>
+                    		OL|17.9148936170213<br>
+                    		DT|17.8989218328841<br>
+                    		DE|16.0749625187406<br>
+                    		DL|15.8571428571429<br>
+                    		K|15.0533333333333<br>
+                    		CB|14.8658399098083<br>
+                    		S|14.3730061349693<br>
+                    		LB|14.1072530864198<br>
+                    		WR|13.5421276595745<br>
+                    		RB|11.1368421052632<br>
+                    		P|10.7361111111111<br>
+                    		TE|6.7392<br>
+                    		DB|2.60431654676259<br>
+                    		</li>
+                    	</ul>
+                        <h4>
+                        <strong>Machine Learning</strong>
+                        </h4>
+                        <strong>Process</strong>
+                        <p>
+                        Preprocessing:
+                        <ul>
+                        	<li>Removed rows with na's </li>
+                        	<li>Remove player names</li>
+                        	<li>Remove draft year and last season attributes</li>
+                    		<li>-Convert the positions into numbers</li>
+                    		<li>-Convert teams to numbers</li>
+                    		<li>-Only train on players w/ draft year < 2013 (rookie contract expired)</li>
+                    		<li>-Bin AV values into quintiles to increase coverage</li>
+                    	</ul><br>
+                    	Classifiers:
+                    	<ul>
+                    		<li>LinearSVM</li>
+                    		<li>GaussianNB</li>
+                    		<li>RandomForest</li>
+                    	</ul>
+                    	Objective:
+                    	<ul>
+                    		<li>Predict the draft and career av AV of the last draft class (2016)</li>
+                    	</ul>
 
-	Results:<br><br>
+                    	Problems:
+                    	<ul>
+                    		<li>Training data is very imbalanced by class (av values); this can lead to issues in training and validation.</li>
+                    		<li>There aren't enough samples for each actual AV to do anything more than 1-fold cross validation correctly w/o binning</li>>
+                    		<li>-This means that reasonably precise estimates are outside the realm of possibility given just the current data</li>
+                    	</ul>
+                    	Solutions: 
+                    	<ul>
+                    		<li>binning AV values into classes, curating a balanced training set</li>
+                    		<li>Feature reduction signficantly reduces the validation scores of each model but allows for predictions of values other than '1.0'</li>
+                    	</ul>
+                    	Future Considerations:
+                    	<ul>
+                    		<li>Better feature selection using the player data</li>
+                    		<li>Better metrics for validation and model selection: ROC-AUC, Stratified K-folds (if not binning)</li>
+                    		<li>Finding most important features</li>
+                    		<li>Actually tuning the model parameters</li>
+                    	</ul>
 
-	Before binning:
-	<br><br>
-	10-fold cross-validation scores (draft av):<br>
-	SVM: 0.032005565987880805<br>
-	NB: 0.06501431936497812<br>
-	RF: 0.07435215975730411<br>
-	<br><br>
-	10-fold cross-validation scores (career av):<br>
-	SVM: 0.0412899721739324<br>
-	NB: 0.09498994186202343<br>
-	RF: 0.08767307797539262<br>
-	<br><br>
+                    	Results:<br><br>
 
-	After binning to quintiles:<br><br>
+                    	Before binning:
+                    	<br><br>
+                    	10-fold cross-validation scores (draft av):<br>
+                    	SVM: 0.032005565987880805<br>
+                    	NB: 0.06501431936497812<br>
+                    	RF: 0.07435215975730411<br>
+                    	<br><br>
+                    	10-fold cross-validation scores (career av):<br>
+                    	SVM: 0.0412899721739324<br>
+                    	NB: 0.09498994186202343<br>
+                    	RF: 0.08767307797539262<br>
+                    	<br><br>
 
-	10-fold cross-validation scores (draft av):<br>
-	SVM: 0.657467158938556<br>
-	NB: 0.8112754711800976<br>
-	RF: 0.6991879601029802<br>
-	<br><br>
-	10-fold cross-validation scores (career av):<br>
-	SVM: 0.7842956911886227<br>
-	NB: 0.797373072982245<br>
-	RF: 0.8115531835136144<br>
-	<br><br>
-	
-	After binning to quintiles and feature reduction:
-	<br><br>
-	10-fold cross-validation scores (draft av):<br>
-	SVM: 0.7774558692405844<br>
-	NB: 0.7531441254825586<br>
-	RF: 0.5250153144380184<br><br>
+                    	After binning to quintiles:<br><br>
 
-	10-fold cross-validation scores (career av):<br>
-	SVM: 0.6373596861243493<br>
-	NB: 0.6222216561817622<br>
-	RF: 0.635673076670976<br>
-	<br>
-	2016 Draft Results:
-	<ul>
-		<li>Random forest is the only one that provides varied and interesting results</li>
-		<li>This makes sense that it is usually one of the best out-of-the-box classifiers</li>
-	</ul>
-	<strong>Interpretation</strong>
-	Our initial interpretation is more related to the process of training our models than it is to the actual results. There are clearly some limitations to our first try at predicting AV using draft data, but it serves as a useful starting point from which we can refine our methodology. One clear limitation of our data is that AV quantile classes are extremely imbalanced with the first (lowest) quintile representing 83% of the data. Having such an imbalanced dataset can prove problematic when training our models because our predictions []. This is also problematic for validation because if the models were to assign all the predicated AV quintiles to be the lowest one, it could still achieve 83% accuracy but fail to accurately classify test data that should belong to one of the other classes. Another difficulty that we encountered with this data is that there isn’t enough coverage for each represented AV value to validate or train the model to any reasonable degree of accuracy. We would need more samples to gain the ability to predict AV values with the integer precision that we desire, however our draft data does encompass the entirety of the available data. This is why we opted to bin the AV values into quintiles (deciles were too granular to solve these problems). Quintiles provided enough coverage for each class to allow us to perform 10-fold cross validation and have enough data to begin to build a model that can discern between the class. However, this doesn’t address the balancing problem. In order to curate a balanced dataset we’ll need to select the n top quintile players, and randomly sample n players from the other quintiles. This will leave us with a balanced, albeit small training set to work from and my improve the performance of the model overall. Additionally, given that the objective of the analysis is to predict draft AV and career AV of the 2016 draft class, we may be able to improve performance by incorporating first-season AV data from each of the players in our dataset. Reducing the features in our dataset reduced our overall validation score, however it also reduced the overfitting that lead to predictions of 1st quintile AV’s for all players in the 2016 draft. Overall the random forest performance model performed the best out-of-the-box (as expected), with naive bayes also performing comparable. The independence assumption needed for naive bayes is reasonable for the feature space that we used to train the model so it makes sense that it would perform decently well. However, all these considerations need to be reevaluated on balanced data and with tuned parameters for each model. This is where we hope to move next. Our initial insights do seem to tell us that Ezekiel Elliott is poised to be a star. [bad dallas pun]
-	</p>
-	</div>
+                    	10-fold cross-validation scores (draft av):<br>
+                    	SVM: 0.657467158938556<br>
+                    	NB: 0.8112754711800976<br>
+                    	RF: 0.6991879601029802<br>
+                    	<br><br>
+                    	10-fold cross-validation scores (career av):<br>
+                    	SVM: 0.7842956911886227<br>
+                    	NB: 0.797373072982245<br>
+                    	RF: 0.8115531835136144<br>
+                    	<br><br>
+                    	
+                    	After binning to quintiles and feature reduction:
+                    	<br><br>
+                    	10-fold cross-validation scores (draft av):<br>
+                    	SVM: 0.7774558692405844<br>
+                    	NB: 0.7531441254825586<br>
+                    	RF: 0.5250153144380184<br><br>
+
+                    	10-fold cross-validation scores (career av):<br>
+                    	SVM: 0.6373596861243493<br>
+                    	NB: 0.6222216561817622<br>
+                    	RF: 0.635673076670976<br>
+                    	<br>
+                    	2016 Draft Results:
+                    	<ul>
+                    		<li>Random forest is the only one that provides varied and interesting results</li>
+                    		<li>This makes sense that it is usually one of the best out-of-the-box classifiers</li>
+                    	</ul>
+                    	<strong>Interpretation</strong>
+                    	Our initial interpretation is more related to the process of training our models than it is to the actual results. There are clearly some limitations to our first try at predicting AV using draft data, but it serves as a useful starting point from which we can refine our methodology. One clear limitation of our data is that AV quantile classes are extremely imbalanced with the first (lowest) quintile representing 83% of the data. Having such an imbalanced dataset can prove problematic when training our models because our predictions []. This is also problematic for validation because if the models were to assign all the predicated AV quintiles to be the lowest one, it could still achieve 83% accuracy but fail to accurately classify test data that should belong to one of the other classes. Another difficulty that we encountered with this data is that there isn’t enough coverage for each represented AV value to validate or train the model to any reasonable degree of accuracy. We would need more samples to gain the ability to predict AV values with the integer precision that we desire, however our draft data does encompass the entirety of the available data. This is why we opted to bin the AV values into quintiles (deciles were too granular to solve these problems). Quintiles provided enough coverage for each class to allow us to perform 10-fold cross validation and have enough data to begin to build a model that can discern between the class. However, this doesn’t address the balancing problem. In order to curate a balanced dataset we’ll need to select the n top quintile players, and randomly sample n players from the other quintiles. This will leave us with a balanced, albeit small training set to work from and my improve the performance of the model overall. Additionally, given that the objective of the analysis is to predict draft AV and career AV of the 2016 draft class, we may be able to improve performance by incorporating first-season AV data from each of the players in our dataset. Reducing the features in our dataset reduced our overall validation score, however it also reduced the overfitting that lead to predictions of 1st quintile AV’s for all players in the 2016 draft. Overall the random forest performance model performed the best out-of-the-box (as expected), with naive bayes also performing comparable. The independence assumption needed for naive bayes is reasonable for the feature space that we used to train the model so it makes sense that it would perform decently well. However, all these considerations need to be reevaluated on balanced data and with tuned parameters for each model. This is where we hope to move next. Our initial insights do seem to tell us that Ezekiel Elliott is poised to be a star. [bad dallas pun]
+                    	</p>
+                    	</div>
  
                         
                         

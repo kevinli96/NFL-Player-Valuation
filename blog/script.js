@@ -108,3 +108,5 @@
  
  drawChart("chart", "QB")
  drawChart("chart2", "RB")
+ drawChart("chart3", "QB")
+ drawChart("chart4", "RB")
