@@ -307,6 +307,172 @@
                             <p>We feel that we’re making good progress on our project but need to devote some time to formalizing what type of machine learning insights we’d like to make. Specifically, selecting appropriate features and classifiers for supervised learning tasks and deciding whether we would like to pursue any unsupervised learning tasks.</p>
                             
                         </div>
+                        <hr>
+                        <div id="blog_post2">
+                        <h2 class="post-title">
+                        Blog Post 2
+                        </h2>
+                        <h3 class="post-subtitle">
+                        Databases and Machine Learning
+                        </h3>
+                        <p>
+                            <h4>
+                            <strong>Introduction</strong>
+                            </h4>
+                            After the midterm report, we had scraped the bulk of our data:
+                            <ul>
+                                <li> AV data from 1994 until 2016 </li>
+                                <li> Salary data up after 2011 </li>
+                                <li> Draft data dating as far back as 1980. </li>
+                            </ul>
+                            We had also conducted a few elementary analyses, resulting in these visualizations from the midterm report:
+
+                            <div id="chart"></div>
+                            <div id="chart2"></div>
+
+                            For Blog Post Two, we worked on cleaning the data, loading it into a database, and tried our first hand at machine learning, creating a predictor for a player’s Career AV given the team they were drafted to, their position, and their draft pick.
+                        </p>
+                        <h4>
+                        <strong>Database Loading</strong>
+                        </h4>
+                        <h5>
+                        <strong>Process and Challenges</strong>
+                        </h5>
+                        <p>
+                            I was finally able to run the database loading script that I had been working on due to the fact that we had recently finished acquiring and cleaning all of the data that we needed. This stage proved formidable on two fronts: 
+                            <ol>
+                                <li> Deciding on the final set of position ID’s that we would employ so that the positions from our three main sources of data - draft data, AV data, and salary data - would match up</li>
+                                <li>Assigning the correct player ID’s to players from these three different sources</li>
+                            </ol>
+
+                            Our three main sources of data (draft data, AV data, salary data) each had a different ‘set’ of positions they used to categorize players (with significant overlap, of course). For instance, one source classified players as both left tackles and right tackles - while the other two sources would lump both left and right tackles as ‘offensive tackles.’
+
+                            <br><br>
+                            Our general philosophy was that we preferred more specific position classifications. For instance, we preferred ‘defensive end’ and ‘defensive tackle’ to ‘defensive linemen.’ Favoring specific over broad classification allows us to perform more practical analysis down the road - for instance, lumping cornerbacks and safeties together as ‘defensive backs’ probably doesn’t make much sense given how different their roles are to teams (as seen by the average and maximum earnings; cornerbacks earn more).
+                            <br><br>
+                            So in loading data to the database, when matching players between the data sources (i.e. if ‘Jane Doe’ was drafted in 1998 in the draft data, and ‘Jane Doe’ was paid $500,000 in the salary data in 1998, how do we know if it’s the same Jane Doe), we defaulted the ‘position’ value to the more specific position.
+                            <br><br>
+                            However, we did not always opt for the more specific classification. In the case of nose tackles, we combined them with defensive tackles, as only one source used the ‘nose tackle’ classification (giving us a small sample size) and the difference between nose tackle and defensive tackles is not terribly large (most defensive tackles can play ‘nose tackle’ roles in a pinch). We also chose to combine left tackles and right tackles as ‘tackles’. 
+                            <br><br>
+                            Assigning the correct player ID’s to entries in the salary dataset proved more difficult than I initially anticipated. After running my database loading script and printing out the entries from the salary dataset that could not be matched up to entries in the AV dataset based on a tuple of (player_name, team, year), I obtained a list of around 3000 entries that could not be matched using this tuple. I investigated the list and realized that many of the issues occurred due to name variations - this could be anything from plain misspellings to the use of a nickname in one dataset and a full name in another to varying uses of punctuation and capitalizations in names between the two datasets. I decided to fix this by lower-casing all names and removing all punctuation from them when comparing names between the two datasets. This helped decrease the number of entries that could not be matched up, but there was still more that could be done. Next, I decided to relax the standards for comparing entries between the two tables - if my script couldn’t match up entries based on the aforementioned tuple, then it would try to match up on a different tuple that could plausibly link an entry from the salary table to an entry from the AV table. The order in which I compared tuples is listed below:
+                            <ul>
+                                <li>(player_name, team, year)</li>
+                                <li>(player_name, ‘2TM’, year)
+                                    <ul>
+                                        <li>Since some players played on two teams in the same year and thus their team is listed as ‘2TM’ in the AV dataset</li>
+                                    </ul>
+                                </li>
+                                <li>(player_name, team, 2016) if salary_year > 2016
+                                    <ul>
+                                        <li>For players who are signed beyond 2016 but obviously cannot be in the AV table for seasons past 2016 since they haven’t occurred yet</li>
+                                    </ul>
+                                </li>
+                                <li>(player_name, team, year - 1) and (player_name, team, year + 1)
+                                    <ul>
+                                        <li>For players who were injured or otherwise didn’t play one year but were on the same team the year before or the year after</li>
+                                    </ul>
+                                </li>
+                                <li>(player_name, team)
+                                    <ul>
+                                        <li>If the player was on the team in another year but for some reason doesn’t appear in the AV dataset in that year, the year before it, or the year after it</li>
+                                    </ul>
+                                </li>
+                                <li>(player_name, year)
+                                    <ul>
+                                        <li>If the player was listed as being on a different team in the AV dataset during that year</li>
+                                    </ul>
+                                </li>
+                                <li>(player_name, position)
+                                    <ul>
+                                        <li>If the player is still unmatched, try to match him to any player in the AV dataset that has the same name and the same position as him</li>
+                                    </ul>
+                                </li>
+                                <li>(player_name)
+                                    <ul>
+                                        <li>If the player is still unmatched, try to match him to any entry in the AV dataset that has the same name as him</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            After doing this, I still had about 1000 entries from the salary dataset that did not match up to any entries in the AV dataset. Next, I decided to try to change the names of the remaining entries to see if that would result in a match. I thought of various names that could go by a nickname and their reciprocals and implemented these changes to the remaining entries using an if-else statement comprised of dozens of lines that looked like this:
+                            <br><br>
+                            if first_name == "michael":<br>
+                              first_name = "mike"<br>
+                            elif first_name == "mike":<br>
+                              first_name = "michael"
+                            <br><br>
+                            After changing the names, I tried to match up entries between the two tables again using the sequence of tuples described above. Using this new trick, I was able to get the number of entries that were unmatched to around 800. Finally, I printed out all unmatched entries of players who played in the NFL for 5 seasons or more and manually changed their names in the salary csv to match their names in the AV csv. I was now left with 761 entries who were still unmatched and thus existed in the salary csv but were not inserted into the SQL database due to the fact that they could not be assigned the correct player_id. Although we might decide to change this in the future, for now, we decided that it would be best to leave these entries out of the salary table in the SQL database for two reasons. First, none of the players listed among those 761 entries played more than 4 seasons in the NFL, meaning they would have minimal impact on our data. Second, 475 of those 761 entries represent entries for cap hits for 2017 and beyond. These entries obviously don’t have associated AV values, and thus are less important for our analysis, which relies on a combination of AV and salary data.
+                            <br><br>
+                            Thus, we now have all of our cleaned data stored in a SQL database. The schema for this database, along with some interesting queries that we ran to gain previously unattainable insight into our data, are highlighted below.
+                            <br><br>
+                        </p>
+                        <h5>
+                        <strong>Schema</strong>
+                        </h5>
+                        <p>
+                        <code>
+                            CREATE TABLE player(
+                                    id int not null,
+                                    name text not null,
+                                    PRIMARY KEY(id));
+                            CREATE TABLE salary(
+                                    year int,
+                                    team_id text,
+                                    player_id int not null,
+                                    position_id int,
+                                    base_salary int,
+                                    signing_bonus int,
+                                    roster_bonus int,
+                                    option_bonus int,
+                                    workout_bonus int,
+                                    restructured_bonus int,
+                                    dead_cap int,
+                                    cap_hit int,
+                                    cap_percentage real,
+                                    FOREIGN KEY (player_id) REFERENCES player(id),
+                                    FOREIGN KEY (team_id) REFERENCES team(id),
+                                    FOREIGN KEY (position_id) REFERENCES position(id));
+                            CREATE TABLE av(
+                                    player_id int not null,
+                                    year int,
+                                    team_id text,
+                                    position_id int,
+                                    age int,
+                                    av_value int,
+                                    games_played int,
+                                    games_started int,
+                                    pro_bowler int,
+                                    all_pro int,
+                                    FOREIGN KEY (player_id) REFERENCES player(id),
+                                    FOREIGN KEY (team_id) REFERENCES team(id),
+                                    FOREIGN KEY (position_id) REFERENCES position(id));
+                            CREATE TABLE team(
+                                    id text not null,
+                                    name text not null,
+                                    PRIMARY KEY(id));
+                            CREATE TABLE position(
+                                    id int not null,
+                                    name text not null,
+                                    PRIMARY KEY(id));
+                            CREATE TABLE draft(
+                                    year int,
+                                    round int,
+                                    pick int,
+                                    team_id text,
+                                    player_id int not null,
+                                    position_id text,
+                                    age int,
+                                    last_year int,
+                                    games_started int,
+                                    career_av int,
+                                    draft_team_av int,
+                                    games_played int,
+                                    FOREIGN KEY (player_id) REFERENCES player(id),
+                                    FOREIGN KEY (team_id) REFERENCES team(id),
+                                    FOREIGN KEY (position_id) REFERENCES position(id));
+                        </code>
+                        </p>
+                    </div>
                         
                         
                     </div>
