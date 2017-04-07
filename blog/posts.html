@@ -574,7 +574,98 @@
     <h4>
     <strong>Machine Learning</strong>
     </h4>
-    </div>
+    <strong>Process</strong>
+    <p>
+    Preprocessing:
+    <ul>
+    	<li>Removed rows with na's </li>
+    	<li>Remove player names</li>
+    	<li>Remove draft year and last season attributes</li>
+		<li>-Convert the positions into numbers</li>
+		<li>-Convert teams to numbers</li>
+		<li>-Only train on players w/ draft year < 2013 (rookie contract expired)</li>
+		<li>-Bin AV values into quintiles to increase coverage</li>
+	</ul><br>
+	Classifiers:
+	<ul>
+		<li>LinearSVM</li>
+		<li>GaussianNB</li>
+		<li>RandomForest</li>
+	</ul>
+	Objective:
+	<ul>
+		<li>Predict the draft and career av AV of the last draft class (2016)</li>
+	</ul>
+
+	Problems:
+	<ul>
+		<li>Training data is very imbalanced by class (av values); this can lead to issues in training and validation.</li>
+		<li>There aren't enough samples for each actual AV to do anything more than 1-fold cross validation correctly w/o binning</li>>
+		<li>-This means that reasonably precise estimates are outside the realm of possibility given just the current data</li>
+	</ul>
+	Solutions: 
+	<ul>
+		<li>binning AV values into classes, curating a balanced training set</li>
+		<li>Feature reduction signficantly reduces the validation scores of each model but allows for predictions of values other than '1.0'</li>
+	</ul>
+	Future Considerations:
+	<ul>
+		<li>Better feature selection using the player data</li>
+		<li>Better metrics for validation and model selection: ROC-AUC, Stratified K-folds (if not binning)</li>
+		<li>Finding most important features</li>
+		<li>Actually tuning the model parameters</li>
+	</ul>
+
+	Results:<br><br>
+
+	Before binning:
+	<br><br>
+	10-fold cross-validation scores (draft av):<br>
+	SVM: 0.032005565987880805<br>
+	NB: 0.06501431936497812<br>
+	RF: 0.07435215975730411<br>
+	<br><br>
+	10-fold cross-validation scores (career av):<br>
+	SVM: 0.0412899721739324<br>
+	NB: 0.09498994186202343<br>
+	RF: 0.08767307797539262<br>
+	<br><br>
+
+	After binning to quintiles:<br><br>
+
+	10-fold cross-validation scores (draft av):<br>
+	SVM: 0.657467158938556<br>
+	NB: 0.8112754711800976<br>
+	RF: 0.6991879601029802<br>
+	<br><br>
+	10-fold cross-validation scores (career av):<br>
+	SVM: 0.7842956911886227<br>
+	NB: 0.797373072982245<br>
+	RF: 0.8115531835136144<br>
+	<br><br>
+	
+	After binning to quintiles and feature reduction:
+	<br><br>
+	10-fold cross-validation scores (draft av):<br>
+	SVM: 0.7774558692405844<br>
+	NB: 0.7531441254825586<br>
+	RF: 0.5250153144380184<br><br>
+
+	10-fold cross-validation scores (career av):<br>
+	SVM: 0.6373596861243493<br>
+	NB: 0.6222216561817622<br>
+	RF: 0.635673076670976<br>
+	<br>
+	2016 Draft Results:
+	<ul>
+		<li>Random forest is the only one that provides varied and interesting results</li>
+		<li>This makes sense that it is usually one of the best out-of-the-box classifiers</li>
+	</ul>
+	<strong>Interpretation</strong>
+	Our initial interpretation is more related to the process of training our models than it is to the actual results. There are clearly some limitations to our first try at predicting AV using draft data, but it serves as a useful starting point from which we can refine our methodology. One clear limitation of our data is that AV quantile classes are extremely imbalanced with the first (lowest) quintile representing 83% of the data. Having such an imbalanced dataset can prove problematic when training our models because our predictions []. This is also problematic for validation because if the models were to assign all the predicated AV quintiles to be the lowest one, it could still achieve 83% accuracy but fail to accurately classify test data that should belong to one of the other classes. Another difficulty that we encountered with this data is that there isn’t enough coverage for each represented AV value to validate or train the model to any reasonable degree of accuracy. We would need more samples to gain the ability to predict AV values with the integer precision that we desire, however our draft data does encompass the entirety of the available data. This is why we opted to bin the AV values into quintiles (deciles were too granular to solve these problems). Quintiles provided enough coverage for each class to allow us to perform 10-fold cross validation and have enough data to begin to build a model that can discern between the class. However, this doesn’t address the balancing problem. In order to curate a balanced dataset we’ll need to select the n top quintile players, and randomly sample n players from the other quintiles. This will leave us with a balanced, albeit small training set to work from and my improve the performance of the model overall. Additionally, given that the objective of the analysis is to predict draft AV and career AV of the 2016 draft class, we may be able to improve performance by incorporating first-season AV data from each of the players in our dataset. Reducing the features in our dataset reduced our overall validation score, however it also reduced the overfitting that lead to predictions of 1st quintile AV’s for all players in the 2016 draft. Overall the random forest performance model performed the best out-of-the-box (as expected), with naive bayes also performing comparable. The independence assumption needed for naive bayes is reasonable for the feature space that we used to train the model so it makes sense that it would perform decently well. However, all these considerations need to be reevaluated on balanced data and with tuned parameters for each model. This is where we hope to move next. Our initial insights do seem to tell us that Ezekiel Elliott is poised to be a star. [bad dallas pun]
+	</p>
+	</div>
+ 
                         
                         
                     </div>
