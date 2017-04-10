@@ -18,7 +18,7 @@ def load():
     # Create tables
     c.execute('''
             CREATE TABLE player(
-                id int not null,
+                id text not null,
                 name text not null,
                 PRIMARY KEY(id))
                 ''')
@@ -27,7 +27,7 @@ def load():
             CREATE TABLE salary(
                 year int,
                 team_id text,
-                player_id int not null,
+                player_id text not null,
                 position_id int,
                 base_salary int,
                 signing_bonus int,
@@ -45,7 +45,7 @@ def load():
 
     c.execute('''
             CREATE TABLE av(
-                player_id int not null,
+                player_id text not null,
                 year int,
                 team_id text,
                 position_id int,
@@ -69,7 +69,7 @@ def load():
 
     c.execute('''
             CREATE TABLE position(
-                id int not null,
+                id text not null,
                 name text not null,
                 PRIMARY KEY(id))
                 ''')
@@ -81,7 +81,7 @@ def load():
                 round int,
                 pick int,
                 team_id text,
-                player_id int not null,
+                player_id text not null,
                 position_id text,
                 age int,
                 last_year int, 
@@ -98,6 +98,7 @@ def load():
 
     player_data = {}
     player_data_salary = {}
+    player_data_salary_position_year = {}
     player_data_salary_no_year = {}
     player_data_salary_no_team = {}
     player_data_salary_with_position = {}
@@ -219,6 +220,7 @@ def load():
 
             if (player_url, team_id, year) not in av_data_repeats:
                 av_data_repeats[(player_url, team_id, year)] = position_id
+                player_data_salary_position_year[(player_id, year)] = position_id
                 c.execute('''
                     INSERT INTO av
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
@@ -228,6 +230,7 @@ def load():
                 new_position_id = fix_position_id_repeats(curr_position_id, position_id)
                 if new_position_id != curr_position_id:
                     av_data_repeats[(player_url, team_id, year)] = new_position_id
+                    player_data_salary_position_year[(player_id, year)] = new_position_id
                     c.execute('''
                         UPDATE av
                         SET position_id == ?
@@ -267,6 +270,18 @@ def load():
 
                 player_name = first_name + " " + last_name
                 player_id = match_salary_data_with_av(player_name, team_id, year, position_id, player_data_salary, player_data_salary_no_year, player_data_salary_no_team, player_data_salary_with_position, player_data_salary_just_name)
+
+            if player_id == "200455" and team_id == "JAX" and position_id == "ILB" and year == 2012:
+                player_id = "2011185"
+
+            if (player_id, year) in player_data_salary_position_year:
+                position_id = fix_position_id_salary_vs_av(position_id, player_data_salary_position_year[(player_id, year)])
+
+            c.execute('''
+                UPDATE av
+                SET position_id == ?
+                WHERE player_id = ? AND year = ?''',
+                (position_id, player_id, year))
 
             if player_id is None:
                 if player_name in player_count:
@@ -379,6 +394,12 @@ def fix_position_id(position_id):
         position_id = "DT"
     elif position_id == "LT" or position_id == "RT":
         position_id = "T"
+    elif position_id == "KR":
+        position_id = "WR"
+    elif position_id == "FS" or position_id == "SS":
+        position_id = "S"
+    elif position_id == "FB":
+        position_id = "RB"
     return position_id
 
 def fix_position_id_repeats(curr_position_id,position_id):
@@ -391,6 +412,46 @@ def fix_position_id_repeats(curr_position_id,position_id):
     elif curr_position_id == "DB":
         if position_id == "CB" or position_id == "S":
             return position_id
+    elif curr_position_id == "LB":
+        if position_id == "ILB" or position_id == "OLB":
+            return position_id
+
+    return curr_position_id
+
+def fix_position_id_salary_vs_av(curr_position_id,position_id):
+    if curr_position_id == "OL":
+        if position_id == "G" or position_id == "T" or position_id == "C":
+            return position_id
+    elif curr_position_id == "DL":
+        if position_id == "DE" or position_id == "DT":
+            return position_id
+    elif curr_position_id == "DB":
+        if position_id == "CB" or position_id == "S":
+            return position_id
+    elif curr_position_id == "LB":
+        if position_id == "ILB" or position_id == "OLB":
+            return position_id
+    elif (curr_position_id == "ILB" and (position_id == "OLB" or position_id == "DE")) or \
+    (curr_position_id == "OLB" and (position_id == "ILB" or position_id == "DE")):
+        return position_id
+    elif (curr_position_id == "S" and position_id == "CB") or (curr_position_id == "CB" and position_id == "S"):
+        return position_id
+    elif (curr_position_id == "G" and (position_id == "T" or position_id == "C")) or \
+    (curr_position_id == "T" and (position_id == "G" or position_id == "C")) or \
+    (curr_position_id == "C" and (position_id == "T" or position_id == "G")):
+        return position_id
+    elif (curr_position_id == "DE" and position_id == "DT") or (curr_position_id == "DT" and position_id == "DE"):
+        return position_id
+    elif (curr_position_id == "RB" and position_id == "WR") or (curr_position_id == "WR" and position_id == "RB"):
+        return position_id
+    elif (curr_position_id == "K" and position_id == "P") or (curr_position_id == "P" and position_id == "K"):
+        return position_id
+    elif (curr_position_id == "WR" and position_id == "QB") or (curr_position_id == "QB" and position_id == "WR"):
+        return position_id
+    elif (curr_position_id == "WR" and position_id == "CB") or (curr_position_id == "CB" and position_id == "WR"):
+        return position_id
+    elif (curr_position_id == "WR" and position_id == "S") or (curr_position_id == "S" and position_id == "WR"):
+        return position_id
 
     return curr_position_id
 
