@@ -1,0 +1,27 @@
+id,name
+C,Center
+CB,Cornerback
+DB,"Defensive Back"
+DE,"Defensive End"
+DL,"Defensive Line"
+DT,"Defensive Tackle"
+FB,Fullback
+FS,"Free Safety"
+G,Guard
+ILB,"Inside Linebacker"
+K,Kicker
+LB,Linebacker
+LS,"Long Snapper"
+OL,"Offensive Line"
+OLB,"Outside Linebacker"
+P,Punter
+QB,Quarterback
+RB,"Running Back"
+S,Safety
+SS,"Strong Safety"
+T,Tackle
+TE,"Tight End"
+WR,"Wide Receiver"
+COA,Coach
+KR,"Kick Returner"
+PR,"Punt Returner"
