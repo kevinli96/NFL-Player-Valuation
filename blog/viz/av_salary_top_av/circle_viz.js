@@ -34,7 +34,7 @@ var height = 400 - margin.top - margin.bottom;
 
 // Various scales
 var xScale = d3.scaleLinear().domain([0, 24200000]).range([0, width]),
-    yScale = d3.scaleLinear().domain([-5, 26]).range([height, 0]),
+    yScale = d3.scaleLinear().domain([-7, 26]).range([height, 0]),
     colorScale = d3.scaleOrdinal()
       .domain(["WR", "RB", "S", "CB", "DT", "DE", "T", "G", "TE", "OLB", "ILB", "QB", "LB", "C", "K", "P", "LS"])
       // .range(["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", 
