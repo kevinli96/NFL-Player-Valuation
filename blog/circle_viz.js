@@ -227,10 +227,10 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
 
   svg.append("g")
     .attr("class", "legendLinear")
-    .attr("transform", "translate(20,510)");
+    .attr("transform", "translate(20," + (height - 70) +")");
 
   var legendLinear = d3.legendColor()
-    .shapeWidth(40)
+    .shapeWidth(35)
     .shapeHeight(20)
     .orient('horizontal')
     .scale(colorScale)
