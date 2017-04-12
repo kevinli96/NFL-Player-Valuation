@@ -110,7 +110,7 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
   // Step 4: Plot dots //
   ///////////////////////
 
-  opacity_map = {"WR": 1, "RB": 1, "S": 1, "CB": 1, "DT": 1, "DE": 1, "T": 1, "G": 1, "TE": 1, "OLB": 1, "ILB": 1, "QB": 1, "LB": 1, "C": 1, "K": 1, "P": 1, "LS": 1};
+  display_map = {"WR": "initial", "RB": "initial", "S": "initial", "CB": "initial", "DT": "initial", "DE": "initial", "T": "initial", "G": "initial", "TE": "initial", "OLB": "initial", "ILB": "initial", "QB": "initial", "LB": "initial", "C": "initial", "K": "initial", "P": "initial", "LS": "initial"};
   active_map =  {"WR": true, "RB": true, "S": true, "CB": true, "DT": true, "DE": true, "T": true, "G": true, "TE": true, "OLB": true, "ILB": true, "QB": true, "LB": true, "C": true, "K": true, "P": true, "LS": true};
 
   function add_dots(year) {
@@ -134,7 +134,7 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
         }
       })
       .style("fill", function(d) {return colorScale(color(d));})
-      .style("opacity", function(d) {return opacity_map[color(d)]});
+      .style("display", function(d) {return display_map[color(d)]});
 
     dot.sort(function(a, b) {
       return radius(b) - radius(a);
@@ -238,12 +238,12 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
     .on("cellclick", function(d){
       d3.selectAll("." + d).classed("active", !d3.selectAll("." + d).classed("active"));
       if (d3.selectAll("." + d).classed("active")) {
-        d3.selectAll("." + d).style("opacity", 1);
-        opacity_map[d] = 1;
+        d3.selectAll("." + d).style("display", "initial");
+        display_map[d] = "initial";
         active_map[d] = true;
       } else {
-        d3.selectAll("." + d).style("opacity", 0);
-        opacity_map[d] = 0;
+        d3.selectAll("." + d).style("display", "none");
+        display_map[d] = "none";
         active_map[d] = false;
       }
     });
