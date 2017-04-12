@@ -686,13 +686,43 @@
                         <strong>Introduction</strong>
                         </h4>
                         <h4>
-                        <strong>Integration</strong>
+                        <strong>Data Integration</strong>
                         </h4>
                         <h4>
                         <strong>Visualizations</strong>
                         </h4>
                         <p>
-                        In order to create the following visualizations, we started with the stencil code we had been given for the first part of the d3 assignment and altered it to fit the data we wanted to display. We figured it would be useful to be able to compare the AV values and salaries of players at different positions. Since it would be visually unappealing and not useful to display every player at every position, we decided to show a more narrow dataset - specifically the top 10% of players at each position based on their AV value in a given season in the first chart and the top 10% of players at each position based on their cap hit in a given season. In both visualizations, the cells representing the positions in the legend can be clicked to toggle the visibility of that position on the visualization and the bottom third of the year label can be scrolled to switch to any year between 2005 and 2016.
+                        In order to create the following visualizations, we started with the stencil code we had been given for the first part of the d3 assignment and altered it to fit the data we wanted to display. We figured it would be useful to be able to compare the AV values and salaries of players at different positions. Since it would be visually unappealing and not useful to display every player at every position, we decided to show a more narrow dataset - specifically the top 10% of players at each position based on their AV value in a given season in the first chart and the top 10% of players at each position based on their cap hit in a given season. In both visualizations, the cells representing the positions in the legend can be clicked to toggle the visibility of that position on the visualization and the bottom half of the year label can be scrolled to switch to any year between 2005 and 2016.
+                        <br>
+                        Although the foundation was there thanks to the d3 stencil code, we still encountered several challenges in creating this visualization. First, we had to figure out how to be able to plot only the top 10% of players at each position based on the parameter we were using. After some trial and error, we realized that the most efficient way to do this would be to use a Python script that utilized a SQL query to extract only the data that we wanted to plot from our database and write it into a CSV file that we could read with d3. The important part of this Python script looked like this for the first visualization:
+<!-- HTML generated using hilite.me --><div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    data <span style="color: #666666">=</span> []
+    <span style="color: #007020; font-weight: bold">for</span> year <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">2005</span>,<span style="color: #40a070">2017</span>):
+        <span style="color: #007020; font-weight: bold">for</span> i <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #007020">len</span>(positions)):
+            rows <span style="color: #666666">=</span> c<span style="color: #666666">.</span>execute(<span style="color: #4070a0">&#39;&#39;&#39;</span>
+<span style="color: #4070a0">                    select distinct name, av.av_value, av.position_id, salary.cap_hit, av.year, av.team_id, av.age </span>
+<span style="color: #4070a0">                    from av, player, salary </span>
+<span style="color: #4070a0">                    where av.position_id = ? and av.player_id = player.id and salary.player_id = player.id and av.year = salary.year and av.year = ?</span>
+<span style="color: #4070a0">                    order by av.position_id, av_value desc </span>
+<span style="color: #4070a0">                    limit (select count(player_id) from av where position_id = ? and year = ? group by position_id)/10&#39;&#39;&#39;</span>,
+                    (positions[i],year,positions[i],year))
+            data<span style="color: #666666">.</span>extend(rows)
+</pre></div>
+
+                        And like this for the second visualization:
+<!-- HTML generated using hilite.me --><div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    data <span style="color: #666666">=</span> []
+    <span style="color: #007020; font-weight: bold">for</span> year <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">2005</span>,<span style="color: #40a070">2017</span>):
+        <span style="color: #007020; font-weight: bold">for</span> i <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #007020">len</span>(positions)):
+            rows <span style="color: #666666">=</span> c<span style="color: #666666">.</span>execute(<span style="color: #4070a0">&#39;&#39;&#39;</span>
+<span style="color: #4070a0">                    select distinct name, av.av_value, av.position_id, salary.cap_hit, av.year, av.team_id, av.age </span>
+<span style="color: #4070a0">                    from av, player, salary </span>
+<span style="color: #4070a0">                    where av.position_id = ? and av.player_id = player.id and salary.player_id = player.id and av.year = salary.year and av.year = ?</span>
+<span style="color: #4070a0">                    order by av.position_id, cap_hit desc </span>
+<span style="color: #4070a0">                    limit (select count(player_id) from av where position_id = ? and year = ? group by position_id)/10&#39;&#39;&#39;</span>,
+                    (positions[i],year,positions[i],year))
+            data<span style="color: #666666">.</span>extend(rows)
+</pre></div>
+                        <br>
+                        After this was completed, we had to figure out how to adapt the stencil code to work with CSV files (since we used a JSON file in the assignment), how to add a legend, how to make that legend clickable, and how to make a position's visibility remain unchanged even as the year was changed by moving the mouse over the year label. Adapting the code to work with CSV files required a lot of trial and error and googling. Adding a legend was done with an external d3 library called d3-legend, which can be read more about at <a href="http://d3-legend.susielu.com/">d3-legend.susielu.com</a>. This library also allowed us to make certain events happen when cells in the legend where clicked. Playing around with the visibility of certain positions when their cells were clicked in the legend also required a lot of trial and error and googling, but was eventually accomplished after careful examination of several of Mike Bostock's d3 examples. Finally, getting the visualizations up and running on the blog was harder than anticipated, but we were eventually able to acheive it by using an iframe rather than embedding it directly in the html.
                         <br>
                         <h4> AV vs. Salary (top 10% in each position based on AV value) </h4>
                         <iframe sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="./viz/av_salary_top_av/visualizations.html" marginwidth="0" marginheight="0" style="height:420px; width:825px; border:none;" scrolling="no">

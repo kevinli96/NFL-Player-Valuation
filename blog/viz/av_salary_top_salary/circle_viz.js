@@ -157,12 +157,12 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
 
   var overlay = svg.append("rect")
       .attr("x", box.x)
-      .attr("y", box.y + (2*box.height)/3)
+      .attr("y", box.y + box.height/2 + 10)
       .attr("transform",
             "translate(" + (width - margin.right - 200) + " ," +
                            (height - 27) + ")")
       .attr("width", box.width)
-      .attr("height", box.height/3)
+      .attr("height", box.height/2 - 10)
       .attr("class", "overlay")
       .on("mouseover", enableInteraction);
 
