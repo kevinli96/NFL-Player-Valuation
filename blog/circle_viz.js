@@ -230,8 +230,8 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
     .attr("transform", "translate(20," + (height - 40) +")");
 
   var legendLinear = d3.legendColor()
-    .shapeWidth(25)
-    .shapeHeight(15)
+    .shapeWidth(27)
+    .shapeHeight(19)
     .orient('horizontal')
     .scale(colorScale)
     .on("cellclick", function(d){
