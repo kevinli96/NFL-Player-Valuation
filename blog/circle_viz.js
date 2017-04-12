@@ -16,7 +16,7 @@ function color(d) {
     return d.position_id
 }
 function radius(d) {
-  return 8
+  return 6
 }
 function key(d) {
     // Return player's name
