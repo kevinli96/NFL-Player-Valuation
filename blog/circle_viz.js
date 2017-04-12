@@ -234,6 +234,7 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
     .shapeHeight(19)
     .orient('horizontal')
     .scale(colorScale)
+    .labelOffset(5)
     .on("cellclick", function(d){
       d3.selectAll("." + d).classed("active", !d3.selectAll("." + d).classed("active"));
       if (d3.selectAll("." + d).classed("active")) {
