@@ -159,7 +159,7 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
       .attr("x", box.x)
       .attr("y", box.y)
       .attr("transform",
-            "translate(" + (width - margin.right - 370) + " ," +
+            "translate(" + (width - margin.right - 200) + " ," +
                            (height - 30) + ")")
       .attr("width", box.width)
       .attr("height", box.height)
