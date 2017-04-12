@@ -162,7 +162,7 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
             "translate(" + (width - margin.right - 200) + " ," +
                            (height - 30) + ")")
       .attr("width", box.width)
-      .attr("height", box.height)
+      .attr("height", box.height/2)
       .attr("class", "overlay")
       .on("mouseover", enableInteraction);
 
