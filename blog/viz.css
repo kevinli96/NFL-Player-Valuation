@@ -1,0 +1,41 @@
+#chart_av_salary text {
+    font: 10px sans-serif;
+}
+
+#chart_av_salary .dot {
+    stroke: #000;
+}
+
+#chart_av_salary .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+#chart_av_salary .label {
+    fill: #777;
+}
+
+#chart_av_salary .year.label {
+    font: 500 120px "Helvetica Neue";
+    fill: #ddd;
+}
+
+#chart_av_salary .year.label.active {
+    fill: #aaa;
+}
+
+#chart_av_salary .overlay {
+    fill: none;
+    pointer-events: all;
+    cursor: ew-resize;
+}
+
+#chart_av_salary path.domain{
+    stroke-opacity: 0;
+}
+
+#chart_av_salary .title.label {
+  font: 40px "Helvetica Neue";
+  fill: #aaa;
+}

@@ -7,6 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Blog Posts</title>
+        <link href="viz.css" rel="stylesheet">
         <!-- Bootstrap Core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Theme CSS -->
@@ -674,9 +675,16 @@
                     	Our initial interpretation is more related to the process of training our models than it is to the actual results. There are clearly some limitations to our first try at predicting AV using draft data, but it serves as a useful starting point from which we can refine our methodology. One clear limitation of our data is that AV quantile classes are extremely imbalanced with the first (lowest) quintile representing 83% of the data. Having such an imbalanced dataset can prove problematic when training our models because our predictions []. This is also problematic for validation because if the models were to assign all the predicated AV quintiles to be the lowest one, it could still achieve 83% accuracy but fail to accurately classify test data that should belong to one of the other classes. Another difficulty that we encountered with this data is that there isn’t enough coverage for each represented AV value to validate or train the model to any reasonable degree of accuracy. We would need more samples to gain the ability to predict AV values with the integer precision that we desire, however our draft data does encompass the entirety of the available data. This is why we opted to bin the AV values into quintiles (deciles were too granular to solve these problems). Quintiles provided enough coverage for each class to allow us to perform 10-fold cross validation and have enough data to begin to build a model that can discern between the class. However, this doesn’t address the balancing problem. In order to curate a balanced dataset we’ll need to select the n top quintile players, and randomly sample n players from the other quintiles. This will leave us with a balanced, albeit small training set to work from and my improve the performance of the model overall. Additionally, given that the objective of the analysis is to predict draft AV and career AV of the 2016 draft class, we may be able to improve performance by incorporating first-season AV data from each of the players in our dataset. Reducing the features in our dataset reduced our overall validation score, however it also reduced the overfitting that lead to predictions of 1st quintile AV’s for all players in the 2016 draft. Overall the random forest performance model performed the best out-of-the-box (as expected), with naive bayes also performing comparable. The independence assumption needed for naive bayes is reasonable for the feature space that we used to train the model so it makes sense that it would perform decently well. However, all these considerations need to be reevaluated on balanced data and with tuned parameters for each model. This is where we hope to move next. Our initial insights do seem to tell us that Ezekiel Elliott is poised to be a star. (Bad Dallas Cowboys pun).
                     	</p>
                     	</div>
- 
-                        
-                        
+             <hr>
+             <div id="blog-post-3">
+                        <h2 class="post-title">
+                        Blog Post 3
+                        </h2>
+                        <h3 class="post-subtitle">
+                        More visualizations and machine learning.
+                        </h3>
+                        <p id="chart_av_salary"></p>
+            </div>
                     </div>
                 </div>
             </div>
@@ -719,6 +727,8 @@
             <script src="js/jqBootstrapValidation.js"></script>
             <script src="js/contact_me.js"></script>
             <script src="script.js"></script>
+            <script src="circle_viz.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
             <!-- Theme JavaScript -->
             <script src="js/clean-blog.min.js"></script>
         </body>
