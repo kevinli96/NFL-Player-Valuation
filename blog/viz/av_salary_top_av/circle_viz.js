@@ -85,7 +85,7 @@ var yAxisLabel = svg.append("text")
 var yearLabel = svg.append("text")
                 .attr("class", "label year")
                 .attr("transform",
-                      "translate(" + (width - margin.right - 200) + " ," +
+                      "translate(" + (width - margin.right - 205) + " ," +
                                      (height - 27) + ")")
                 .text("2005");
 
@@ -159,7 +159,7 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
       .attr("x", box.x)
       .attr("y", box.y + box.height/2 + 10)
       .attr("transform",
-            "translate(" + (width - margin.right - 200) + " ," +
+            "translate(" + (width - margin.right - 205) + " ," +
                            (height - 27) + ")")
       .attr("width", box.width)
       .attr("height", box.height/2 - 10)
