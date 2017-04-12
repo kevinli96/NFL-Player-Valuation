@@ -17,11 +17,11 @@ def create_av_salary_viz():
                     select distinct name, av.av_value, av.position_id, salary.cap_hit, av.year, av.team_id, av.age 
                     from av, player, salary 
                     where av.position_id = ? and av.player_id = player.id and salary.player_id = player.id and av.year = salary.year and av.year = ?
-                    order by av.position_id, av_value desc limit (select count(player_id) from av where position_id = ? and year = ? group by position_id)/10''',
+                    order by av.position_id, cap_hit desc limit (select count(player_id) from av where position_id = ? and year = ? group by position_id)/10''',
                     (positions[i],year,positions[i],year))
             data.extend(rows)
 
-    with open('..\\viz\\av_salary_viz_test.csv', 'w', encoding='utf-8', newline='') as f:
+    with open('..\\blog\\viz\\av_salary_top_salary\\av_salary_viz_test.csv', 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(["name","av_value","position_id","cap_hit","year","team_id","age"])
         for entry in data:
