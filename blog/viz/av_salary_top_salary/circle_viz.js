@@ -227,7 +227,7 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
 
   svg.append("g")
     .attr("class", "legendLinear")
-    .attr("transform", "translate(20," + (height - 50) +")");
+    .attr("transform", "translate(20," + (height - 49) +")");
 
   var legendLinear = d3.legendColor()
     .shapeWidth(27)
