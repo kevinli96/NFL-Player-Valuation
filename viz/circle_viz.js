@@ -37,9 +37,9 @@ var xScale = d3.scaleLinear().domain([0, 24200000]).range([0, width]),
     yScale = d3.scaleLinear().domain([-5, 26]).range([height, 0]),
     colorScale = d3.scaleOrdinal()
       .domain(["WR", "RB", "S", "CB", "DT", "DE", "T", "G", "TE", "OLB", "ILB", "QB", "LB", "C", "K", "P", "LS"])
-      // .range(["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", 
+      // .range(["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6",
       //   "#6a3d9a", "#ffff99", "#b15928", "#8dd3c7", "#ffffb3", "#bebada", "#fb8072", "#80b1d3"]);
-      .range(["#3957ff", "#d3fe14", "#c9080a", "#fec7f8", "#0b7b3e", "#0bf0e9", "#c203c8", 
+      .range(["#3957ff", "#d3fe14", "#c9080a", "#fec7f8", "#0b7b3e", "#0bf0e9", "#c203c8",
         "#fd9b39", "#888593", "#906407", "#98ba7f", "#fe6794", "#10b0ff", "#ac7bff", "#fee7c0", "#964c63", "#1da49c"]);
 
 // The x & y axes
@@ -113,6 +113,12 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
   opacity_map = {"WR": 1, "RB": 1, "S": 1, "CB": 1, "DT": 1, "DE": 1, "T": 1, "G": 1, "TE": 1, "OLB": 1, "ILB": 1, "QB": 1, "LB": 1, "C": 1, "K": 1, "P": 1, "LS": 1};
   active_map =  {"WR": true, "RB": true, "S": true, "CB": true, "DT": true, "DE": true, "T": true, "G": true, "TE": true, "OLB": true, "ILB": true, "QB": true, "LB": true, "C": true, "K": true, "P": true, "LS": true};
 
+  var playerLabel = svg.append("text")
+      .attr("class", "label")
+      .attr("text-anchor", "start")
+      .style("font-size", 20)
+      .attr("transform", "translate(" + margin.left / 3 + "," + (height - margin.bottom * 3) + ")")
+
   function add_dots(year) {
 
     svg.selectAll("circle").remove();
@@ -144,6 +150,13 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
     dot.append("title").
         text(function(d) {return key(d)});
 
+    d3.selectAll("circle").on("mouseover", function(d, i) {
+        playerLabel.style("display", "inherit")
+        playerLabel.text(key(d))
+    }).on("mouseout", function(d) {
+        playerLabel.style("display", "none")
+    });
+
   }
 
   add_dots(2005);
@@ -165,6 +178,7 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
       .attr("height", box.height)
       .attr("class", "overlay")
       .on("mouseover", enableInteraction);
+
 
   ////////////////////////
   // Step 6: Transition //
@@ -251,5 +265,3 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
     .call(legendLinear);
 
 });
-
-
