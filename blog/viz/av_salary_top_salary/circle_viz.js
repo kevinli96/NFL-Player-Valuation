@@ -117,8 +117,12 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
             .attr("class", "label")
             .attr("text-anchor", "start")
             .style("font-size", 20)
-            .attr("transform", "translate(" + margin.left / 3 + "," + (height - margin.bottom * 3) + ")")
-            
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+  var tooltip = d3.select('#chart_av_salary')
+          .append('div')
+          .attr('class', 'tooltip');
+
   function add_dots(year) {
 
     svg.selectAll("circle").remove();
@@ -150,12 +154,21 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
     dot.append("title").
         text(function(d) {return key(d)});
 
-    d3.selectAll("circle").on("mouseover", function(d, i) {
-        playerLabel.style("display", "inherit")
-        playerLabel.text(key(d))
-    }).on("mouseout", function(d) {
-        playerLabel.style("display", "none")
-    });
+        d3.selectAll(".dot").on("mouseover", function(d, i) {
+            playerLabel.style("display", "inherit")
+            playerLabel.text(key(d))
+            tooltip.style('display', 'block');
+            tooltip.append("div")
+                .text(key(d))
+            tooltip
+                .style("left", (d3.event.pageX - 30) + "px")
+                .style("top", (d3.event.pageY - 30) + "px");
+        }).on("mouseout", function(d) {
+          console.log("mouseout")
+            playerLabel.style("display", "none")
+            tooltip.style('display', 'none');
+            tooltip.selectAll("div").remove();
+        });
 
   }
 
@@ -197,6 +210,8 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
 
     // Cancel the current transition, if any.
     svg.transition().duration(0);
+
+
 
     // For the year overlay, add mouseover, mouseout, and mousemove events
     // that 1) toggle the active class on mouseover and out and 2)
