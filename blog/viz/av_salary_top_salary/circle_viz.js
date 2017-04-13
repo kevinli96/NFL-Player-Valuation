@@ -16,7 +16,7 @@ function color(d) {
     return d.position_id
 }
 function radius(d) {
-  return 6
+  return radiusScale(d.age);
 }
 function key(d) {
     // Return player's name
@@ -33,6 +33,8 @@ var width = 768 - margin.right;
 var height = 420 - margin.top - margin.bottom;
 
 // Various scales
+
+var radiusScale = d3.scaleLinear().domain([20, 35]).range([4, 7]);
 var xScale = d3.scaleLinear().domain([0, 24200000]).range([0, width]),
     yScale = d3.scaleLinear().domain([-5, 26]).range([height, 0]),
     colorScale = d3.scaleOrdinal()
@@ -160,6 +162,12 @@ d3.csv("av_salary_viz_test.csv", function(av_data) {
             tooltip.style('display', 'block');
             tooltip.append("div")
                 .text(key(d))
+            tooltip.append("div")
+                .text("Cap hit: " + x(d))
+            tooltip.append("div")
+                .text("AV: " + y(d))
+            tooltip.append("div")
+                .text("Position: " + color(d))
             tooltip
                 .style("left", (d3.event.pageX - 30) + "px")
                 .style("top", (d3.event.pageY - 30) + "px");
