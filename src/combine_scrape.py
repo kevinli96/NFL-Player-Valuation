@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import csv
 import sys 
 
-def combine_scrape(csv_file, team_csv_file):
+def combine_scrape(csv_file):
     url = "http://nflcombineresults.com/nflcombinedata_expanded.php?year={year}&pos=&college="
     with open(csv_file, 'w', newline="") as myfile:
         wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
@@ -63,6 +63,8 @@ def pageScrape(url, year, wr, duplicate_set):
             dash = 0
             if vals[9].string is not None:
                 dash = vals[9].string
+                if dash[0] == '*':
+                    dash = dash[1:]
 
             bench = 0
             if vals[10].string is not None:
@@ -88,7 +90,7 @@ def pageScrape(url, year, wr, duplicate_set):
             if vals[15].string is not None:
                 long_shuttle = vals[15].string
 
-            player_tuple = (player, college, position, height, weight, hand_size, arm_length, wonderlic, dash, bench, vert_leap, broad_jump, shuttle, cone, long_shuttle)
+            player_tuple = (year, player, college, position, height, weight, hand_size, arm_length, wonderlic, dash, bench, vert_leap, broad_jump, shuttle, cone, long_shuttle)
 
             if player_tuple not in duplicate_set:
                 duplicate_set.add(player_tuple)
@@ -99,5 +101,4 @@ def pageScrape(url, year, wr, duplicate_set):
 
 if __name__ == '__main__':
     roster_csv_file = "../data/combine_data.csv"
-    team_csv_file = "../data/team_data_roster_scraping.csv"
-    combine_scrape(roster_csv_file, team_csv_file)
+    combine_scrape(roster_csv_file)

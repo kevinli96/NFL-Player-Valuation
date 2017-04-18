@@ -11,41 +11,39 @@ def load():
     c.execute('DROP TABLE IF EXISTS "player";')
     c.execute('DROP TABLE IF EXISTS "combine";')
     c.execute('DROP TABLE IF EXISTS "av";')
-    c.execute('DROP TABLE IF EXISTS "team";')
-    c.execute('DROP TABLE IF EXISTS "position";')
-    c.execute('DROP TABLE IF EXISTS "draft";')
 
     # Create tables
     c.execute('''
             CREATE TABLE player(
-                id text not null,
+                id int not null,
                 name text not null,
                 PRIMARY KEY(id))
                 ''')
 
     c.execute('''
-            CREATE TABLE salary(
+            CREATE TABLE combine(
                 year int,
-                team_id text,
-                player_id text not null,
-                position_id int,
-                base_salary int,
-                signing_bonus int,
-                roster_bonus int,
-                option_bonus int,
-                workout_bonus int,
-                restructured_bonus int,
-                dead_cap int,
-                cap_hit int,
-                cap_percentage real,
-                FOREIGN KEY (player_id) REFERENCES player(id),
-                FOREIGN KEY (team_id) REFERENCES team(id),
-                FOREIGN KEY (position_id) REFERENCES position(id))
+                player_id int not null, 
+                college text, 
+                position text, 
+                height int, 
+                weight int, 
+                hand_size real, 
+                arm_length real, 
+                wonderlic int, 
+                40_yard_dash real, 
+                bench int, 
+                vert_leap real, 
+                broad_jump real, 
+                shuttle real, 
+                3cone real, 
+                60_yard_shuttle real,
+                FOREIGN KEY (player_id) REFERENCES player(id))
                 ''')
 
     c.execute('''
             CREATE TABLE av(
-                player_id text not null,
+                player_id int not null,
                 year int,
                 team_id text,
                 position_id int,
@@ -56,82 +54,16 @@ def load():
                 pro_bowler int,
                 all_pro int,
                 FOREIGN KEY (player_id) REFERENCES player(id),
-                FOREIGN KEY (team_id) REFERENCES team(id),
-                FOREIGN KEY (position_id) REFERENCES position(id))
-                ''')
-
-    c.execute('''
-            CREATE TABLE team(
-                id text not null,
-                name text not null,
-                PRIMARY KEY(id))
-                ''')
-
-    c.execute('''
-            CREATE TABLE position(
-                id text not null,
-                name text not null,
-                PRIMARY KEY(id))
-                ''')
-
-    #last_year is equal to last year they played, current year if still playing, blank if never played?
-    c.execute('''
-            CREATE TABLE draft(
-                year int,
-                round int,
-                pick int,
-                team_id text,
-                player_id text not null,
-                position_id text,
-                age int,
-                last_year int, 
-                games_started int,
-                career_av int,
-                draft_team_av int,
-                games_played int,
-                FOREIGN KEY (player_id) REFERENCES player(id),
-                FOREIGN KEY (team_id) REFERENCES team(id),
-                FOREIGN KEY (position_id) REFERENCES position(id))
+                FOREIGN KEY (team_id) REFERENCES team(id))
                 ''')
 
     conn.commit()
 
     player_data = {}
-    player_data_salary = {}
-    player_data_salary_position_year = {}
-    player_data_salary_no_year = {}
-    player_data_salary_no_team = {}
-    player_data_salary_with_position = {}
-    player_data_salary_just_name = {}
-    undrafted_player_data = {}
-    undrafted_year = '0000'
-    undrafted_pick = 1
+    player_map = {}
+    id_count = 0
 
-    with open('../data/team_data_no_old_teams.csv', 'r', encoding='utf-8') as csvfile:
-        csv_reader = csv.reader(csvfile)
-        next(csv_reader, None)
-        for row in csv_reader:
-            team_id = row[0]
-            team_name = row[1]
-
-            c.execute('''
-                INSERT INTO team
-                VALUES (?, ?)''',
-                (team_id,team_name))
-
-    with open('../data/position_data.csv', 'r', encoding='utf-8') as csvfile:
-        csv_reader = csv.reader(csvfile)
-        next(csv_reader, None)
-        for row in csv_reader:
-            position_id = row[0]
-            position_name = row[1]
-
-            c.execute('''
-                INSERT INTO position
-                VALUES (?, ?)''',
-                (position_id,position_name))
-
-    with open('../data/draft_data.csv', 'r', encoding='utf-8') as csvfile:
+    with open('../data/combine_data_pfr.csv', 'r', encoding='utf-8') as csvfile:
         csv_reader = csv.reader(csvfile)
         next(csv_reader, None)
         for row in csv_reader:
