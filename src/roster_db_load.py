@@ -187,9 +187,15 @@ def load():
             if player_id is not None:
                 c.execute('''
                     UPDATE rosters
-                    SET position == ? AND other_position = ?
+                    SET position == ?
                     WHERE player_id = ? AND year = ? AND team_id = ?''',
-                    (position, position, player_id, year, team_id))
+                    (position, player_id, year, team_id))
+
+                c.execute('''
+                    UPDATE rosters
+                    SET other_position == ?
+                    WHERE player_id = ? AND year = ? AND team_id = ?''',
+                    (position, player_id, year, team_id))
 
     with open('../data/NFLStandings.csv', 'r') as csvfile:
         csv_reader = csv.reader(csvfile)
@@ -238,7 +244,8 @@ def fix_team_id(team_id, year):
     return team_id
 
 def fix_position_id(position_id):
-    position_id.lower()
+    position_id = position_id.lower()
+
     if position_id == "nt":
         position_id = "DT"
     elif position_id == "lt" or position_id == "rt" or position_id == "t":
