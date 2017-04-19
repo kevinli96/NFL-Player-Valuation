@@ -3,7 +3,7 @@ year,team,player,position,birthdate,college
 1978,LAR,Eddie Brown,DB,2/19/1952,Tennessee  
 1978,LAR,Bob Brudzinski,LB,1/1/1955,Ohio State  
 1978,LAR,Cullen Bryant,RB,5/20/1951,Colorado  
-1978,LAR,John Cappelletti,RB,6/9/1952,Penn State  
+1978,LAR,John Cappelletti,RB,8/9/1952,Penn State  
 1978,LAR,Frank Corral,K,6/16/1955,UCLA  
 1978,LAR,Nolan Cromwell,DB,1/30/1955,Kansas  
 1978,LAR,Anthony Davis,RB,9/8/1952,Southern California  
@@ -5621,7 +5621,7 @@ year,team,player,position,birthdate,college
 1981,SFO,John Harty,DT,12/17/1958,Iowa  
 1981,SFO,Dwight Hicks,DB,4/5/1956,Michigan  
 1981,SFO,Paul Hofer,RB,5/13/1952,Mississippi  
-1981,SFO,Arrington Jones,KR,12/16/1959,Winston-Salem State  
+1981,SFO,Arrington Jones,RB,12/16/1959,Winston-Salem State  
 1981,SFO,Allan Kennedy,OT,1/8/1958,Washington State  
 1981,SFO,Pete Kugler,DT,8/9/1959,Penn State  
 1981,SFO,Amos Lawrence,RB,1/9/1958,North Carolina  
@@ -19877,7 +19877,7 @@ year,team,player,position,birthdate,college
 1990,BUF,Darryl Talley,LB,7/10/1960,West Virginia  
 1990,BUF,Steve Tasker,WR,4/10/1962,Northwestern  
 1990,BUF,Thurman Thomas,RB,5/16/1966,Oklahoma State  
-1990,BUF,Vernon Turner,KR,1/6/1967,Carson-Newman  
+1990,BUF,Vernon Turner,WR,1/6/1967,Carson-Newman  
 1990,BUF,Rick Tuten,P,1/5/1965,Florida State  
 1990,BUF,James Williams,DB,3/30/1967,Fresno State  
 1990,BUF,Will Wolford,OT,5/18/1964,Vanderbilt  
@@ -21098,7 +21098,7 @@ year,team,player,position,birthdate,college
 1991,LAR,Ben Thomas,DE,7/2/1961,Auburn  
 1991,LAR,Rodney Thomas,DB,12/21/1965,Brigham Young  
 1991,LAR,Ernie Thompson,RB,10/25/1969,Indiana  
-1991,LAR,Vernon Turner,KR,1/6/1967,Carson-Newman  
+1991,LAR,Vernon Turner,WR,1/6/1967,Carson-Newman  
 1991,LAR,Karl Wilson,DE,9/10/1964,Louisiana State  
 1991,LAR,Alvin Wright,DT,2/5/1961,Jacksonville State  
 1991,LAR,Robert Young,DE,1/29/1969,Mississippi State  
@@ -22662,7 +22662,7 @@ year,team,player,position,birthdate,college
 1992,LAR,Fred Strickland,LB,8/15/1966,Purdue  
 1992,LAR,Pat Terrell,DB,3/18/1968,Notre Dame  
 1992,LAR,Anthony Thompson,RB,4/8/1967,Indiana  
-1992,LAR,Vernon Turner,KR,1/6/1967,Carson-Newman  
+1992,LAR,Vernon Turner,WR,1/6/1967,Carson-Newman  
 1992,LAR,Leon White,LB,10/4/1963,Brigham Young  
 1992,LAR,Alvin Wright,DT,2/5/1961,Jacksonville State  
 1992,LAR,Robert Young,DE,1/29/1969,Mississippi State  
@@ -24943,7 +24943,7 @@ year,team,player,position,birthdate,college
 1993,DET,Larry Tharpe,OT,11/19/1970,Tennessee State  
 1993,DET,Marty Thompson,TE,12/9/1969,Fresno State  
 1993,DET,Mack Travis,DT,7/3/1970,California  
-1993,DET,Vernon Turner,KR,1/6/1967,Carson-Newman  
+1993,DET,Vernon Turner,WR,1/6/1967,Carson-Newman  
 1993,DET,Andre Ware,QB,7/31/1968,Houston  
 1993,DET,William White,DB,2/19/1966,Ohio State  
 1993,GNB,Edgar Bennett,RB,2/15/1969,Florida State  
@@ -25755,7 +25755,7 @@ year,team,player,position,birthdate,college
 1993,TAM,Broderick Thomas,DE,2/20/1967,Nebraska  
 1993,TAM,Lamar Thomas,WR,2/12/1970,Miami  
 1993,TAM,Pat Tomberlin,OL,1/29/1966,Florida State  
-1993,TAM,Vernon Turner,KR,1/6/1967,Carson-Newman  
+1993,TAM,Vernon Turner,WR,1/6/1967,Carson-Newman  
 1993,TAM,Casey Weldon,QB,2/3/1969,Florida State  
 1993,TAM,Mark Wheeler,DT,4/1/1970,Texas A&M  
 1993,TAM,Jimmy Williams,LB,11/15/1960,Nebraska  
@@ -27324,7 +27324,7 @@ year,team,player,position,birthdate,college
 1994,TAM,Dan Stryzinski,P,5/15/1965,Indiana  
 1994,TAM,Mike Sullivan,OG,12/22/1967,Miami  
 1994,TAM,Lamar Thomas,WR,2/12/1970,Miami  
-1994,TAM,Vernon Turner,KR,1/6/1967,Carson-Newman  
+1994,TAM,Vernon Turner,WR,1/6/1967,Carson-Newman  
 1994,TAM,Casey Weldon,QB,2/3/1969,Florida State  
 1994,TAM,Mark Wheeler,DT,4/1/1970,Texas A&M  
 1994,TAM,Bernard Wilson,DT,8/17/1970,Tennessee State  
@@ -28132,7 +28132,7 @@ year,team,player,position,birthdate,college
 1995,DET,David Sloan,TE,6/8/1972,New Mexico  
 1995,DET,Chris Spielman,LB,10/11/1965,Ohio State  
 1995,DET,Henry Thomas,DT,1/12/1965,Louisiana State  
-1995,DET,Vernon Turner,KR,1/6/1967,Carson-Newman  
+1995,DET,Vernon Turner,WR,1/6/1967,Carson-Newman  
 1995,DET,Sean Vanhorse,DB,7/22/1968,Howard  
 1995,DET,Mike Wells,DT,1/6/1971,Iowa  
 1995,DET,Doug Widell,OG,9/23/1966,Boston College  
@@ -28203,7 +28203,7 @@ year,team,player,position,birthdate,college
 1995,IND,Jason Belser,DB,5/28/1970,Oklahoma  
 1995,IND,Tony Bennett,DE,7/1/1967,Mississippi  
 1995,IND,Cary Blanchard,K,11/5/1968,Oklahoma State  
-1995,IND,Ben Bronson,KR,9/9/1972,Baylor  
+1995,IND,Ben Bronson,WR,9/9/1972,Baylor  
 1995,IND,Ray Buchanan,DB,9/29/1971,Louisville  
 1995,IND,Conrad Clarks,DB,4/21/1969,Northeast Louisiana  
 1995,IND,Mike Cofer,K,2/19/1964,North Carolina State  
@@ -30759,7 +30759,7 @@ year,team,player,position,birthdate,college
 1996,TAM,Larry Ryans,WR,7/28/1971,Clemson  
 1996,TAM,Warren Sapp,DT,12/19/1972,Miami  
 1996,TAM,Todd Scott,DB,1/23/1968,Southwestern Louisiana  
-1996,TAM,Nilo Silvan,KR,10/2/1973,Tennessee  
+1996,TAM,Nilo Silvan,WR,10/2/1973,Tennessee  
 1996,TAM,Herman Smith,DE,1/25/1971,Portland State  
 1996,TAM,Robert Staten,RB,11/23/1969,Jackson State  
 1996,TAM,Darnell Stephens,LB,1/29/1973,Clemson  

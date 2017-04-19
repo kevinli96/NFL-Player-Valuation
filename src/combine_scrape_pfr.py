@@ -34,26 +34,39 @@ def pageScrape(url, year, wr, duplicate_set):
         table_rows = table_body.findAll("tr")
 
     if table_rows is not None:
+
+        print("length = " + str(len(table_rows)))
+
         for elem in table_rows:
             desired_row = []
             vals = elem.findAll('td')
 
-            rank = vals[0].string
-            player = vals[2].a.string
-            url = vals[2].a['href']
-            position = vals[3].string
-            college = vals[5].a.string
-            weight = vals[8].string
+            if len(vals) > 0:
+                player = ""
+                url = ""
 
-            if rank == '200':
-                print('LIMIT')
+                if vals[1].a is not None:
+                    player = vals[1].a.string
+                    url = vals[1].a['href']
+                else:
+                    player = vals[1].string
 
-            player_tuple = (year, player, url, position, college, weight)
+                position = vals[2].string
 
-            if player_tuple not in duplicate_set:
-                duplicate_set.add(player_tuple)
-                desired_row.extend(player_tuple)
-                wr.writerow(desired_row)
+                college = ""
+                if vals[4].a is not None:
+                    college = vals[4].a.string
+                else:
+                    college = vals[4].string
+
+                weight = vals[7].string
+
+                player_tuple = (year, player, url, position, college, weight)
+
+                if player_tuple not in duplicate_set:
+                    duplicate_set.add(player_tuple)
+                    desired_row.extend(player_tuple)
+                    wr.writerow(desired_row)
 
         soup.decompose()
 
