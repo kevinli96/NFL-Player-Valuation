@@ -18,7 +18,7 @@ av <- read.csv("fair_salary.csv")
 
 # check data to make sure each year has a similar number of players
 # i.e. we didn't do anything wrong in the sql
-table(av$k.year)
+table(av$m.year)
 
 # reset column names
 colnames(av) <- c('year', 'id', 'name', 'team_id', 'position_id', 'age', 'av_value', 'draft_year', 'round', 'pick', 'base', 'cap_hit', 'dead_cap')
