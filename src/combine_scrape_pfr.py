@@ -8,7 +8,7 @@ def combine_scrape(csv_file):
             "http://www.pro-football-reference.com/play-index/nfl-combine-results.cgi?request=1&year_min={year}&year_max={year}&height_min=65&height_max=82&weight_min=149&weight_max=375&pos=TE&pos=OT&pos=DE&pos=ILB&pos=OLB&pos=FS&pos=CB&pos=K&pos=P&show=all&order_by=year_id"]
     with open(csv_file, 'w', newline="") as myfile:
         wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-        wr.writerow(['year','player', 'url', 'position', 'college', 'weight'])
+        wr.writerow(['year','player', 'url', 'position', 'college', 'height', 'weight', 'dash', 'vert_leap', 'bench', 'broad', 'cone', 'shuttle'])
         for year in range(2000, 2018):
             for url in urls:
                 duplicate_set = set()
@@ -59,9 +59,37 @@ def pageScrape(url, year, wr, duplicate_set):
                 else:
                     college = vals[4].string
 
+                height = vals[6].string
+                height_split = height.split('-')
+                height_inches = 12*int(height_split[0]) + int(height_split[1])
+
                 weight = vals[7].string
 
-                player_tuple = (year, player, url, position, college, weight)
+                dash = 0
+                if vals[8].string is not None:
+                    dash = vals[8].string
+
+                vert_leap = 0
+                if vals[9].string is not None:
+                    vert_leap = vals[9].string
+
+                bench = 0
+                if vals[10].string is not None:
+                    bench = vals[10].string
+
+                broad = 0
+                if vals[11].string is not None:
+                    broad = vals[11].string
+
+                cone = 0
+                if vals[12].string is not None:
+                    cone = vals[12].string
+
+                shuttle = 0
+                if vals[13].string is not None:
+                    shuttle = vals[13].string
+
+                player_tuple = (year, player, url, position, college, height_inches, weight, dash, vert_leap, bench, broad, cone, shuttle)
 
                 if player_tuple not in duplicate_set:
                     duplicate_set.add(player_tuple)
@@ -71,5 +99,5 @@ def pageScrape(url, year, wr, duplicate_set):
         soup.decompose()
 
 if __name__ == '__main__':
-    roster_csv_file = "../data/combine_data_pfr.csv"
-    combine_scrape(roster_csv_file)
+    combine_csv_file = "../data/combine_data_pfr_with_stats.csv"
+    combine_scrape(combine_csv_file)

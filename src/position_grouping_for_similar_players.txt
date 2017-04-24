@@ -1,0 +1,45 @@
+Position grouping:
+- DE, OLB
+- DT, NT
+- S, FS, SS, DB
+- CB, DB
+- DB: CB, S, FS, SS
+- OLB, ILB, LB
+- OL: C, OG, OT
+- FB, RB
+- DL: DE, DT
+- WR, TE
+
+def fix_position_id(position_id):
+    position_set = None
+
+    if position_id == "NT" or position_id == "DT":
+        position_set = {"DT", "NT", "DL"}
+    elif position_id == "DE" or position_id == "OLB":
+        position_set = {"DE", "OLB", "DL", "LB"}
+    elif position_id == "S" or position_id == "FS" or position_id == "SS":
+        position_set = {"S", "SS", "FS", "DB"}
+    elif position_id == "CB":
+        position_set = {"CB", "DB"}
+    elif position_id == "DB":
+        position_set = position_id = {"S", "SS", "FS", "DB", "CB"}
+    elif position_id == "LB":
+        position_set = {"LB","ILB","OLB"}
+    elif position_id = "ILB":
+        position_set = {"LB","ILB"}
+    elif position_id == "OL":
+        position_set = {"OG","OT","C","OL"}
+    elif position_id == "OG":
+        position_set = {"OG", "OL"}
+    elif position_id == "OT":
+        position_set = {"OT","OL"}
+    elif position_id == "C":
+        position_set = {"C","OL"}
+    elif position_id == "RB" or position_id == "FB":
+        position_set = {"RB","FB"}
+    elif position_id == "DL":
+        position_set = {"DE","DT","DL"}
+    else:
+        position_set = {position_id}
+
+    return position_set

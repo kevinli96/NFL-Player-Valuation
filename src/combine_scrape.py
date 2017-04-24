@@ -90,6 +90,11 @@ def pageScrape(url, year, wr, duplicate_set):
             if vals[15].string is not None:
                 long_shuttle = vals[15].string
 
+            if year == 2017:
+                shuttle_temp = shuttle
+                shuttle = cone
+                cone = shuttle_temp
+
             player_tuple = (year, player, college, position, height, weight, hand_size, arm_length, wonderlic, dash, bench, vert_leap, broad_jump, shuttle, cone, long_shuttle)
 
             if player_tuple not in duplicate_set:

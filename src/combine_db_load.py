@@ -68,7 +68,9 @@ def load():
 
     player_data_url = {}
     player_data_av = {}
+    player_data_av_name = {}
     player_map = {}
+    players_remaining = {}
     id_count = 0
 
     with open('../data/team_data_no_old_teams.csv', 'r', encoding='utf-8') as csvfile:
@@ -83,7 +85,7 @@ def load():
                 VALUES (?, ?)''',
                 (team_id,team_name))
 
-    with open('../data/combine_data_pfr.csv', 'r', encoding='utf-8') as csvfile:
+    with open('../data/combine_data_pfr_with_stats.csv', 'r', encoding='utf-8') as csvfile:
         csv_reader = csv.reader(csvfile)
         next(csv_reader, None)
         for row in csv_reader:
@@ -92,7 +94,14 @@ def load():
             url = row[2]
             position = row[3]
             college = row[4]
-            weight = int(row[5])
+            height = int(row[5])
+            weight = int(row[6])
+            dash = float(row[7])
+            vert = float(row[8])
+            bench = int(row[9])
+            broad = int(row[10])
+            cone = float(row[11])
+            shuttle = float(row[12])
 
             official_player_name = player_name;
             player_name = fix_player_name(player_name)
@@ -101,6 +110,7 @@ def load():
                 player_id = id_count
                 id_count += 1
                 player_map[(player_name, year, weight)] = player_id
+                players_remaining[(player_name, year, weight)] = (year, player_id, college, position, height, weight, 0, 0, 0, dash, bench, vert, broad, shuttle, cone, 0)
 
                 c.execute('''
                     INSERT INTO player
@@ -132,7 +142,7 @@ def load():
             cone = float(row[14])
             long_shuttle = float(row[15])
 
-            official_player_name = player_name;
+            official_player_name = player_name
             player_name = fix_player_name(player_name)
 
             if (player_name, year, weight) not in player_map:
@@ -146,11 +156,19 @@ def load():
                     (player_id, official_player_name))
             else:
                 player_id = player_map[(player_name, year, weight)]
+                del players_remaining[(player_name, year, weight)]
 
             c.execute('''
                 INSERT INTO combine
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
                 (year, player_id, college, position, height, weight, hand_size, arm_length, wonderlic, dash, bench, vert, broad, shuttle, cone, long_shuttle))   
+
+    for key, value in players_remaining.items():
+        print(key[0])
+        c.execute('''
+            INSERT INTO combine
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+            value)
 
     with open('../data/AVdata1995-2016.csv', 'r', encoding='utf-8') as csvfile:
         csv_reader = csv.reader(csvfile)
@@ -175,6 +193,8 @@ def load():
                 player_id = player_data_url[player_url]
             elif (player_name, year) in player_data_av:
                 player_id = player_data_av[(player_name, year)]
+            elif (player_name, 1999) in player_data_av:
+                player_id = player_data_av[(player_name, 1999)]
 
             if player_id is not None:
                 c.execute('''
