@@ -24,8 +24,8 @@ def get_average_AV():
                 counts[i + 1] /= roundCounts[i]
                 counts[i + 1] = round(counts[i + 1], 3)
 
-    print(roundCounts)
-    print(AV_by_position)
+    # print(roundCounts)
+    # print(AV_by_position)
 
     return AV_by_position
 
@@ -33,6 +33,7 @@ def write_to_CSV(AV_by_position):
     with open('draft_data_clean.csv', 'w', encoding='utf-8') as g:
         writer = csv.writer(g)
         writer.writerow(["Position", "Round 1", "Round 2", "Rounds 3-6", "Rounds 7-12"])
+        toWrite = []
         for pos in AV_by_position:
             g1 = AV_by_position[pos].get(1, 0)
             g2 = AV_by_position[pos].get(2, 0)
@@ -43,7 +44,12 @@ def write_to_CSV(AV_by_position):
             for i in range(8, 13):
                 g4 += AV_by_position[pos].get(i, 0)
             if g1 != 0 and g2 != 0 and g3 != 0 and g4 != 0:
-                writer.writerow([pos, g1, g2, g3, g4])
+                toWrite.append([pos, g1, g2, g3, g4])
+                # writer.writerow([pos, g1, g2, g3, g4])
+        print(toWrite)
+        toWrite.sort(key=lambda item: item[1] + item[2] + item[3] + item[4])
+        for row in toWrite:
+            writer.writerow(row)
 
 
 def main():

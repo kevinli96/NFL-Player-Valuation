@@ -1,6 +1,8 @@
+var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 19.5};
+
 var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
+    width = +svg.attr("width") - margin.left,
+    height = +svg.attr("height") + 30,
     innerRadius = 180,
     outerRadius = Math.min(width, height) / 2,
     g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
