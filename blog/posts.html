@@ -730,9 +730,6 @@
                     <h3 class="post-subtitle">
                         More visualizations and machine learning.<br />
                         </h3>
-                    <h3>
-                        <strong>Introduction</strong>
-                      </h3>
                     <hr />
                     <h4>
                         <strong>Data Integration</strong>
@@ -895,7 +892,410 @@
                         </iframe>
                     </p>
                 </div>
+                <hr>
+                <div id="blog-post-4">
+                    <h2 class="post-title">
+                        Blog Post 4
+                        </h2>
+                    <h3 class="post-subtitle">
+                        More data scraping and integration, player similarity engine, and an awesome visualization.<br>
+                    </h3>
+                    <h3>
+                        <strong>Introduction</strong>
+                    </h3>
+                    <p>
+                    The purpose of our project has evolved; before, we were just interested in determining the value of a draft pick and the fair contract value of a player. Now, we'd also like to determine which player a team should draft to maximize their success. This necessitates a three step process. First, we determine which current players are being undervalued and overvalued based on their performance. Next, we determine the career potential of draft prospects by finding past and current players that they are most similar to based on their combine metrics. This allows us to predict their success in the NFL and in turn determine their fair contract value, which we can then compare to the pre-set rookie pay scale. Finally, using a supervised learning approach that utilizes teams’ historic performances, we can determine how a team is currently predicted to perform as well as what piece a team might need to become more successful. 
+                    </p>
+                    <hr />
+                    <h3>
+                        <strong>Data Integration</strong>
+                    </h3>
+                    <p>
+                    This new direction for our project necessitated the acquisition of a lot more data. This required new scripts for scraping, cleaning, and loading the data into databases.
+                    <h4>
+                    Data Scraping
+                    </h4>
+                    We needed to scrape the following data from the following sources:
+                    <ul>
+                        <li></li>
+                    </ul>
+                    <h4>
+                    Data Cleaning and Database Loading
+                    </h4>
+                    Once all of this data was scraped it needed to be cleaned so that it would be consistent with our existing data and within the databases that it was loaded into. We decided to load the data into two separate databases that would be utilized for different parts of our project:
+                    <ul>
+                    <li><strong>Roster Database:</strong><br> This database contains every team's full roster from every season between 1978 and 2016 inclusive, AV data from 1978 to 2016, and standings data from 1978 to 2016 - both how many wins each team had in the regular season as well as how far teams went in the playoffs. We decided to start with 1978 since that was the first year that the NFL had a 16 game season. In order to be able to merge the roster data with the AV data, we had to pull the roster data from two different sources, pro-football-reference.com and footballdb.com. The reason for this is that the former contains information that would allow us to assign the same player ID to the same player in the roster data and the AV data but doesn't have consistent position information, while the latter has consistent position information but does not allow us to assign player IDs accurately. The standings data also came from pro-football-reference.com and only had to be minimally cleaned to ensure that the team IDs matched the IDs that we had been using for the rest of our data.</li>
+                    <li><strong>Combine Database:</strong><br> This database contains the combine metrics of every player that participated in the combine from 1999 to 2017 (since we couldn't find combine data that went further back) as well as AV data from 1999 to 2016. As with the roster data, the combine data had to be scraped from two sources, pro-football-reference.com and nflcombineresults.com. Once again, the reason for this is that the former contains information that would allow us to assign the same player ID to the same player in the combine data and the AV data but is missing several combine metrics, while the latter lists several more combine metrics but does not allow us to assign player IDs accurately and also is missing some players that appear in the former. Thus, merging these two datasets together required a process in which the pro-football-reference.com combine data was looped over to assign player IDs to all of the players in the dataset, then the nflcombineresults.com data was looped over and each player in it was assigned his player ID from the pro-football-reference.com data and inserted into the database with all the metrics that were listed, and then the remaining players who were in the pro-football-reference.com dataset but not in the nflcombineresults.com dataset were inserted into the database and their missing combine metrics were listed as 0s.</li>
+                    </ul>
+                    </p>
+                    <h3>
+                        <strong>Player Similarity Engine</strong>
+                    </h3>
+                    <p>
+                    <h4>
+                    Querying the Database
+                    </h4>
+                    In order to acquire the training data and testing data in well-formatted CSV files that could be used with our similar player engine, we had to query our combine database and output the results into CSV files. The training data consists of all players that have combine metrics from 1999 to 2016 along with their career seasonal AV, which we compute by dividing a player's career AV by the number of years he played. This accounts for players who were recently drafted and thus don't have high career AVs but have still been productive during their time in the NFL. The test data can be anything as long as it follows the same format defined by the query below. This means that you can use our engine to predict a single player's similar players and project career seasonal AV as well as those of an entire draft class. You define the training data by feeding a CSV into our engine that contains the player/s you want to analzye. The queries used to acquire each set of data are listed below.
+                    <br><br>
+                    <strong>Training data:</strong><br><br>
+                    <!-- HTML generated using hilite.me --><div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">sqlite3 -header -csv combine_data.db 
+<span style="color: #4070a0">&quot;select name, sum_av*1.0/count_av, combine.* </span>
+<span style="color: #4070a0">from player, combine, </span>
+<span style="color: #4070a0">    (select player_id, sum(av_value) as sum_av, count(player_id) as count_av </span>
+<span style="color: #4070a0">    from av group by player_id) as av_sum </span>
+<span style="color: #4070a0">where combine.player_id = player.id and combine.player_id = av_sum.player_id;&quot;</span> 
+&gt; ../data/similar_players_data.csv
+</pre></div>
+                    <br>
+                    <strong>Testing data:</strong><br><br>
+                    <!-- HTML generated using hilite.me --><div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">sqlite3 -header -csv combine_data.db 
+<span style="color: #4070a0">&quot;select name, combine.* </span>
+<span style="color: #4070a0">from player, combine </span>
+<span style="color: #4070a0">where year = 2017 and player.id = combine.player_id;&quot;</span> 
+&gt; ../data/combine_players_2017.csv
+</pre></div>
+<br>
+                    <h4>
+                    Player Similarity Engine
+                    </h4>
+                    This program uses sklearn's neighbors package to perform a k nearest neighbors algorithm in order to find the nearest neighbors to the test data that is fed into it. As described above, its training data is the combine metrics of all players that participated in the NFL combine between 1999 and 2016. It then uses these metrics to determine which of these players is most similar to the players being passed in as the test data by finding the total distance between the combine metrics of each player in the test data and the combine metrics of the players in the training data. The engine takes five flags as arguments: training, test, k, pos, and zero. The first two specify the csv files that contain the training data and the test data. These are optional and default to similar_players_data.csv and test_players.csv respectively. The former should almost never have to be changed, while the latter can be altered depending on which players you want to find the nearest neighbors to. The k flag specifies how many nearest neighbors the engine should return. It defaults to 5. The pos flag specifies whether you only want the engine to return players with the same (or similar) position to that of the player being tested. It can be set to True or False, and defaults to False. The zero flag specifies if you want the engine to ignore combine metrics that are equal to 0 when finding a player's nearest neighbors. It can be set to True or False, and defaults to False.
+                    <br><br>
+                    <h4>
+                    Insights
+                    </h4>
+                    We ran the similar players engine on the 2017 QB class to see whether our results agreed with the experts' opinions. We ran it once with the zero flag set to True and once with the zero flag set to False to try to determine which returned results that were better aligned with the general concensus regarding these players' NFL potential. Please note that changing the flag definitely alters the result, but neither result completely aligns with the experts' opinions. This can be explained by the fact that various other factors that we didn't account for in our model - factors such as college stats, personality, and off-field behavior - go into deciding the NFL potential of a prospect. Still the engine does appear to place many of this year's top QB prospects within the top half of the list of predicted seasonal AVs in both sets of results (with the obvious exception of Mitchell Trubisky). Please also note that changing the number of neighbors obviously changes the results as well, but for the sake of being concise, we decided to only show the results with k set to 3. The results are below. 
+                    <br><br>
+                    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">&gt;py -3 similar_players.py -pos True -k 3
+Similar players to (&#39;C.J. Beathard&#39;, &#39;QB&#39;):
+(&#39;Thaddeus Lewis&#39;, &#39;2&#39;, &#39;QB&#39;)
+(&#39;Chandler Harnish&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Kevin Hogan&#39;, &#39;1&#39;, &#39;QB&#39;)
 
+Predicted average seasonal AV:
+1.0
+
+Similar players to (&#39;Joshua Dobbs&#39;, &#39;QB&#39;):
+(&#39;Tyrod Taylor&#39;, &#39;4.833333333&#39;, &#39;QB&#39;)
+(&#39;Marcus Mariota&#39;, &#39;11&#39;, &#39;QB&#39;)
+(&#39;Scott Tolzien&#39;, &#39;0.75&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+5.527777777666667
+
+Similar players to (&#39;Jerod Evans&#39;, &#39;QB&#39;):
+(&#39;Colin Kaepernick&#39;, &#39;8.166666667&#39;, &#39;QB&#39;)
+(&#39;Tom Savage&#39;, &#39;0.5&#39;, &#39;QB&#39;)
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+8.222222222333334
+
+Similar players to (&#39;Brad Kaaya&#39;, &#39;QB&#39;):
+(&#39;Zach Mettenberger&#39;, &#39;0.5&#39;, &#39;QB&#39;)
+(&#39;Garrett Grayson&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Brandon Weeden&#39;, &#39;3.75&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+1.4166666666666667
+
+Similar players to (&#39;Chad Kelly&#39;, &#39;QB&#39;):
+(&#39;Troy Smith&#39;, &#39;1.5&#39;, &#39;QB&#39;)
+(&#39;Matt Barkley&#39;, &#39;0.666666667&#39;, &#39;QB&#39;)
+(&#39;Chris Weinke&#39;, &#39;1.8&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+1.3222222223333333
+
+Similar players to (&#39;DeShone Kizer&#39;, &#39;QB&#39;):
+(&#39;Tom Savage&#39;, &#39;0.5&#39;, &#39;QB&#39;)
+(&#39;Colin Kaepernick&#39;, &#39;8.166666667&#39;, &#39;QB&#39;)
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+8.222222222333334
+
+Similar players to (&#39;Mitch Leidner&#39;, &#39;QB&#39;):
+(&#39;Marcus Mariota&#39;, &#39;11&#39;, &#39;QB&#39;)
+(&#39;Pat Devlin&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+9.0
+
+Similar players to (&#39;Sefo Liufau&#39;, &#39;QB&#39;):
+(&#39;Tom Savage&#39;, &#39;0.5&#39;, &#39;QB&#39;)
+(&#39;Colin Kaepernick&#39;, &#39;8.166666667&#39;, &#39;QB&#39;)
+(&#39;Cody Kessler&#39;, &#39;3&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+3.888888889
+
+Similar players to (&#39;Patrick Mahomes&#39;, &#39;QB&#39;):
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+(&#39;Pat Devlin&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Chandler Harnish&#39;, &#39;0&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+5.333333333333333
+
+Similar players to (&#39;Nathan Peterman&#39;, &#39;QB&#39;):
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+(&#39;Pat Devlin&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Austin Davis&#39;, &#39;2&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+6.0
+
+Similar players to (&#39;Antonio Pipkin&#39;, &#39;QB&#39;):
+(&#39;Zach Mettenberger&#39;, &#39;0.5&#39;, &#39;QB&#39;)
+(&#39;Garrett Grayson&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Brandon Weeden&#39;, &#39;3.75&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+1.4166666666666667
+
+Similar players to (&#39;Cooper Rush&#39;, &#39;QB&#39;):
+(&#39;Tom Savage&#39;, &#39;0.5&#39;, &#39;QB&#39;)
+(&#39;Cody Kessler&#39;, &#39;3&#39;, &#39;QB&#39;)
+(&#39;Austin Davis&#39;, &#39;2&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+1.8333333333333333
+
+Similar players to (&#39;Seth Russell&#39;, &#39;QB&#39;):
+(&#39;Zach Mettenberger&#39;, &#39;0.5&#39;, &#39;QB&#39;)
+(&#39;Garrett Grayson&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Brandon Weeden&#39;, &#39;3.75&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+1.4166666666666667
+
+Similar players to (&#39;Alek Torgersen&#39;, &#39;QB&#39;):
+(&#39;Matt Mauck&#39;, &#39;1&#39;, &#39;QB&#39;)
+(&#39;Matt Barkley&#39;, &#39;0.666666667&#39;, &#39;QB&#39;)
+(&#39;Andrew Walter&#39;, &#39;0.333333333&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+0.6666666666666666
+
+Similar players to (&#39;Deshaun Watson&#39;, &#39;QB&#39;):
+(&#39;Marcus Mariota&#39;, &#39;11&#39;, &#39;QB&#39;)
+(&#39;Pat Devlin&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+9.0
+
+Similar players to (&#39;Davis Webb&#39;, &#39;QB&#39;):
+(&#39;Colin Kaepernick&#39;, &#39;8.166666667&#39;, &#39;QB&#39;)
+(&#39;Pat Devlin&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+8.055555555666666
+
+Similar players to (&#39;Trevor Knight&#39;, &#39;QB&#39;):
+(&#39;Josh McCown&#39;, &#39;2.571428571&#39;, &#39;QB&#39;)
+(&#39;Brett Basanez&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Kevin Kolb&#39;, &#39;2.166666667&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+1.5793650793333331
+
+Similar players to (&#39;Mitchell Trubisky&#39;, &#39;QB&#39;):
+(&#39;Brett Basanez&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Brock Berlin&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Kevin Kolb&#39;, &#39;2.166666667&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+0.7222222223333333
+
+(&#39;Mitch Leidner&#39;, &#39;QB&#39;, 9.0)
+(&#39;Deshaun Watson&#39;, &#39;QB&#39;, 9.0)
+(&#39;Jerod Evans&#39;, &#39;QB&#39;, 8.222222222333334)
+(&#39;DeShone Kizer&#39;, &#39;QB&#39;, 8.222222222333334)
+(&#39;Davis Webb&#39;, &#39;QB&#39;, 8.055555555666666)
+(&#39;Nathan Peterman&#39;, &#39;QB&#39;, 6.0)
+(&#39;Joshua Dobbs&#39;, &#39;QB&#39;, 5.527777777666667)
+(&#39;Patrick Mahomes&#39;, &#39;QB&#39;, 5.333333333333333)
+(&#39;Sefo Liufau&#39;, &#39;QB&#39;, 3.888888889)
+(&#39;Cooper Rush&#39;, &#39;QB&#39;, 1.8333333333333333)
+(&#39;Trevor Knight&#39;, &#39;QB&#39;, 1.5793650793333331)
+(&#39;Brad Kaaya&#39;, &#39;QB&#39;, 1.4166666666666667)
+(&#39;Antonio Pipkin&#39;, &#39;QB&#39;, 1.4166666666666667)
+(&#39;Seth Russell&#39;, &#39;QB&#39;, 1.4166666666666667)
+(&#39;Chad Kelly&#39;, &#39;QB&#39;, 1.3222222223333333)
+(&#39;C.J. Beathard&#39;, &#39;QB&#39;, 1.0)
+(&#39;Mitchell Trubisky&#39;, &#39;QB&#39;, 0.7222222223333333)
+(&#39;Alek Torgersen&#39;, &#39;QB&#39;, 0.6666666666666666)
+</pre></div>
+<br>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">&gt;py -3 similar_players.py -pos True -k 3 -zero True
+Similar players to (&#39;C.J. Beathard&#39;, &#39;QB&#39;):
+(&#39;Chandler Harnish&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Kevin Hogan&#39;, &#39;1&#39;, &#39;QB&#39;)
+(&#39;Connor Cook&#39;, &#39;0&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+0.3333333333333333
+
+Similar players to (&#39;Joshua Dobbs&#39;, &#39;QB&#39;):
+(&#39;Tyrod Taylor&#39;, &#39;4.833333333&#39;, &#39;QB&#39;)
+(&#39;Marcus Mariota&#39;, &#39;11&#39;, &#39;QB&#39;)
+(&#39;Scott Tolzien&#39;, &#39;0.75&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+5.527777777666667
+
+Similar players to (&#39;Jerod Evans&#39;, &#39;QB&#39;):
+(&#39;Ryan Lindley&#39;, &#39;-1.333333333&#39;, &#39;QB&#39;)
+(&#39;Blake Bortles&#39;, &#39;9.666666667&#39;, &#39;QB&#39;)
+(&#39;Colin Kaepernick&#39;, &#39;8.166666667&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+5.5000000003333325
+
+Similar players to (&#39;Brad Kaaya&#39;, &#39;QB&#39;):
+(&#39;Kirk Cousins&#39;, &#39;6.2&#39;, &#39;QB&#39;)
+(&#39;Jared Goff&#39;, &#39;-2&#39;, &#39;QB&#39;)
+(&#39;Zac Robinson&#39;, &#39;0&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+1.4000000000000001
+
+Similar players to (&#39;Chad Kelly&#39;, &#39;QB&#39;):
+(&#39;Quincy Carter&#39;, &#39;4.5&#39;, &#39;QB&#39;)
+(&quot;J.T. O&#39;Sullivan&quot;, &#39;1.5&#39;, &#39;QB&#39;)
+(&#39;Donovan McNabb&#39;, &#39;10.61538462&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+5.53846154
+
+Similar players to (&#39;DeShone Kizer&#39;, &#39;QB&#39;):
+(&#39;Ryan Lindley&#39;, &#39;-1.333333333&#39;, &#39;QB&#39;)
+(&#39;Levi Brown&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Sean Mannion&#39;, &#39;0&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+-0.4444444443333333
+
+Similar players to (&#39;Mitch Leidner&#39;, &#39;QB&#39;):
+(&#39;Brett Hundley&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Bryce Petty&#39;, &#39;2&#39;, &#39;QB&#39;)
+(&#39;Marcus Mariota&#39;, &#39;11&#39;, &#39;QB&#39;)
+
+Pdicted average seasonal AV:
+4.333333333333333
+
+Similar players to (&#39;Sefo Liufau&#39;, &#39;QB&#39;):
+(&#39;Jameis Winston&#39;, &#39;12.5&#39;, &#39;QB&#39;)
+(&#39;Tom Savage&#39;, &#39;0.5&#39;, &#39;QB&#39;)
+(&#39;Ryan Lindley&#39;, &#39;-1.333333333&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+3.888888889
+
+Similar players to (&#39;Patrick Mahomes&#39;, &#39;QB&#39;):
+(&#39;Landry Jones&#39;, &#39;1&#39;, &#39;QB&#39;)
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+(&#39;Pat Devlin&#39;, &#39;0&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+5.666666666666667
+
+Similar players to (&#39;Nathan Peterman&#39;, &#39;QB&#39;):
+(&#39;Jimmy Garoppolo&#39;, &#39;1&#39;, &#39;QB&#39;)
+(&#39;Ricky Stanzi&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Ryan Lindley&#39;, &#39;-1.333333333&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+-0.11111111099999997
+
+Similar players to (&#39;Antonio Pipkin&#39;, &#39;QB&#39;):
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+(&#39;Pat Devlin&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Jimmy Garoppolo&#39;, &#39;1&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+5.666666666666667
+
+Similar players to (&#39;Cooper Rush&#39;, &#39;QB&#39;):
+(&#39;Tom Savage&#39;, &#39;0.5&#39;, &#39;QB&#39;)
+(&#39;Ryan Nassib&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Jameis Winston&#39;, &#39;12.5&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+4.333333333333333
+
+Similar players to (&#39;Seth Russell&#39;, &#39;QB&#39;):
+(&#39;Kirk Cousins&#39;, &#39;6.2&#39;, &#39;QB&#39;)
+(&#39;David Fales&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Zac Robinson&#39;, &#39;0&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+2.066666666666667
+
+Similar players to (&#39;Alek Torgersen&#39;, &#39;QB&#39;):
+(&#39;Chad Henne&#39;, &#39;3.625&#39;, &#39;QB&#39;)
+(&#39;Bryce Petty&#39;, &#39;2&#39;, &#39;QB&#39;)
+(&#39;Brian Brohm&#39;, &#39;0&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+1.875
+
+Similar players to (&#39;Deshaun Watson&#39;, &#39;QB&#39;):
+(&#39;Marcus Mariota&#39;, &#39;11&#39;, &#39;QB&#39;)
+(&#39;Pat Devlin&#39;, &#39;0&#39;, &#39;QB&#39;)
+(&#39;Dak Prescott&#39;, &#39;16&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+9.0
+
+Similar players to (&#39;Davis Webb&#39;, &#39;QB&#39;):
+(&#39;Christian Ponder&#39;, &#39;5.75&#39;, &#39;QB&#39;)
+(&#39;Bryce Petty&#39;, &#39;2&#39;, &#39;QB&#39;)
+(&#39;Jake Locker&#39;, &#39;4&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+3.9166666666666665
+
+Similar players to (&#39;Trevor Knight&#39;, &#39;QB&#39;):
+(&#39;Tyrod Taylor&#39;, &#39;4.833333333&#39;, &#39;QB&#39;)
+(&#39;Marcus Mariota&#39;, &#39;11&#39;, &#39;QB&#39;)
+(&#39;Josh McCown&#39;, &#39;2.571428571&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+6.134920634666666
+
+Similar players to (&#39;Mitchell Trubisky&#39;, &#39;QB&#39;):
+(&#39;Landry Jones&#39;, &#39;1&#39;, &#39;QB&#39;)
+(&#39;Donovan McNabb&#39;, &#39;10.61538462&#39;, &#39;QB&#39;)
+(&#39;Jeff Rowe&#39;, &#39;0&#39;, &#39;QB&#39;)
+
+Predicted average seasonal AV:
+3.8717948733333336
+
+(&#39;Deshaun Watson&#39;, &#39;QB&#39;, 9.0)
+(&#39;Trevor Knight&#39;, &#39;QB&#39;, 6.134920634666666)
+(&#39;Patrick Mahomes&#39;, &#39;QB&#39;, 5.666666666666667)
+(&#39;Antonio Pipkin&#39;, &#39;QB&#39;, 5.666666666666667)
+(&#39;Chad Kelly&#39;, &#39;QB&#39;, 5.53846154)
+(&#39;Joshua Dobbs&#39;, &#39;QB&#39;, 5.527777777666667)
+(&#39;Jerod Evans&#39;, &#39;QB&#39;, 5.5000000003333325)
+(&#39;Mitch Leidner&#39;, &#39;QB&#39;, 4.333333333333333)
+(&#39;Cooper Rush&#39;, &#39;QB&#39;, 4.333333333333333)
+(&#39;Davis Webb&#39;, &#39;QB&#39;, 3.9166666666666665)
+(&#39;Sefo Liufau&#39;, &#39;QB&#39;, 3.888888889)
+(&#39;Mitchell Trubisky&#39;, &#39;QB&#39;, 3.8717948733333336)
+(&#39;Seth Russell&#39;, &#39;QB&#39;, 2.066666666666667)
+(&#39;Alek Torgersen&#39;, &#39;QB&#39;, 1.875)
+(&#39;Brad Kaaya&#39;, &#39;QB&#39;, 1.4000000000000001)
+(&#39;C.J. Beathard&#39;, &#39;QB&#39;, 0.3333333333333333)
+(&#39;Nathan Peterman&#39;, &#39;QB&#39;, -0.11111111099999997)
+(&#39;DeShone Kizer&#39;, &#39;QB&#39;, -0.4444444443333333)
+</pre></div>
+
+                    </p>
             </div>
         </div>
     </div>
