@@ -917,7 +917,16 @@
                     </h4>
                     We needed to scrape the following data from the following sources:
                     <ul>
-                        <li></li>
+                        <li>Additional AV data from 1978 to 1993 from Pro-Football-Reference</li>
+                        <li>NFL roster data - the roster of players for each team from 1978 to 2016, from footballdb.com</li>
+                        <li>NFL combine data</li>
+                        <li>NFL Standings data from 1978 to 2016 from Pro-Football-Reference</li>
+                    </ul>
+
+                    A few notes on data scraping <br>
+                    <ul>
+                        <li>Previously, we only scraped AV data from 1994 onwards because 1994 was the advent of the salary cap, which was a necessary restraint to calculate Fair AV value. Now, we were interested in the distribution of AV values in the composition of a team - thus, earlier AV data would have been useful. Since the outcome variable of our machine learning problem is a team's success - we chose to scrape as far back as 1978, when the NFL first had 16 games in a season.</li>
+                        <li>NFL roster data was inconsistent - a team has 53 players on the roster, but this changes over the course of the season (i.e. injured players, cut players, newly signed players, players traded for). We chose to include all players who played on the team that given year in our roster data</li>
                     </ul>
                     <h4>
                     Data Cleaning and Database Loading
