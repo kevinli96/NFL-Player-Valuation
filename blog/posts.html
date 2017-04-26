@@ -910,7 +910,7 @@
                     <p>
                     As a result, and after consultations amongst ourselves and with Colby, we determined a new project direction. Previously, we were just interested in determining the value of a draft pick and the fair contract value of a player. We are keeping with this, but expanding the decision-making process to include current team composition and specific draft prospects. In other words, the team's current strengths and weaknesses ought to inform player and prospect value to the team, and often teams aren't trading for a general draft pick, but a specific draft prospect, and we wish to take that into account. This also allows us to give more specific draft advice - should I draft a defensive end or quarterback first overall, given my team's composition (i.e. needs)?</p>
 
-                    <p>We envision our project as requiring three steps. First, we determine which current players are being undervalued and overvalued based on their performance - this has already been completed (see Blog Post Three). Next, we determine the career potential of draft prospects by finding past and current players that they are most similar to based on their combine metrics. This allows us to predict their success in the NFL and in turn determine their fair contract value, which we can then compare to the pre-set rookie pay scale. Finally, using a supervised learning approach that utilizes teams’ historic performances with their roster composition (how many quarterbacks, how many running backs, which positions perform best, which positions perform worst), we can determine how a team is currently predicted to perform as well as what piece a team might need to become more successful.</p> 
+                    <p>We envision our project as requiring three steps. First, we determine which current players are being undervalued and overvalued based on their performance - this has already been completed (see Blog Post Three). Next, we determine the career potential of draft prospects by finding past and current players that they are most similar to based on their combine metrics. This allows us to predict their success in the NFL and in turn determine their fair contract value, which we can then compare to the pre-set rookie pay scale. Finally, using a supervised learning approach that utilizes teams’ historic performances with their roster composition (how many quarterbacks, how many running backs, which positions perform best, which positions perform worst), we can determine how a team is currently predicted to perform as well as what piece a team might need to become more successful.</p>
 
                     </p>
                     <hr />
@@ -954,20 +954,20 @@
                     In order to acquire the training data and testing data in well-formatted CSV files that could be used with our similar player engine, we had to query our combine database and output the results into CSV files. The training data consists of all players that have combine metrics from 1999 to 2016 along with their career seasonal AV, which we compute by dividing a player's career AV by the number of years he played. This accounts for players who were recently drafted and thus don't have high career AVs but have still been productive during their time in the NFL. The test data can be anything as long as it follows the same format defined by the query below. This means that you can use our engine to predict a single player's similar players and project career seasonal AV as well as those of an entire draft class. You define the training data by feeding a CSV into our engine that contains the player/s you want to analzye. The queries used to acquire each set of data are listed below.
                     <br><br>
                     <strong>Training data:</strong><br><br>
-                    <!-- HTML generated using hilite.me --><div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">sqlite3 -header -csv combine_data.db 
+                    <!-- HTML generated using hilite.me --><div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">sqlite3 -header -csv combine_data.db
 <span style="color: #4070a0">&quot;select name, sum_av*1.0/count_av, combine.* </span>
 <span style="color: #4070a0">from player, combine, </span>
 <span style="color: #4070a0">    (select player_id, sum(av_value) as sum_av, count(player_id) as count_av </span>
 <span style="color: #4070a0">    from av group by player_id) as av_sum </span>
-<span style="color: #4070a0">where combine.player_id = player.id and combine.player_id = av_sum.player_id;&quot;</span> 
+<span style="color: #4070a0">where combine.player_id = player.id and combine.player_id = av_sum.player_id;&quot;</span>
 &gt; ../data/similar_players_data.csv
 </pre></div>
                     <br>
                     <strong>Testing data:</strong><br><br>
-                    <!-- HTML generated using hilite.me --><div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">sqlite3 -header -csv combine_data.db 
+                    <!-- HTML generated using hilite.me --><div style="background: #f0f0f0; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">sqlite3 -header -csv combine_data.db
 <span style="color: #4070a0">&quot;select name, combine.* </span>
 <span style="color: #4070a0">from player, combine </span>
-<span style="color: #4070a0">where year = 2017 and player.id = combine.player_id;&quot;</span> 
+<span style="color: #4070a0">where year = 2017 and player.id = combine.player_id;&quot;</span>
 &gt; ../data/combine_players_2017.csv
 </pre></div>
 <br>
@@ -979,7 +979,7 @@
                     <h4>
                     Insights
                     </h4>
-                    We ran the similar players engine on the 2017 QB class to see whether our results agreed with the experts' opinions. We ran it once with the zero flag set to True and once with the zero flag set to False to try to determine which returned results that were better aligned with the general concensus regarding these players' NFL potential. Please note that changing the flag definitely alters the result, but neither result completely aligns with the experts' opinions. This can be explained by the fact that various other factors that we didn't account for in our model - factors such as college stats, personality, and off-field behavior - go into deciding the NFL potential of a prospect. Still the engine does appear to place many of this year's top QB prospects within the top half of the list of predicted seasonal AVs in both sets of results (with the obvious exception of Mitchell Trubisky). Please also note that changing the number of neighbors obviously changes the results as well, but for the sake of being concise, we decided to only show the results with k set to 3. The results are below. 
+                    We ran the similar players engine on the 2017 QB class to see whether our results agreed with the experts' opinions. We ran it once with the zero flag set to True and once with the zero flag set to False to try to determine which returned results that were better aligned with the general concensus regarding these players' NFL potential. Please note that changing the flag definitely alters the result, but neither result completely aligns with the experts' opinions. This can be explained by the fact that various other factors that we didn't account for in our model - factors such as college stats, personality, and off-field behavior - go into deciding the NFL potential of a prospect. Still the engine does appear to place many of this year's top QB prospects within the top half of the list of predicted seasonal AVs in both sets of results (with the obvious exception of Mitchell Trubisky). Please also note that changing the number of neighbors obviously changes the results as well, but for the sake of being concise, we decided to only show the results with k set to 3. The results are below.
                     <br><br>
                     <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">&gt;py -3 similar_players.py -pos True -k 3
 Similar players to (&#39;C.J. Beathard&#39;, &#39;QB&#39;):
@@ -1311,10 +1311,26 @@ Predicted average seasonal AV:
 (&#39;DeShone Kizer&#39;, &#39;QB&#39;, -0.4444444443333333)
 </pre></div>
 
+<hr />
+<h2>Visualization</h2><br />
+
+<h4>Average Draft AV</h4>
+<p>
+  For our last blog post, this visualization gets at a few dimensions of data.
+  The radial stacked bar chart features the player's positions around the inner
+  radius of the circle, and stacks the average AV values according to
+  the round pick (with undrafted being the category that players with no round or year of draft fall under).
+  It seems quite obvious that undrafted players form the subset of players whose average AV do not rival
+  those of drafted players, however it seems that within the rounds of the draft, players in most positions fair quite well.
+  The visualization was created in D3, with data processing done in Python.<br />
+</p>
+<svg width="700" height="700" id="draftsvg" font-family="sans-serif" font-size="10"></svg>
+
                     </p>
             </div>
         </div>
     </div>
+
     <!-- Post Content -->
     <article>
         <div class="container">
@@ -1350,6 +1366,10 @@ Predicted average seasonal AV:
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    <script src="viz/draft_av_by_position/d3-scale-radial.js"></script>
+    <script src="draft_av_by_position.js"></script>
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>

@@ -17,7 +17,7 @@ var y = d3.scaleRadial()
 var z = d3.scaleOrdinal()
     .range(["#21d028", "#518c05", "#3d97b9", "#68cddd", "#98abc5", "#9681a4", "#3c3a54"]);
 
-d3.csv("draft_data_clean_with_undrafted.csv", function(d, i, columns) {
+d3.csv("viz/draft_av_by_position/draft_data_clean_with_undrafted.csv", function(d, i, columns) {
   for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
   d.total = t;
   return d;
