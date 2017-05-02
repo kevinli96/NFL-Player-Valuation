@@ -1,11 +1,11 @@
-var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 19.5};
+var margin = {top: 19.5, right: 19.5, bottom: 29.5, left: 19.5};
 
 var svg = d3.select("#draftsvg"),
     width = +svg.attr("width") - margin.left,
     height = +svg.attr("height") + 30,
     innerRadius = 180,
     outerRadius = Math.min(width, height) / 2,
-    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + (height / 2 - 20) + ")");
 
 var x = d3.scaleBand()
     .range([0, 2 * Math.PI])
@@ -15,7 +15,7 @@ var y = d3.scaleRadial()
     .range([innerRadius, outerRadius]);
 
 var z = d3.scaleOrdinal()
-    .range(["#21d028", "#518c05", "#3d97b9", "#68cddd", "#98abc5", "#9681a4", "#3c3a54"]);
+    .range(["#21d028", "#518c05", "#3d97b9", "#68cddd", "#98abc5", "#9681a4", "#3c3a54", "#d4eb21"]);
 
 d3.csv("draft_data_clean_with_undrafted.csv", function(d, i, columns) {
   for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
