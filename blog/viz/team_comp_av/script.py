@@ -25,21 +25,20 @@ def getTeamAVComp(year):
     return teamAV, playerCount
 
 def write_to_CSV(teamAV, playerCount):
-    teamPositions = [["QB"], ["WR","RB","TE"],["OG","OT","C"], ["DE","DT","LB"],["DB"],["P","K"]]
+    teamPositions = ["QB","WR","RB","TE","OG","OT","C", "DE","DT","LB","DB","P","K"]
     with open('AV_by_team.csv', 'w', encoding='utf-8') as g:
         writer = csv.writer(g)
-        writer.writerow(["Team", "QB", "WR/RB/TE","OG/OT/C","DE/DT/LB","DB","P/K"])
+        writer.writerow(["Team", "QB", "WR", "RB", "TE","OG", "OT", "C","DE", "DT", "LB","DB","P", "K"])
         allTeams = []
         for team in teamAV:
             perTeam = [team]
-            for group in teamPositions:
-                AVCount = 0.0
-                for pos in group:
-                    AVCount += teamAV[team].get(pos, 0) / playerCount[team].get(pos, 1)
-                perTeam += [AVCount]
+            for pos in teamPositions:
+                AVCount = [teamAV[team].get(pos, 0)]
+                    # AVCount += teamAV[team].get(pos, 0)
+                perTeam += AVCount
             allTeams.append(perTeam)
 
-        allTeams.sort(key=lambda item: sum(item[1:7]) )
+        allTeams.sort(key=lambda item: sum(item[1:14]) )
         for team in allTeams:
             writer.writerow(team)
 
