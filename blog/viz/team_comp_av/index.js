@@ -1,5 +1,5 @@
 var svg = d3.select("svg"),
-    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    margin = {top: 20, right: 80, bottom: 30, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -12,8 +12,9 @@ var x = d3.scaleBand()
 var y = d3.scaleLinear()
     .rangeRound([height, 0]);
 
-var z = d3.scaleOrdinal(d3.schemeCategory20)
-    // .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+var z = d3.scaleOrdinal()
+    .range(["#990099", "#2CA02C", "#78d191", "#b3e0af", "#FF7F0E", "#f0903c", "#ebad78",
+          "#316395","#6e94ba","#b9cbdd","#BCBD22","#cd6969","#B82E2E"]);
 
 d3.csv("AV_by_team.csv", function(d, i, columns) {
   for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
@@ -52,12 +53,12 @@ d3.csv("AV_by_team.csv", function(d, i, columns) {
       .call(d3.axisLeft(y).ticks(null, "s"))
     .append("text")
       .attr("x", 2)
-      .attr("y", y(y.ticks().pop()) + 0.5)
+      .attr("y", y(y.ticks().pop()) - 5)
       .attr("dy", "0.32em")
       .attr("fill", "#000")
       .attr("font-weight", "bold")
       .attr("text-anchor", "start")
-      .text("Total Average AV");
+      .text("Total AV");
 
   var legend = g.append("g")
       .attr("font-family", "sans-serif")
@@ -69,13 +70,13 @@ d3.csv("AV_by_team.csv", function(d, i, columns) {
       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
   legend.append("rect")
-      .attr("x", width - 19)
+      .attr("x", width + 10)
       .attr("width", 19)
       .attr("height", 19)
       .attr("fill", z);
 
   legend.append("text")
-      .attr("x", width - 24)
+      .attr("x", width + 55)
       .attr("y", 9.5)
       .attr("dy", "0.32em")
       .text(function(d) { return d; });
