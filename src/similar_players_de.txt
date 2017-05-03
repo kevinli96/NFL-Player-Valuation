@@ -1,0 +1,297 @@
+Similar players to ('Jonathan Allen', 'DE'):
+('Quinton Coples', '5', 'DE')
+('Malik Jackson', '5', 'DE')
+('William Gholston', '4.5', 'DE')
+
+Predicted average seasonal AV:
+4.833333333333333
+
+Similar players to ('Derek Barnett', 'DE'):
+('Cameron Sheffield', '0.5', 'OLB')
+('Armonty Bryant', '1', 'DE')
+('Shaun Phillips', '5.909090909', 'DE')
+
+Predicted average seasonal AV:
+2.4696969696666664
+
+Similar players to ('Tarell Basham', 'DE'):
+('Markus White', '0', 'DE')
+('Jonathan Massaquoi', '2', 'OLB')
+('Emmanuel Ogbah', '7', 'DE')
+
+Predicted average seasonal AV:
+3.0
+
+Similar players to ('Collin Bevins', 'DE'):
+('Julius Peppers', '11.66666667', 'DE')
+('Jamaal Anderson', '3.666666667', 'DE')
+('Jordan Williams', '0', 'DE')
+
+Predicted average seasonal AV:
+5.111111112333333
+
+Similar players to ('Tashawn Bower', 'DE'):
+('Marcus Smith', '0.666666667', 'DE')
+('Obum Gwacham', '0.5', 'DE')
+('Jackson Jeffcoat', '0.5', 'DE')
+
+Predicted average seasonal AV:
+0.5555555556666666
+
+Similar players to ('Fadol Brown', 'DE'):
+('Josh Mauro', '4', 'DE')
+('Kony Ealy', '3.333333333', 'DE')
+('Will Clarke', '1.333333333', 'DE')
+
+Predicted average seasonal AV:
+2.888888888666667
+
+Similar players to ('Josh Carraway', 'DE'):
+('Navorro Bowman', '11.33333333', 'OLB')
+('Nathan Stupar', '1.6', 'OLB')
+('Justin Cole', '0.5', 'OLB')
+
+Predicted average seasonal AV:
+4.477777776666667
+
+Similar players to ('Taco Charlton', 'DE'):
+('Tyrone Crawford', '5.25', 'DE')
+('Brandon Bair', '0.666666667', 'DE')
+('Carl Nassib', '2', 'DE')
+
+Predicted average seasonal AV:
+2.638888889
+
+Similar players to ('Keionta Davis', 'DE'):
+('Frank Alexander', '2', 'DE')
+('Kevin Dodd', '1', 'DE')
+('Markus Golden', '4', 'OLB')
+
+Predicted average seasonal AV:
+2.3333333333333335
+
+Similar players to ('Myles Garrett', 'DE'):
+('Justin Houston', '8.833333333', 'OLB')
+('Owamagbe Odighizuwa', '0.5', 'DE')
+('Trey Flowers', '3.5', 'DE')
+
+Predicted average seasonal AV:
+4.277777777666667
+
+Similar players to ('Daeshon Hall', 'DE'):
+('Jadeveon Clowney', '6.333333333', 'DE')
+('Jonathan Massaquoi', '2', 'OLB')
+('Zach Moore', '0.333333333', 'DE')
+
+Predicted average seasonal AV:
+2.8888888886666666
+
+Similar players to ('Charles Harris', 'DE'):
+('Jacquies Smith', '2.5', 'DE')
+('Demarcus Lawrence', '3.333333333', 'DE')
+('Michael Buchanan', '0', 'DE')
+
+Predicted average seasonal AV:
+1.9444444443333335
+
+Similar players to ('Trey Hendrickson', 'DE'):
+('Shaq Lawson', '1', 'DE')
+('Armonty Bryant', '1', 'DE')
+('Jack Crawford', '2', 'DE')
+
+Predicted average seasonal AV:
+1.3333333333333333
+
+Similar players to ('Tanoh Kpassagnon', 'DE'):
+('Cameron Jordan', '8.166666667', 'DE')
+('Jonathan Bullard', '2', 'DE')
+('Allen Bailey', '3.166666667', 'DE')
+
+Predicted average seasonal AV:
+4.444444444666666
+
+Similar players to ('Harvey Langi', 'DE'):
+('Kyle Wilber', '2.4', 'OLB')
+('Yannick Ngakoue', '7', 'DE')
+('Marcus Smith', '0.666666667', 'DE')
+
+Predicted average seasonal AV:
+3.3555555556666667
+
+Similar players to ('Carl Lawson', 'DE'):
+('Brandon Williams', '0', 'DE')
+('Brooks Reed', '5.333333333', 'OLB')
+('I.K. Enemkpali', '0.5', 'DE')
+
+Predicted average seasonal AV:
+1.9444444443333333
+
+Similar players to ('Jeremiah Ledbetter', 'DE'):
+("Za'Darius Smith", '2.5', 'DE')
+('Datone Jones', '2.5', 'DE')
+('Ryan Russell', '0.5', 'DE')
+
+Predicted average seasonal AV:
+1.8333333333333333
+
+Similar players to ('Takkarist McKinley', 'DE'):
+('Kyle Emanuel', '3.5', 'OLB')
+('Edmond Robinson', '1', 'OLB')
+('Von Miller', '13.33333333', 'OLB')
+
+Predicted average seasonal AV:
+5.944444443333334
+
+Similar players to ('Avery Moss', 'DE'):
+('Markus White', '0', 'DE')
+('David Bass', '2', 'DE')
+('Aldon Smith', '5.8', 'DE')
+
+Predicted average seasonal AV:
+2.6
+
+Similar players to ('Al-Quadin Muhammad', 'DE'):
+('Tyler Starr', '0', 'OLB')
+('Ricky Sapp', '0.333333333', 'OLB')
+('Michael Buchanan', '0', 'DE')
+
+Predicted average seasonal AV:
+0.111111111
+
+Similar players to ('Noble Nwachukwu', 'DE'):
+('Bjoern Werner', '3.333333333', 'DE')
+('Justin Francis', '0', 'DE')
+('Michael Bennett', '6.25', 'DE')
+
+Predicted average seasonal AV:
+3.1944444443333335
+
+Similar players to ('Carroll Phillips', 'DE'):
+('Bruce Irvin', '6.4', 'OLB')
+('Nigel Bradham', '5.4', 'OLB')
+('Obum Gwacham', '0.5', 'DE')
+
+Predicted average seasonal AV:
+4.1000000000000005
+
+Similar players to ('Ejuan Price', 'DE'):
+('Nathan Stupar', '1.6', 'OLB')
+('Khaseem Greene', '1.5', 'OLB')
+('Justin Cole', '0.5', 'OLB')
+
+Predicted average seasonal AV:
+1.2
+
+Similar players to ('Haason Reddick', 'DE'):
+('Ryan Shazier', '6.333333333', 'OLB')
+('Darron Lee', '4', 'OLB')
+('Kevin Pierre-Louis', '1', 'OLB')
+
+Predicted average seasonal AV:
+3.777777777666666
+
+Similar players to ('Derek Rivers', 'DE'):
+('Ty Powell', '0.5', 'OLB')
+('Cheta Ozougwu', '0.5', 'DE')
+('Khairi Fortt', '0', 'OLB')
+
+Predicted average seasonal AV:
+0.3333333333333333
+
+Similar players to ('Garrett Sickels', 'DE'):
+('David Bass', '2', 'DE')
+('Ethan Westbrooks', '2', 'DE')
+('Brandon Lang', '1', 'DE')
+
+Predicted average seasonal AV:
+1.6666666666666667
+
+Similar players to ('Dawuane Smoot', 'DE'):
+('Armonty Bryant', '1', 'DE')
+('Shaq Lawson', '1', 'DE')
+('Vinny Curry', '1.6', 'DE')
+
+Predicted average seasonal AV:
+1.2
+
+Similar players to ('Solomon Thomas', 'DE'):
+('Justin Houston', '8.833333333', 'OLB')
+('Preston Smith', '5', 'DE')
+('Owamagbe Odighizuwa', '0.5', 'DE')
+
+Predicted average seasonal AV:
+4.777777777666667
+
+Similar players to ('DeMarcus Walker', 'DE'):
+('Taylor Hart', '0.5', 'DE')
+("Da'Quan Bowers", '1.4', 'DE')
+('Tavaris Barnes', '1', 'DE')
+
+Predicted average seasonal AV:
+0.9666666666666667
+
+Similar players to ('Bryan Cox Jr.', 'DE'):
+('Eric Moore', '0.833333333', 'DE')
+('Mkristo Bruce', '0', 'DE')
+('Patrick Kerney', '7.181818182', 'DE')
+
+Predicted average seasonal AV:
+2.6717171716666663
+
+Similar players to ('Joe Mathis', 'DE'):
+('Tully Banta-Cain', '3.125', 'DE')
+('Victor Abiamiri', '1.666666667', 'DE')
+('Dwight Freeney', '6.8', 'DE')
+
+Predicted average seasonal AV:
+3.863888889
+
+Similar players to ('Jordan Willis', 'DE'):
+('Reggie Hayward', '4', 'DE')
+('Connor Barwin', '6.375', 'OLB')
+('Khari Long', '0', 'DE')
+
+Predicted average seasonal AV:
+3.4583333333333335
+
+Similar players to ('Deatrich Wise Jr.', 'DE'):
+('Chris Kelsay', '5.7', 'DE')
+('Jamaal Green', '0.5', 'DE')
+('Justin Smith', '9.428571429', 'DE')
+
+Predicted average seasonal AV:
+5.209523809666667
+
+('Takkarist McKinley', 'DE', 5.944444443333334)
+('Deatrich Wise Jr.', 'DE', 5.209523809666667)
+('Collin Bevins', 'DE', 5.111111112333333)
+('Jonathan Allen', 'DE', 4.833333333333333)
+('Solomon Thomas', 'DE', 4.777777777666667)
+('Josh Carraway', 'DE', 4.477777776666667)
+('Tanoh Kpassagnon', 'DE', 4.444444444666666)
+('Myles Garrett', 'DE', 4.277777777666667)
+('Carroll Phillips', 'DE', 4.1000000000000005)
+('Joe Mathis', 'DE', 3.863888889)
+('Haason Reddick', 'DE', 3.777777777666666)
+('Jordan Willis', 'DE', 3.4583333333333335)
+('Harvey Langi', 'DE', 3.3555555556666667)
+('Noble Nwachukwu', 'DE', 3.1944444443333335)
+('Tarell Basham', 'DE', 3.0)
+('Fadol Brown', 'DE', 2.888888888666667)
+('Daeshon Hall', 'DE', 2.8888888886666666)
+('Bryan Cox Jr.', 'DE', 2.6717171716666663)
+('Taco Charlton', 'DE', 2.638888889)
+('Avery Moss', 'DE', 2.6)
+('Derek Barnett', 'DE', 2.4696969696666664)
+('Keionta Davis', 'DE', 2.3333333333333335)
+('Charles Harris', 'DE', 1.9444444443333335)
+('Carl Lawson', 'DE', 1.9444444443333333)
+('Jeremiah Ledbetter', 'DE', 1.8333333333333333)
+('Garrett Sickels', 'DE', 1.6666666666666667)
+('Trey Hendrickson', 'DE', 1.3333333333333333)
+('Ejuan Price', 'DE', 1.2)
+('Dawuane Smoot', 'DE', 1.2)
+('DeMarcus Walker', 'DE', 0.9666666666666667)
+('Tashawn Bower', 'DE', 0.5555555556666666)
+('Derek Rivers', 'DE', 0.3333333333333333)
+('Al-Quadin Muhammad', 'DE', 0.111111111)

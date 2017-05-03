@@ -77,7 +77,7 @@ def similar_players(feature_set, test_set, k, pos, zero, av_list):
         sum_av += float(feature_keys[index][1])
         print(feature_keys[index])
 
-    average_av = sum_av/float(k)
+    average_av = round(sum_av/float(k),2)
     print("\nPredicted average seasonal AV:")
     print(str(average_av) + "\n")
 
@@ -149,6 +149,14 @@ def main():
 
     for item in sorted_list:
         print(item)
+
+    # with open('similar_players_round_1_results.csv', 'w', newline="") as myfile:
+    #     wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+    #     wr.writerow(['player','position','av'])
+    #     for item in sorted_list:
+    #         row = []
+    #         row.extend(item)
+    #         wr.writerow(row)
 
 if __name__ == '__main__':
     main()

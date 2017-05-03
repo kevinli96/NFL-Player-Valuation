@@ -15,7 +15,7 @@ def load():
     c.execute('DROP TABLE IF EXISTS "position";')
     c.execute('DROP TABLE IF EXISTS "draft";')
 
-    # Create tables
+    # Create tables    
     c.execute('''
             CREATE TABLE player(
                 id text not null,

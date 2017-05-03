@@ -1,0 +1,522 @@
+Similar players to ('Rodney Adams', 'WR'):
+('T.J. Graham', '1.75', 'WR')
+('Vincent Brown', '1.8', 'WR')
+('Tavarres King', '0', 'WR')
+
+Predicted average seasonal AV:
+1.1833333333333333
+
+Similar players to ('Quincy Adeboyejo', 'WR'):
+('Marquess Wilson', '1.5', 'WR')
+('Tyler Boyd', '5', 'WR')
+('Allen Hurns', '5', 'WR')
+
+Predicted average seasonal AV:
+3.8333333333333335
+
+Similar players to ('Victor Bolden Jr.', 'WR'):
+('Ace Sanders', '1.5', 'WR')
+('Mario Alford', '0', 'WR')
+('Jerrel Jernigan', '0.5', 'WR')
+
+Predicted average seasonal AV:
+0.6666666666666666
+
+Similar players to ('Kendrick Bourne', 'WR'):
+('Kevin Norwood', '0.5', 'WR')
+('Chris Moore', '0', 'WR')
+('Charone Peake', '1', 'WR')
+
+Predicted average seasonal AV:
+0.5
+
+Similar players to ('Billy Brown', 'WR'):
+('Kelvin Benjamin', '7.5', 'WR')
+('Darren Waller', '0.5', 'WR')
+('Brandon Marshall', '9.363636364', 'WR')
+
+Predicted average seasonal AV:
+5.787878788
+
+Similar players to ('Noah Brown', 'WR'):
+('Quincy Enunwa', '3', 'WR')
+('Jeff Fuller', '0', 'WR')
+('Eric Decker', '6.714285714', 'WR')
+
+Predicted average seasonal AV:
+3.2380952379999997
+
+Similar players to ('K.D. Cannon', 'WR'):
+('Darius Hanks', '0', 'WR')
+('Jarius Wright', '3.6', 'WR')
+('Phillip Dorsett', '3.5', 'WR')
+
+Predicted average seasonal AV:
+2.3666666666666667
+
+Similar players to ('Jehu Chesson', 'WR'):
+('Malcolm Mitchell', '4', 'WR')
+('Stephen Williams', '0.333333333', 'WR')
+('Albert Wilson', '3.666666667', 'WR')
+
+Predicted average seasonal AV:
+2.6666666666666665
+
+Similar players to ('Stacy Coley', 'WR'):
+('Devin Smith', '0.5', 'WR')
+('Kenny Stills', '5.75', 'WR')
+('Tyler Boyd', '5', 'WR')
+
+Predicted average seasonal AV:
+3.75
+
+Similar players to ('Amara Darboh', 'WR'):
+('Michael Thomas', '10', 'WR')
+('Marcus Easley', '0.25', 'WR')
+('Tre McBride', '0', 'WR')
+
+Predicted average seasonal AV:
+3.4166666666666665
+
+Similar players to ('Corey Davis', 'WR'):
+('Breshad Perriman', '3', 'WR')
+('Alshon Jeffery', '7.6', 'WR')
+('Justin Blackmon', '4.5', 'WR')
+
+Predicted average seasonal AV:
+5.033333333333333
+
+Similar players to ('Robert Davis', 'WR'):
+('Julio Jones', '12.33333333', 'WR')
+('Stephen Hill', '2', 'WR')
+('Chris Conley', '3.5', 'WR')
+
+Predicted average seasonal AV:
+5.944444443333334
+
+Similar players to ('Malachi Dupre', 'WR'):
+('Malcolm Mitchell', '4', 'WR')
+('Jalin Marshall', '1', 'WR')
+('Corey Coleman', '3', 'WR')
+
+Predicted average seasonal AV:
+2.6666666666666665
+
+Similar players to ('Travin Dural', 'WR'):
+('Jordan Payton', '0', 'WR')
+('Demarcus Robinson', '0', 'WR')
+('Stefon Diggs', '7.5', 'WR')
+
+Predicted average seasonal AV:
+2.5
+
+Similar players to ('Amba Etta-Tawo', 'WR'):
+('Sammy Watkins', '7', 'WR')
+('DeVier Posey', '0.666666667', 'WR')
+('Stephen Williams', '0.333333333', 'WR')
+
+Predicted average seasonal AV:
+2.6666666666666665
+
+Similar players to ('Isaiah Ford', 'WR'):
+('Malcolm Mitchell', '4', 'WR')
+('Robert Herron', '0', 'WR')
+('Tavarres King', '0', 'WR')
+
+Predicted average seasonal AV:
+1.3333333333333333
+
+Similar players to ('Shelton Gibson', 'WR'):
+('Kenbrell Thompkins', '2.333333333', 'WR')
+('Tony Lippett', '3', 'WR')
+('Willie Snead', '8', 'WR')
+
+Predicted average seasonal AV:
+4.4444444443333335
+
+Similar players to ('Kenny Golladay', 'WR'):
+('Jeff Janis', '0.666666667', 'WR')
+('Brian Quick', '2.2', 'WR')
+('Tommy Streeter', '0', 'WR')
+
+Predicted average seasonal AV:
+0.9555555556666667
+
+Similar players to ('Chad Hansen', 'WR'):
+('Danny Coale', '0', 'WR')
+('Ryan Grant', '1', 'WR')
+('Ryan Spadola', '0', 'WR')
+
+Predicted average seasonal AV:
+0.3333333333333333
+
+Similar players to ('Keon Hatcher', 'WR'):
+('Justin Blackmon', '4.5', 'WR')
+('Eric Decker', '6.714285714', 'WR')
+('Cody Latimer', '0.333333333', 'WR')
+
+Predicted average seasonal AV:
+3.8492063489999997
+
+Similar players to ('Carlos Henderson', 'WR'):
+('Malcolm Mitchell', '4', 'WR')
+('Jalin Marshall', '1', 'WR')
+('Albert Wilson', '3.666666667', 'WR')
+
+Predicted average seasonal AV:
+2.888888889
+
+Similar players to ('Krishawn Hogan', 'WR'):
+('Tommy Streeter', '0', 'WR')
+('Brian Quick', '2.2', 'WR')
+('Michael Floyd', '5.8', 'WR')
+
+Predicted average seasonal AV:
+2.6666666666666665
+
+Similar players to ('Mack Hollins', 'WR'):
+('Alshon Jeffery', '7.6', 'WR')
+('DeAndre Smelter', '0', 'WR')
+('Breshad Perriman', '3', 'WR')
+
+Predicted average seasonal AV:
+3.533333333333333
+
+Similar players to ('Bug Howard', 'WR'):
+('Vince Mayle', '0', 'WR')
+('Keith Mumphery', '1', 'WR')
+('Mike Williams', '5.4', 'WR')
+
+Predicted average seasonal AV:
+2.1333333333333333
+
+Similar players to ('Zay Jones', 'WR'):
+('Malcolm Mitchell', '4', 'WR')
+('Jalin Marshall', '1', 'WR')
+('Josh Doctson', '1', 'WR')
+
+Predicted average seasonal AV:
+2.0
+
+Similar players to ('Cooper Kupp', 'WR'):
+('Jordan Payton', '0', 'WR')
+('Demarcus Robinson', '0', 'WR')
+('Quinton Patton', '1.75', 'WR')
+
+Predicted average seasonal AV:
+0.5833333333333334
+
+Similar players to ('Jerome Lane', 'WR'):
+('Jeff Janis', '0.666666667', 'WR')
+('Juron Criner', '0.5', 'WR')
+('Brian Quick', '2.2', 'WR')
+
+Predicted average seasonal AV:
+1.1222222223333334
+
+Similar players to ('Keevan Lucas', 'WR'):
+('Stedman Bailey', '2.333333333', 'WR')
+('T.J. Graham', '1.75', 'WR')
+('Vincent Brown', '1.8', 'WR')
+
+Predicted average seasonal AV:
+1.9611111110000001
+
+Similar players to ('Josh Malone', 'WR'):
+('Terrance Williams', '6.25', 'WR')
+('Austin Pettis', '2', 'WR')
+('Rueben Randle', '5.5', 'WR')
+
+Predicted average seasonal AV:
+4.583333333333333
+
+Similar players to ('Gabe Marks', 'WR'):
+('T.J. Graham', '1.75', 'WR')
+('Vincent Brown', '1.8', 'WR')
+('Stedman Bailey', '2.333333333', 'WR')
+
+Predicted average seasonal AV:
+1.961111111
+
+Similar players to ('Drew Morgan', 'WR'):
+('Willie Snead', '8', 'WR')
+('Isaiah Burse', '0', 'WR')
+('Eric Page', '1', 'WR')
+
+Predicted average seasonal AV:
+3.0
+
+Similar players to ('Speedy Noil', 'WR'):
+('Corey Coleman', '3', 'WR')
+('Malcolm Mitchell', '4', 'WR')
+('Jalin Marshall', '1', 'WR')
+
+Predicted average seasonal AV:
+2.6666666666666665
+
+Similar players to ('Zach Pascal', 'WR'):
+('Tommy Streeter', '0', 'WR')
+('Carlton Mitchell', '0', 'WR')
+('Jeff Janis', '0.666666667', 'WR')
+
+Predicted average seasonal AV:
+0.22222222233333333
+
+Similar players to ('James Quick', 'WR'):
+('T.J. Graham', '1.75', 'WR')
+('Vincent Brown', '1.8', 'WR')
+('Jamison Crowder', '6.5', 'WR')
+
+Predicted average seasonal AV:
+3.35
+
+Similar players to ('Michael Rector', 'WR'):
+('Marqise Lee', '4', 'WR')
+('Devin Street', '0.333333333', 'WR')
+('Denard Robinson', '2', 'WR')
+
+Predicted average seasonal AV:
+2.111111111
+
+Similar players to ('Josh Reynolds', 'WR'):
+('Geronimo Allison', '2', 'WR')
+('Odell Beckham, Jr.', '11.33333333', 'WR')
+('Kenbrell Thompkins', '2.333333333', 'WR')
+
+Predicted average seasonal AV:
+5.222222221
+
+Similar players to ('Jalen Robinette', 'WR'):
+('Brian Quick', '2.2', 'WR')
+('Mike Williams', '5.4', 'WR')
+('Carlton Mitchell', '0', 'WR')
+
+Predicted average seasonal AV:
+2.5333333333333337
+
+Similar players to ('Darreus Rogers', 'WR'):
+('Tori Gurley', '0', 'WR')
+('Terrance Williams', '6.25', 'WR')
+('Lestar Jean', '0.5', 'WR')
+
+Predicted average seasonal AV:
+2.25
+
+Similar players to ('Fred Ross', 'WR'):
+('B.J. Cunningham', '0', 'WR')
+('Dezmon Briscoe', '1.333333333', 'WR')
+('Armon Binns', '3', 'WR')
+
+Predicted average seasonal AV:
+1.4444444443333333
+
+Similar players to ('John Ross', 'WR'):
+('Marqise Lee', '4', 'WR')
+('Demarcus Ayers', '0', 'WR')
+('Joe Adams', '0', 'WR')
+
+Predicted average seasonal AV:
+1.3333333333333333
+
+Similar players to ('Travis Rudolph', 'WR'):
+('Justin Hardy', '2', 'WR')
+('Stedman Bailey', '2.333333333', 'WR')
+('Kaelin Clay', '1', 'WR')
+
+Predicted average seasonal AV:
+1.7777777776666668
+
+Similar players to ('Curtis Samuel', 'WR'):
+('Damian Williams', '2', 'WR')
+('Golden Tate', '7', 'WR')
+('Chris Givens', '3.25', 'WR')
+
+Predicted average seasonal AV:
+4.083333333333333
+
+Similar players to ('Artavis Scott', 'WR'):
+('Stedman Bailey', '2.333333333', 'WR')
+('Kaelin Clay', '1', 'WR')
+('Justin Hardy', '2', 'WR')
+
+Predicted average seasonal AV:
+1.7777777776666668
+
+Similar players to ('Ricky Seals-Jones', 'WR'):
+('Kelvin Benjamin', '7.5', 'WR')
+('Darren Waller', '0.5', 'WR')
+('Devin Funchess', '4', 'WR')
+
+Predicted average seasonal AV:
+4.0
+
+Similar players to ('JuJu Smith-Schuster', 'WR'):
+('DeAndre Hopkins', '8.25', 'WR')
+('Leonte Carroo', '0', 'WR')
+('Carlton Mitchell', '0', 'WR')
+
+Predicted average seasonal AV:
+2.75
+
+Similar players to ('Jamari Staples', 'WR'):
+('Marqise Lee', '4', 'WR')
+('Devin Street', '0.333333333', 'WR')
+('Denard Robinson', '2', 'WR')
+
+Predicted average seasonal AV:
+2.111111111
+
+Similar players to ('ArDarius Stewart', 'WR'):
+('Ricardo Lockette', '1', 'WR')
+('Geronimo Allison', '2', 'WR')
+('Odell Beckham, Jr.', '11.33333333', 'WR')
+
+Predicted average seasonal AV:
+4.7777777766666665
+
+Similar players to ('Ryan Switzer', 'WR'):
+('Mario Alford', '0', 'WR')
+('Eric Page', '1', 'WR')
+('Jerrel Jernigan', '0.5', 'WR')
+
+Predicted average seasonal AV:
+0.5
+
+Similar players to ('Taywan Taylor', 'WR'):
+('Malcolm Mitchell', '4', 'WR')
+('Jalin Marshall', '1', 'WR')
+('Albert Wilson', '3.666666667', 'WR')
+
+Predicted average seasonal AV:
+2.888888889
+
+Similar players to ('Trent Taylor', 'WR'):
+('Chris Davis', '0', 'WR')
+('Jamison Crowder', '6.5', 'WR')
+('Jarius Wright', '3.6', 'WR')
+
+Predicted average seasonal AV:
+3.3666666666666667
+
+Similar players to ('Noel Thomas', 'WR'):
+('Corey Fuller', '1.5', 'WR')
+('Josh Huff', '2', 'WR')
+('Derek Moye', '0', 'WR')
+
+Predicted average seasonal AV:
+1.1666666666666667
+
+Similar players to ('Chris Godwin', 'WR'):
+('Pierre Garcon', '6.666666667', 'WR')
+('Darrius Heyward-Bey', '3', 'WR')
+('Greg Orton', '0', 'WR')
+
+Predicted average seasonal AV:
+3.222222222333334
+
+Similar players to ('Isaiah McKenzie', 'WR'):
+('Trindon Holliday', '1', 'WR')
+('Dennis Northcutt', '4.9', 'WR')
+('Ryne Robinson', '0', 'WR')
+
+Predicted average seasonal AV:
+1.9666666666666668
+
+Similar players to ('Greg Ward Jr.', 'WR'):
+('Donnie Avery', '3.833333333', 'WR')
+('Armanti Edwards', '0.25', 'WR')
+('Santonio Holmes', '6', 'WR')
+
+Predicted average seasonal AV:
+3.361111111
+
+Similar players to ('Dede Westbrook', 'WR'):
+('Ted Ginn', '4.8', 'WR')
+('Terrence Edwards', '0', 'WR')
+('Chris Harper', '0', 'WR')
+
+Predicted average seasonal AV:
+1.5999999999999999
+
+Similar players to ('Kermit Whitfield', 'WR'):
+('Kyle Williams', '1.5', 'WR')
+('Jacoby Ford', '3', 'WR')
+('Kevin Curtis', '3.5', 'WR')
+
+Predicted average seasonal AV:
+2.6666666666666665
+
+Similar players to ('Mike Williams', 'WR'):
+('Arrelious Benn', '2', 'WR')
+('David Gettis', '1.5', 'WR')
+('Kerry Meier', '0', 'WR')
+
+Predicted average seasonal AV:
+1.1666666666666667
+
+Similar players to ('Jesus Wilson', 'WR'):
+('Lavelle Hawkins', '1.166666667', 'WR')
+('Yamon Figurs', '0.5', 'WR')
+('Ron Dugans', '2', 'WR')
+
+Predicted average seasonal AV:
+1.2222222223333334
+
+('Robert Davis', 'WR', 5.944444443333334)
+('Billy Brown', 'WR', 5.787878788)
+('Josh Reynolds', 'WR', 5.222222221)
+('Corey Davis', 'WR', 5.033333333333333)
+('ArDarius Stewart', 'WR', 4.7777777766666665)
+('Josh Malone', 'WR', 4.583333333333333)
+('Shelton Gibson', 'WR', 4.4444444443333335)
+('Curtis Samuel', 'WR', 4.083333333333333)
+('Ricky Seals-Jones', 'WR', 4.0)
+('Keon Hatcher', 'WR', 3.8492063489999997)
+('Quincy Adeboyejo', 'WR', 3.8333333333333335)
+('Stacy Coley', 'WR', 3.75)
+('Mack Hollins', 'WR', 3.533333333333333)
+('Amara Darboh', 'WR', 3.4166666666666665)
+('Trent Taylor', 'WR', 3.3666666666666667)
+('Greg Ward Jr.', 'WR', 3.361111111)
+('James Quick', 'WR', 3.35)
+('Noah Brown', 'WR', 3.2380952379999997)
+('Chris Godwin', 'WR', 3.222222222333334)
+('Drew Morgan', 'WR', 3.0)
+('Carlos Henderson', 'WR', 2.888888889)
+('Taywan Taylor', 'WR', 2.888888889)
+('JuJu Smith-Schuster', 'WR', 2.75)
+('Jehu Chesson', 'WR', 2.6666666666666665)
+('Malachi Dupre', 'WR', 2.6666666666666665)
+('Amba Etta-Tawo', 'WR', 2.6666666666666665)
+('Krishawn Hogan', 'WR', 2.6666666666666665)
+('Speedy Noil', 'WR', 2.6666666666666665)
+('Kermit Whitfield', 'WR', 2.6666666666666665)
+('Jalen Robinette', 'WR', 2.5333333333333337)
+('Travin Dural', 'WR', 2.5)
+('K.D. Cannon', 'WR', 2.3666666666666667)
+('Darreus Rogers', 'WR', 2.25)
+('Bug Howard', 'WR', 2.1333333333333333)
+('Michael Rector', 'WR', 2.111111111)
+('Jamari Staples', 'WR', 2.111111111)
+('Zay Jones', 'WR', 2.0)
+('Isaiah McKenzie', 'WR', 1.9666666666666668)
+('Keevan Lucas', 'WR', 1.9611111110000001)
+('Gabe Marks', 'WR', 1.961111111)
+('Travis Rudolph', 'WR', 1.7777777776666668)
+('Artavis Scott', 'WR', 1.7777777776666668)
+('Dede Westbrook', 'WR', 1.5999999999999999)
+('Fred Ross', 'WR', 1.4444444443333333)
+('Isaiah Ford', 'WR', 1.3333333333333333)
+('John Ross', 'WR', 1.3333333333333333)
+('Jesus Wilson', 'WR', 1.2222222223333334)
+('Rodney Adams', 'WR', 1.1833333333333333)
+('Noel Thomas', 'WR', 1.1666666666666667)
+('Mike Williams', 'WR', 1.1666666666666667)
+('Jerome Lane', 'WR', 1.1222222223333334)
+('Kenny Golladay', 'WR', 0.9555555556666667)
+('Victor Bolden Jr.', 'WR', 0.6666666666666666)
+('Cooper Kupp', 'WR', 0.5833333333333334)
+('Kendrick Bourne', 'WR', 0.5)
+('Ryan Switzer', 'WR', 0.5)
+('Chad Hansen', 'WR', 0.3333333333333333)
+('Zach Pascal', 'WR', 0.22222222233333333)

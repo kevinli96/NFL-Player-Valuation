@@ -1,0 +1,162 @@
+Similar players to ('C.J. Beathard', 'QB'):
+('Thaddeus Lewis', '2', 'QB')
+('Chandler Harnish', '0', 'QB')
+('Kevin Hogan', '1', 'QB')
+
+Predicted average seasonal AV:
+1.0
+
+Similar players to ('Joshua Dobbs', 'QB'):
+('Tyrod Taylor', '4.833333333', 'QB')
+('Marcus Mariota', '11', 'QB')
+('Scott Tolzien', '0.75', 'QB')
+
+Predicted average seasonal AV:
+5.527777777666667
+
+Similar players to ('Jerod Evans', 'QB'):
+('Colin Kaepernick', '8.166666667', 'QB')
+('Tom Savage', '0.5', 'QB')
+('Dak Prescott', '16', 'QB')
+
+Predicted average seasonal AV:
+8.222222222333334
+
+Similar players to ('Brad Kaaya', 'QB'):
+('Zach Mettenberger', '0.5', 'QB')
+('Garrett Grayson', '0', 'QB')
+('Brandon Weeden', '3.75', 'QB')
+
+Predicted average seasonal AV:
+1.4166666666666667
+
+Similar players to ('Chad Kelly', 'QB'):
+('Troy Smith', '1.5', 'QB')
+('Matt Barkley', '0.666666667', 'QB')
+('Chris Weinke', '1.8', 'QB')
+
+Predicted average seasonal AV:
+1.3222222223333333
+
+Similar players to ('DeShone Kizer', 'QB'):
+('Tom Savage', '0.5', 'QB')
+('Colin Kaepernick', '8.166666667', 'QB')
+('Dak Prescott', '16', 'QB')
+
+Predicted average seasonal AV:
+8.222222222333334
+
+Similar players to ('Mitch Leidner', 'QB'):
+('Marcus Mariota', '11', 'QB')
+('Pat Devlin', '0', 'QB')
+('Dak Prescott', '16', 'QB')
+
+Predicted average seasonal AV:
+9.0
+
+Similar players to ('Sefo Liufau', 'QB'):
+('Tom Savage', '0.5', 'QB')
+('Colin Kaepernick', '8.166666667', 'QB')
+('Cody Kessler', '3', 'QB')
+
+Predicted average seasonal AV:
+3.888888889
+
+Similar players to ('Patrick Mahomes', 'QB'):
+('Dak Prescott', '16', 'QB')
+('Pat Devlin', '0', 'QB')
+('Chandler Harnish', '0', 'QB')
+
+Predicted average seasonal AV:
+5.333333333333333
+
+Similar players to ('Nathan Peterman', 'QB'):
+('Dak Prescott', '16', 'QB')
+('Pat Devlin', '0', 'QB')
+('Austin Davis', '2', 'QB')
+
+Predicted average seasonal AV:
+6.0
+
+Similar players to ('Antonio Pipkin', 'QB'):
+('Zach Mettenberger', '0.5', 'QB')
+('Garrett Grayson', '0', 'QB')
+('Brandon Weeden', '3.75', 'QB')
+
+Predicted average seasonal AV:
+1.4166666666666667
+
+Similar players to ('Cooper Rush', 'QB'):
+('Tom Savage', '0.5', 'QB')
+('Cody Kessler', '3', 'QB')
+('Austin Davis', '2', 'QB')
+
+Predicted average seasonal AV:
+1.8333333333333333
+
+Similar players to ('Seth Russell', 'QB'):
+('Zach Mettenberger', '0.5', 'QB')
+('Garrett Grayson', '0', 'QB')
+('Brandon Weeden', '3.75', 'QB')
+
+Predicted average seasonal AV:
+1.4166666666666667
+
+Similar players to ('Alek Torgersen', 'QB'):
+('Matt Mauck', '1', 'QB')
+('Matt Barkley', '0.666666667', 'QB')
+('Andrew Walter', '0.333333333', 'QB')
+
+Predicted average seasonal AV:
+0.6666666666666666
+
+Similar players to ('Deshaun Watson', 'QB'):
+('Marcus Mariota', '11', 'QB')
+('Pat Devlin', '0', 'QB')
+('Dak Prescott', '16', 'QB')
+
+Predicted average seasonal AV:
+9.0
+
+Similar players to ('Davis Webb', 'QB'):
+('Colin Kaepernick', '8.166666667', 'QB')
+('Pat Devlin', '0', 'QB')
+('Dak Prescott', '16', 'QB')
+
+Predicted average seasonal AV:
+8.055555555666666
+
+Similar players to ('Trevor Knight', 'QB'):
+('Josh McCown', '2.571428571', 'QB')
+('Brett Basanez', '0', 'QB')
+('Kevin Kolb', '2.166666667', 'QB')
+
+Predicted average seasonal AV:
+1.5793650793333331
+
+Similar players to ('Mitchell Trubisky', 'QB'):
+('Brett Basanez', '0', 'QB')
+('Brock Berlin', '0', 'QB')
+('Kevin Kolb', '2.166666667', 'QB')
+
+Predicted average seasonal AV:
+0.7222222223333333
+
+('Mitch Leidner', 'QB', 9.0)
+('Deshaun Watson', 'QB', 9.0)
+('Jerod Evans', 'QB', 8.222222222333334)
+('DeShone Kizer', 'QB', 8.222222222333334)
+('Davis Webb', 'QB', 8.055555555666666)
+('Nathan Peterman', 'QB', 6.0)
+('Joshua Dobbs', 'QB', 5.527777777666667)
+('Patrick Mahomes', 'QB', 5.333333333333333)
+('Sefo Liufau', 'QB', 3.888888889)
+('Cooper Rush', 'QB', 1.8333333333333333)
+('Trevor Knight', 'QB', 1.5793650793333331)
+('Brad Kaaya', 'QB', 1.4166666666666667)
+('Antonio Pipkin', 'QB', 1.4166666666666667)
+('Seth Russell', 'QB', 1.4166666666666667)
+('Chad Kelly', 'QB', 1.3222222223333333)
+('C.J. Beathard', 'QB', 1.0)
+('Mitchell Trubisky', 'QB', 0.7222222223333333)
+('Alek Torgersen', 'QB', 0.6666666666666666)

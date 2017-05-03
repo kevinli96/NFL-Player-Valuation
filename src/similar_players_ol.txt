@@ -1,0 +1,495 @@
+Similar players to ('Gavin Andrews', 'OG'):
+('Brandon Brooks', '0', 'OG')
+('Quinton Spain', '2', 'OG')
+('Elton Brown', '2.666666667', 'OG')
+
+Predicted average seasonal AV:
+1.5555555556666665
+
+Similar players to ('Isaac Asiata', 'OG'):
+('Ryan Miller', '0', 'OG')
+('Brandon Washington', '0', 'OG')
+('Shawn Lauvao', '4.714285714', 'OG')
+
+Predicted average seasonal AV:
+1.5714285713333334
+
+Similar players to ('Erik Austell', 'OT'):
+('Charles Leno', '5.333333333', 'OT')
+('Wesley Johnson', '1.333333333', 'OT')
+('Joel Bitonio', '4', 'OT')
+
+Predicted average seasonal AV:
+3.555555555333333
+
+Similar players to ('Zach Banner', 'OT'):
+('Cordy Glenn', '7.2', 'OT')
+('Marcus Cannon', '4.666666667', 'OT')
+('Justin Anderson', '0', 'OT')
+
+Predicted average seasonal AV:
+3.955555555666667
+
+Similar players to ('Adam Bisnowaty', 'OT'):
+('Kevin Hughes', '0', 'OT')
+('Nate Potter', '1.5', 'OT')
+('Ty Sambrailo', '1.5', 'OT')
+
+Predicted average seasonal AV:
+1.0
+
+Similar players to ('Garett Bolles', 'OT'):
+('Tanner Hawkinson', '0', 'OT')
+('Willie Smith', '1.5', 'OT')
+('Andrus Peat', '8', 'OT')
+
+Predicted average seasonal AV:
+3.1666666666666665
+
+Similar players to ('Ben Braden', 'OG'):
+('Chris DeGeare', '1', 'OG')
+('Travis Bond', '0', 'OG')
+('Jeremiah Poutasi', '2', 'OG')
+
+Predicted average seasonal AV:
+1.0
+
+Similar players to ('Daniel Brunskill', 'OT'):
+('Wesley Johnson', '1.333333333', 'OT')
+('David Bakhtiari', '10.75', 'OT')
+('Charles Leno', '5.333333333', 'OT')
+
+Predicted average seasonal AV:
+5.805555555333334
+
+Similar players to ('Collin Buchanan', 'OL'):
+('Zach Fulton', '5.666666667', 'OG')
+('Marshall Newhouse', '5.833333333', 'OG')
+('Jordan Devey', '2.333333333', 'OT')
+
+Predicted average seasonal AV:
+4.6111111110000005
+
+Similar players to ('Aviante Collins', 'OT'):
+('Matt Reynolds', '0', 'OT')
+('Jacob Rogers', '0', 'OT')
+('Russell Okung', '6.714285714', 'OT')
+
+Predicted average seasonal AV:
+2.238095238
+
+Similar players to ('Ethan Cooper', 'OG'):
+('Brandon Washington', '0', 'OG')
+('Marshall Newhouse', '5.833333333', 'OG')
+('Zach Fulton', '5.666666667', 'OG')
+
+Predicted average seasonal AV:
+3.8333333333333335
+
+Similar players to ('Julien Davenport', 'OT'):
+('Bobby Massie', '5.8', 'OT')
+('John Wetzel', '4', 'OT')
+('Tom Compton', '1.8', 'OT')
+
+Predicted average seasonal AV:
+3.866666666666667
+
+Similar players to ('Dion Dawkins', 'OG'):
+('Ryan Groy', '1.666666667', 'OG')
+('Ronald Leary', '4.2', 'OG')
+('David Yankey', '0', 'OG')
+
+Predicted average seasonal AV:
+1.9555555556666668
+
+Similar players to ('J.J. Dielman', 'C'):
+('Jeff Byers', '2.5', 'C')
+('Peter Konz', '5.666666667', 'C')
+('Marcus Martin', '3.333333333', 'C')
+
+Predicted average seasonal AV:
+3.833333333333334
+
+Similar players to ('Jessamen Dunker', 'OG'):
+('Ryan Groy', '1.666666667', 'OG')
+('Garrett Gilkey', '1', 'OG')
+('Rishaw Johnson', '0.5', 'OG')
+
+Predicted average seasonal AV:
+1.0555555556666667
+
+Similar players to ('Pat Elflein', 'C'):
+('Gabe Ikard', '0', 'C')
+('J.D. Walton', '4.8', 'C')
+('Matt Tennant', '1', 'C')
+
+Predicted average seasonal AV:
+1.9333333333333333
+
+Similar players to ('Jermaine Eluemunor', 'OL'):
+('Ereck Flowers', '8', 'OT')
+('Marcus Gilbert', '6.333333333', 'OT')
+('D.J. Fluker', '7.75', 'OT')
+
+Predicted average seasonal AV:
+7.361111111
+
+Similar players to ('Dan Feeney', 'OG'):
+('Jamil Douglas', '1.5', 'OG')
+("Xavier Su'a-Filo", '3.666666667', 'OG')
+('James Brown', '2', 'OG')
+
+Predicted average seasonal AV:
+2.388888889
+
+Similar players to ('Antonio Garcia', 'OT'):
+('Charles Leno', '5.333333333', 'OT')
+('Joel Bitonio', '4', 'OT')
+('Wesley Johnson', '1.333333333', 'OT')
+
+Predicted average seasonal AV:
+3.555555555333333
+
+Similar players to ('Avery Gennesy', 'OT'):
+('Mitchell Schwartz', '6.8', 'OT')
+('Cameron Fleming', '3.666666667', 'OT')
+('Jordan Devey', '2.333333333', 'OT')
+
+Predicted average seasonal AV:
+4.266666666666667
+
+Similar players to ('Evan Goodman', 'OG'):
+('Jon Asamoah', '4.6', 'OG')
+('Caleb Schlauderaff', '0.333333333', 'OG')
+('Kaleb Johnson', '0', 'OG')
+
+Predicted average seasonal AV:
+1.644444444333333
+
+Similar players to ('Sean Harlow', 'OG'):
+('Julian Vandervelde', '0.2', 'OG')
+('David Arkin', '0', 'OG')
+('Earl Watford', '2.666666667', 'OG')
+
+Predicted average seasonal AV:
+0.9555555556666667
+
+Similar players to ('Danny Isidora', 'OG'):
+('Jamil Douglas', '1.5', 'OG')
+('Chris Barker', '0', 'OG')
+('Danny Watkins', '3', 'OG')
+
+Predicted average seasonal AV:
+1.5
+
+Similar players to ('Dorian Johnson', 'OG'):
+('Shelley Smith', '2.333333333', 'OG')
+('Earl Watford', '2.666666667', 'OG')
+('Julian Vandervelde', '0.2', 'OG')
+
+Predicted average seasonal AV:
+1.7333333333333334
+
+Similar players to ('Roderick Johnson', 'OT'):
+('Markus Zusevics', '0', 'OT')
+('Laremy Tunsil', '6', 'OT')
+('Jonathan Martin', '5', 'OT')
+
+Predicted average seasonal AV:
+3.6666666666666665
+
+Similar players to ('Kyle Kalis', 'OG'):
+('Arie Kouandjio', '0.5', 'OG')
+('Maurice Hurt', '3', 'OG')
+('Bobby Hart', '3', 'OG')
+
+Predicted average seasonal AV:
+2.1666666666666665
+
+Similar players to ('Forrest Lamp', 'OG'):
+('Mark Glowinski', '4', 'OG')
+('J.C. Tretter', '2.333333333', 'OG')
+('Amini Silatolu', '3.5', 'OG')
+
+Predicted average seasonal AV:
+3.277777777666667
+
+Similar players to ('Javarius Leamon', 'OL'):
+('Johnnie Troutman', '4.666666667', 'OG')
+('Chris Scott', '1.333333333', 'OG')
+('Orlando Franklin', '7.333333333', 'OT')
+
+Predicted average seasonal AV:
+4.444444444333333
+
+Similar players to ('Cameron Lee', 'OG'):
+('Dakota Dozier', '0.5', 'OG')
+('Senio Kelemete', '2.75', 'OG')
+('David Yankey', '0', 'OG')
+
+Predicted average seasonal AV:
+1.0833333333333333
+
+Similar players to ('Corey Levin', 'OL'):
+('Brandon Fusco', '5', 'C')
+('Zack Martin', '11.66666667', 'OT')
+('Jeff Allen', '4', 'OT')
+
+Predicted average seasonal AV:
+6.88888889
+
+Similar players to ('Erik Magnuson', 'OG'):
+('Jon Asamoah', '4.6', 'OG')
+('Caleb Schlauderaff', '0.333333333', 'OG')
+('Kaleb Johnson', '0', 'OG')
+
+Predicted average seasonal AV:
+1.644444444333333
+
+Similar players to ('Damien Mama', 'OG'):
+('Rokevious Watkins', '0.5', 'OG')
+('Tre Jackson', '6', 'OG')
+('Jon Feliciano', '1.5', 'OG')
+
+Predicted average seasonal AV:
+2.6666666666666665
+
+Similar players to ('Conor McDermott', 'OT'):
+('Willie Smith', '1.5', 'OT')
+('Andrus Peat', '8', 'OT')
+('John Theus', '1', 'OT')
+
+Predicted average seasonal AV:
+3.5
+
+Similar players to ('Jordan Morgan', 'OG'):
+('Senio Kelemete', '2.75', 'OG')
+('James Brown', '2', 'OG')
+("Xavier Su'a-Filo", '3.666666667', 'OG')
+
+Predicted average seasonal AV:
+2.8055555556666665
+
+Similar players to ('Taylor Moton', 'OG'):
+('Garrett Gilkey', '1', 'OG')
+('Ryan Groy', '1.666666667', 'OG')
+('Rishaw Johnson', '0.5', 'OG')
+
+Predicted average seasonal AV:
+1.0555555556666667
+
+Similar players to ('Levon Myers', 'OT'):
+('Tony Hills', '0.5', 'OT')
+('Marshal Yanda', '8.5', 'OT')
+('Brad Butler', '3.25', 'OT')
+
+Predicted average seasonal AV:
+4.083333333333333
+
+Similar players to ('Tyler Orlosky', 'C'):
+('Jeff Byers', '2.5', 'C')
+('David Molk', '1', 'C')
+('Peter Konz', '5.666666667', 'C')
+
+Predicted average seasonal AV:
+3.055555555666667
+
+Similar players to ('Caleb Peterson', 'OG'):
+('Andrew Crummey', '0', 'OG')
+('Kaleb Johnson', '0', 'OG')
+('Steve Herndon', '2.5', 'OG')
+
+Predicted average seasonal AV:
+0.8333333333333334
+
+Similar players to ('Ethan Pocic', 'C'):
+('Brandon Fusco', '5', 'C')
+('Ryan Kelly', '9', 'C')
+('Philip Blake', '0', 'C')
+
+Predicted average seasonal AV:
+4.666666666666667
+
+Similar players to ('Ryan Ramczyk', 'OT'):
+('Shon Coleman', '0', 'OT')
+('Paul Cornick', '2', 'OT')
+('Kyle Murphy', '0', 'OT')
+
+Predicted average seasonal AV:
+0.6666666666666666
+
+Similar players to ('Cam Robinson', 'OT'):
+('John Jerry', '5.571428571', 'OT')
+('Morgan Moses', '6.666666667', 'OT')
+('John Theus', '1', 'OT')
+
+Predicted average seasonal AV:
+4.412698412666667
+
+Similar players to ('Chase Roullier', 'C'):
+('Travis Frederick', '10.25', 'C')
+('Travis Swanson', '5.333333333', 'C')
+('Philip Blake', '0', 'C')
+
+Predicted average seasonal AV:
+5.194444444333333
+
+Similar players to ('Victor Salako', 'OT'):
+('Andre Smith', '5.5', 'OT')
+('DeOndre Wesley', '0', 'OT')
+('Bryant McKinnie', '6.833333333', 'OT')
+
+Predicted average seasonal AV:
+4.111111111
+
+Similar players to ('Justin Senior', 'OT'):
+('Seantrel Henderson', '4', 'OT')
+('John Jerry', '5.571428571', 'OT')
+('Jason Pinkston', '3.333333333', 'OT')
+
+Predicted average seasonal AV:
+4.301587301333334
+
+Similar players to ('David Sharpe', 'OT'):
+('Cordy Glenn', '7.2', 'OT')
+('Justin Anderson', '0', 'OT')
+('Donovan Smith', '8', 'OT')
+
+Predicted average seasonal AV:
+5.066666666666666
+
+Similar players to ('Nico Siragusa', 'OG'):
+('Garrett Gilkey', '1', 'OG')
+('Ryan Groy', '1.666666667', 'OG')
+('Ronald Leary', '4.2', 'OG')
+
+Predicted average seasonal AV:
+2.2888888890000003
+
+Similar players to ('Dan Skipper', 'OT'):
+('Darrian Miller', '0', 'OT')
+('Andrew Datko', '0', 'OT')
+('John Theus', '1', 'OT')
+
+Predicted average seasonal AV:
+0.3333333333333333
+
+Similar players to ('Sam Tevi', 'OT'):
+('Tom Compton', '1.8', 'OT')
+('Chaz Green', '1', 'OT')
+('Oday Aboushi', '2.333333333', 'OT')
+
+Predicted average seasonal AV:
+1.711111111
+
+Similar players to ('Nate Theaker', 'OG'):
+('David Yankey', '0', 'OG')
+('Ryan Groy', '1.666666667', 'OG')
+('John Moffitt', '2.333333333', 'OG')
+
+Predicted average seasonal AV:
+1.3333333333333333
+
+Similar players to ('Jon Toth', 'C'):
+('Gabe Ikard', '0', 'C')
+('James Stone', '3', 'C')
+('Travis Frederick', '10.25', 'C')
+
+Predicted average seasonal AV:
+4.416666666666667
+
+Similar players to ('Jerry Ugokwe', 'OT'):
+('Willie Beavers', '0', 'OT')
+('Mike Adams', '3', 'OT')
+('Lamar Holmes', '3.333333333', 'OT')
+
+Predicted average seasonal AV:
+2.111111111
+
+Similar players to ('Kyle Fuller', 'C'):
+('Max Unger', '7.5', 'C')
+('Ted Larsen', '4.714285714', 'C')
+('Edwin Williams', '1.5', 'C')
+
+Predicted average seasonal AV:
+4.571428571333333
+
+Similar players to ('Garrett Bolles', 'OT'):
+('Chris Terry', '5.5', 'OT')
+('Demetress Bell', '4', 'OT')
+('Eric Winston', '5.909090909', 'OT')
+
+Predicted average seasonal AV:
+5.136363636333333
+
+Similar players to ('Will Holden', 'OT'):
+('Tyler Polumbus', '3.875', 'OT')
+('Mark Wilson', '0', 'OT')
+('Dan Connolly', '5.625', 'OT')
+
+Predicted average seasonal AV:
+3.1666666666666665
+
+Similar players to ('Chad Wheeler', 'OT'):
+('Michael Thompson', '1', 'OT')
+('Breno Giacomini', '4.714285714', 'OT')
+("La'el Collins", '2.5', 'OT')
+
+Predicted average seasonal AV:
+2.7380952379999997
+
+('Jermaine Eluemunor', 'OL', 7.361111111)
+('Corey Levin', 'OL', 6.88888889)
+('Daniel Brunskill', 'OT', 5.805555555333334)
+('Chase Roullier', 'C', 5.194444444333333)
+('Garrett Bolles', 'OT', 5.136363636333333)
+('David Sharpe', 'OT', 5.066666666666666)
+('Ethan Pocic', 'C', 4.666666666666667)
+('Collin Buchanan', 'OL', 4.6111111110000005)
+('Kyle Fuller', 'C', 4.571428571333333)
+('Javarius Leamon', 'OL', 4.444444444333333)
+('Jon Toth', 'C', 4.416666666666667)
+('Cam Robinson', 'OT', 4.412698412666667)
+('Justin Senior', 'OT', 4.301587301333334)
+('Avery Gennesy', 'OT', 4.266666666666667)
+('Victor Salako', 'OT', 4.111111111)
+('Levon Myers', 'OT', 4.083333333333333)
+('Zach Banner', 'OT', 3.955555555666667)
+('Julien Davenport', 'OT', 3.866666666666667)
+('J.J. Dielman', 'C', 3.833333333333334)
+('Ethan Cooper', 'OG', 3.8333333333333335)
+('Roderick Johnson', 'OT', 3.6666666666666665)
+('Erik Austell', 'OT', 3.555555555333333)
+('Antonio Garcia', 'OT', 3.555555555333333)
+('Conor McDermott', 'OT', 3.5)
+('Forrest Lamp', 'OG', 3.277777777666667)
+('Garett Bolles', 'OT', 3.1666666666666665)
+('Will Holden', 'OT', 3.1666666666666665)
+('Tyler Orlosky', 'C', 3.055555555666667)
+('Jordan Morgan', 'OG', 2.8055555556666665)
+('Chad Wheeler', 'OT', 2.7380952379999997)
+('Damien Mama', 'OG', 2.6666666666666665)
+('Dan Feeney', 'OG', 2.388888889)
+('Nico Siragusa', 'OG', 2.2888888890000003)
+('Aviante Collins', 'OT', 2.238095238)
+('Kyle Kalis', 'OG', 2.1666666666666665)
+('Jerry Ugokwe', 'OT', 2.111111111)
+('Dion Dawkins', 'OG', 1.9555555556666668)
+('Pat Elflein', 'C', 1.9333333333333333)
+('Dorian Johnson', 'OG', 1.7333333333333334)
+('Sam Tevi', 'OT', 1.711111111)
+('Evan Goodman', 'OG', 1.644444444333333)
+('Erik Magnuson', 'OG', 1.644444444333333)
+('Isaac Asiata', 'OG', 1.5714285713333334)
+('Gavin Andrews', 'OG', 1.5555555556666665)
+('Danny Isidora', 'OG', 1.5)
+('Nate Theaker', 'OG', 1.3333333333333333)
+('Cameron Lee', 'OG', 1.0833333333333333)
+('Jessamen Dunker', 'OG', 1.0555555556666667)
+('Taylor Moton', 'OG', 1.0555555556666667)
+('Adam Bisnowaty', 'OT', 1.0)
+('Ben Braden', 'OG', 1.0)
+('Sean Harlow', 'OG', 0.9555555556666667)
+('Caleb Peterson', 'OG', 0.8333333333333334)
+('Ryan Ramczyk', 'OT', 0.6666666666666666)
+('Dan Skipper', 'OT', 0.3333333333333333)
