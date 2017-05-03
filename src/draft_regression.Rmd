@@ -1,0 +1,142 @@
+---
+title: "Draft_Regression"
+author: "Steven Liao"
+date: "May 1, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## SQL
+
+The code for generating the CSV file is
+```{r eval = FALSE}
+sqlite3 -header -csv nfl_data.db 'SELECT player.id, player.name, drat.year, draft.round, draft.pick, av.year, av.av_value FROM av JOIN (player LEFT JOIN draft ON player.id == draft.player_id) p ON player.id == av.player-id ORDER BY player.id, av.year;' > ../data/draft_regression.csv
+```
+If we just want drafted players, use this:
+```{r eval = FALSE}
+sqlite3 -header -csv nfl_data.db 'SELECT player.id, player.name, drat.year, draft.round, draft.pick, av.year, av.av_value FROM av JOIN (player JOIN draft ON player.id == draft.player_id) p ON player.id == av.player-id AND draft.year >= 1994 ORDER BY player.id, av.year;' > ../data/draft_regression.csv
+```
+
+## Setup 
+
+Importing the data:
+```{r echo = "FALSE"}
+setwd("C:/Users/Steven/OneDrive/Documents/Brown/Junior Year/cs1951a_project/data")
+dr <- read.csv("draft_regression.csv")
+proj_salary <- read.csv("rookie_contracts.csv")
+#dr stands for draft regression
+```
+
+## Data Cleaning
+
+We clean the data, removing undrafted players, players drafted before 1994, and we fix the order of the dataset to have it sorted by draft year, draft pick, and then av_year, in that order.
+
+Below is the first ten rows of our cleaned table:
+```{r echo = FALSE}
+# Change the columns
+colnames(dr) <- c('id', 'name', 'draft_year', 'round', 'pick', 'year', 'av')
+
+# Remove undrafted players
+dr <- subset(dr, !(is.na(dr$draft_year)))
+
+# Remove old players
+dr <- dr[dr$draft_year >= 1994,]
+
+# Order correctly
+dr <- dr[order(dr$draft_year, dr$pick, dr$year),]
+
+# Add first round binary variable
+#dr_1994$round_one <- ifelse(dr_1994$round == 1, 1, 0)
+
+# Only look at the four years after being drafted. We are ignoring the fifth year option for now
+dr_filtered <- dr[dr$year - dr$draft_year <= 4,]# + dr_1994$round_one,]
+head(dr_filtered, 10)
+```
+
+## Aggregating Data into Picks Table
+
+Our data contains draft and av data for players from 1994 to 2016. We want our final product to be a table of all 240 picks, with their actual salary, fair salary, and 'value above fair salary.' 240 is the minimum number of picks in a draft between 1994 and 2016; this allows us to assume there are 23 (or are supposed to be 23) players for every pick, which makes calculations easier. Here we began constructing our Picks Table:
+```{r echo = FALSE}
+# This gives us the total av by pick, for all 261 picks
+av_counts <- aggregate(dr_filtered$av, by = list(dr_filtered$pick), FUN = sum)
+
+# Fix the column names
+colnames(av_counts) <- c('pick', 'total_av')
+# Remove all picks after 240 since we have incomplete data for those. There are many ways we can account for this but we are removing them for simplicity for now.
+av_counts <- av_counts[av_counts$pick <= 240, ]
+
+# New columns to av_counts
+# av_counts$round_one <- ifelse(av_counts$pick <= 32, 1, 0)
+
+# average av tells us the average AV a player at a given pick will contribute per season. 23 is then number of seasons, 4 is the rookie contrat length
+av_counts$average_av <- av_counts$total_av/(23*4)
+av_counts$log_av <- log(av_counts$average_av)
+
+head(av_counts, 50)
+```
+
+## Regressing on our Data
+
+First, let's take a look at our data:
+
+```{r echo = FALSE}
+plot(average_av~pick, data = av_counts, main = "Average AV per Season (Over Rookie Contract) Against Pick Number", xlab = "Pick Number", ylab = "Average AV")
+```
+
+We regress our data using an exponential regression to best fit the data. We get the following regression formula:
+
+$\text{av} = 7.07347e^{-0.0099652\times \text{pick}}$
+
+We have an R^2 of 0.8676.
+```{r echo= FALSE}
+model <- lm(log_av~pick, data=av_counts)
+summary(model)
+plot(log_av~pick, data = av_counts, main = "Log(Average AV per Season Over Rookie Contract) Against Pick Number", xlab = "Pick Number", ylab = "Logarithm of Average AV Per Season Over Rookie Contract")
+
+
+## Model comes out to log(av) = 1.9563493 - 0.0099652*pick
+## Or av = e^{1.9563493}*e^{-0.0099652*pick}
+abline(model)
+```
+
+## Fair Salary
+
+Here we calculate the expected AV according to our exponential regression. Using this expected AV, we then calculate the fair salary, assuming that:
+
+1) The salary cap is that of 2017: $167,000,000
+2) The salary cap stays the same over the next four years
+3) The total AV in all of the next four years is approximated by the average total AV over the last five years (2012-2016), which comes out to 6559.
+
+Assumptions #2 and #3 will almost certainly not be true but we are fairly confident any differences will be marginal; the exact differences are also difficult to predict, so we are fine making these simplifying assumptions.
+
+Below are the fair salaries per year of the rookie contract for the top 25 picks in the draft.
+
+```{r echo = "FALSE"}
+av_counts$expected_av = 7.073457*exp(1)^{-0.0099652*av_counts$pick}
+
+pick_chart = av_counts[, c("pick", "expected_av")]
+salary_cap = 167000000
+total_av = 6559.4
+num_teams = 32
+pick_chart$fair_salary = pick_chart$expected_av/total_av*salary_cap*num_teams
+
+head(pick_chart, 25)
+```
+
+## Draft Pick Worth
+Finally, we have the fair salary for each draft pick per year! We also know that NFL draft picks have relatively fixed salaries. Now, we can calculate the difference between the fair salary of a draft pick, and how much the draft pick is actually paid, to determine the draft pick's theoretical worth!
+
+```{r echo = FALSE}
+# Now we merge the projected Spotrac salary with our pick chart
+colnames(proj_salary) = c("pick", "estimate")
+pick_chart <- merge(pick_chart, proj_salary, by ="pick")
+head(pick_chart, 10)
+
+pick_chart$total_fair_salary = pick_chart$fair_salary*4
+pick_chart$pick_worth = pick_chart$total_fair_salary - pick_chart$estimate
+barplot(pick_chart$pick_worth, names = pick_chart$pick, main = "Draft Pick Value in Dollars", xlab = "Draft Pick Number", ylab = "Pick Value")
+```
+
+## Final Thoughts
