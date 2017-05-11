@@ -1,26 +1,34 @@
-var svg = d3.select("svg"),
-    margin = {top: 20, right: 80, bottom: 30, left: 40},
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom,
-    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var x = d3.scaleBand()
-    .rangeRound([0, width])
-    .paddingInner(0.05)
-    .align(0.1);
+// loadGraph(2013);
+for (var i = 1978; i <= 2016; i++ ){
+  loadGraph(i)
+}
 
-var y = d3.scaleLinear()
-    .rangeRound([height, 0]);
-
-var z = d3.scaleOrdinal()
-    .range(["#990099", "#2CA02C", "#78d191", "#b3e0af", "#FF7F0E", "#f0903c", "#ebad78",
-          "#316395","#6e94ba","#b9cbdd","#BCBD22","#cd6969","#B82E2E"]);
-
-d3.csv("AV_by_team.csv", function(d, i, columns) {
+function loadGraph(year) {
+d3.csv("AV_by_team"+year+".csv", function(d, i, columns) {
   for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
   d.total = t;
   return d;
 }, function(error, data) {
+
+  var svg = d3.select("body").append("svg").attr("width",  960).attr("height", 500);
+  var margin = {top: 20, right: 80, bottom: 30, left: 40},
+      width = +svg.attr("width") - margin.left - margin.right,
+      height = +svg.attr("height") - margin.top - margin.bottom,
+      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var x = d3.scaleBand()
+      .rangeRound([0, width])
+      .paddingInner(0.05)
+      .align(0.1);
+
+  var y = d3.scaleLinear()
+      .rangeRound([height, 0]);
+
+  var z = d3.scaleOrdinal()
+      .range(["#990099", "#2CA02C", "#78d191", "#b3e0af", "#FF7F0E", "#f0903c", "#ebad78",
+            "#316395","#6e94ba","#b9cbdd","#BCBD22","#cd6969","#B82E2E"]);
+
   if (error) throw error;
 
   var keys = data.columns.slice(1);
@@ -58,7 +66,7 @@ d3.csv("AV_by_team.csv", function(d, i, columns) {
       .attr("fill", "#000")
       .attr("font-weight", "bold")
       .attr("text-anchor", "start")
-      .text("Total AV");
+      .text("Total AV: " + year);
 
   var legend = g.append("g")
       .attr("font-family", "sans-serif")
@@ -81,3 +89,4 @@ d3.csv("AV_by_team.csv", function(d, i, columns) {
       .attr("dy", "0.32em")
       .text(function(d) { return d; });
 });
+}

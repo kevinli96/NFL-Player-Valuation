@@ -24,9 +24,9 @@ def getTeamAVComp(year):
 
     return teamAV, playerCount
 
-def write_to_CSV(teamAV, playerCount):
+def write_to_CSV(teamAV, playerCount, year):
     teamPositions = ["QB","WR","RB","TE","OG","OT","C", "DE","DT","LB","DB","P","K"]
-    with open('AV_by_team.csv', 'w', encoding='utf-8') as g:
+    with open('AV_by_team'+ str(year) +'.csv', 'w', encoding='utf-8') as g:
         writer = csv.writer(g)
         writer.writerow(["Team", "QB", "WR", "RB", "TE","OG", "OT", "C","DE", "DT", "LB","DB","P", "K"])
         allTeams = []
@@ -44,16 +44,18 @@ def write_to_CSV(teamAV, playerCount):
 
 
 def main():
-    teamAV, playerCount = getTeamAVComp(2016)
-    minTeam = ''
-    minPos = 100
+    for i in range(1978, 2017):
+        teamAV, playerCount = getTeamAVComp(i)
+        write_to_CSV(teamAV, playerCount, i)
+    # minTeam = ''
+    # minPos = 100
     # for team in teamAV:
     #     if len(teamAV[team]) < minPos:
     #         minPos = len(teamAV[team])
     #         minTeam = team
     # print("team: " + minTeam)
     # pp.pprint(teamAV[minTeam])
-    write_to_CSV(teamAV, playerCount)
+
 
 
 if __name__ == '__main__':

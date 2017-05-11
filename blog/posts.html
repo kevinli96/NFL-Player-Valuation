@@ -1316,7 +1316,7 @@ Predicted average seasonal AV:
 
 <h4>Average Draft AV</h4>
 <p>
-  For our last blog post, this visualization gets at a few dimensions of data.
+  For our fourth blog post, this visualization gets at a few dimensions of data.
   The radial stacked bar chart features the player's positions around the inner
   radius of the circle, and stacks the average AV values according to
   the round pick (with undrafted being the category that players with no round or year of draft fall under).
@@ -1324,23 +1324,33 @@ Predicted average seasonal AV:
   those of drafted players, however it seems that within the rounds of the draft, players in most positions fair quite well.
   The visualization was created in D3, with data processing done in Python.<br />
 </p>
-<svg width="700" height="700" id="draftsvg" font-family="sans-serif" font-size="10"></svg>
+<svg width="600" height="600" id="draftsvg" font-family="sans-serif" font-size="10"></svg>
+
 
                     </p>
             </div>
+  <div id="finalPost">
+
+            <h2 class="post-title">
+                Final Blog Post
+                </h2>
+            <h3 class="post-subtitle">
+                Conclusion
+            </h3>
+            <p>
+              One of the primary takeaways throughout the course of our project was that the bulk of the work in any data science project is in the process of obtaining clean data. This was more evident after completing most of our analyzes just the past two/three weeks, having spent more than a month and a half getting our databases in the schema that we had wanted them. With that said, we still learned a lot about the data pipeline, created some neat visualizations, and gathered some interesting insights into the valuation of NFL players from the perspective of a general manager through our salary, draft, and team composition division of analysis.
+            </p>
+            <p>
+              Future work for this project would include a more thorough look at how teams change their composition over time, as this was something that we felt was important enough to consider but did not end up having enough time to implement. The data used for the team composition stacked vertical bar chart gave an interesting look at how much emphasis certain teams placed on offense/defense, and a compilation of the same chart for all years dating back to 1978 can be found in the blog/viz/team_comp_av folder. This can be run assuming that you are running a server at that path to get around cross-origin request policies, as the D3 script loads in the csv files located at the same path. An interactive front-end application, focused more toward the composition engine/machine learning part of our project, would also be rewarding to complete given that we had completed a naive version of the back end functionality. Such a set of tools would prove useful to general managers in certain hypothetical situations, such as looking at the change in playoff probabilitys if a given player were to be traded.
+            </p>
+            <p>
+              We would like to thank our mentor TA Colby Tresness for guiding us throughout the semester and giving some semblance of structure to our project, as well as Professor Dan Potter for his remarks at the poster presentation.
+            </p><br />
+            <img src="img/data_science_final.jpg" width="800" height="600"/>
+          </div>
         </div>
     </div>
 
-    <!-- Post Content -->
-    <article>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <!--  BLOG POST 1 -->
-                </div>
-            </div>
-        </div>
-    </article>
     <hr>
     <!-- Footer -->
     <footer>
