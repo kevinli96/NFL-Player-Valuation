@@ -1,21 +1,127 @@
 ---
-title: "Draft_Regression"
-author: "Steven Liao"
-date: "May 1, 2017"
-output: html_document
+#title: "Draft_Regression"
+#author: "Steven Liao"
+#date: "May 1, 2017"
+font-family: 'Arial'
+output:
+  html_document:
+  pdf_document: default
+  word_document: default
 ---
+<style type="text/css">
 
+body{ /* Normal  */
+      font-size: 12px;
+  }
+</style>
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-## SQL
+## Salary Analysis
 
-The code for generating the CSV file is
+Given the NFL salary cap (currently set for 2017 at 167 million dollars), it was crucial for us to consider salary in our player evaluation analyses. In other words, the value a player brings is not just in how 'good' they are, but also in how 'cheap' they are.
+
+In theory, every general manager strives to maximize their return on the salary cap. They can attempt to sign players for cheap (though they are competing against a free market, in theory); however, a more common and  - and dependable - method is to build a team using draft picks. Due to a fixed rookie wage scale, drafted players are believed to be paid significantly less than they would be worth on a free market.
+
+Under this framework, we sought to develop a system to fairly value salary, players, and draft picks in conjunction to one another. How much should a player be paid? What is fair compensation for this player (and their contract) in a trade? How much value does a draft pick actually offer, if any?
+
+To start, we needed to develop a metric for the 'fair salary' for a player - this is defined as the 'maximum' salary that a team should be willing to pay for a player in a non edge-case situation (i.e. for instance, one edge case is when a team is far below the minimum spending threshold, and then 'overspending' is preferable to having unspent money go wasted). In other words, by paying players below their fair salary, we are increasing the return on our salary cap!
+
+The premise behind our fair salary metric is that the salary ratio between Player A and Player B should be equal to their talent / contribution ratio. We use Approximate Value (AV) as a proxy for talent and contribution level; Approximate Value is a metric developed by Pro Football Reference designed to measure contribution, and is comparable across positions. It is measured on a yearly basis and is useful as an objective, comparable metric for how much a player contributed to their team in a given year.
+
+In making our fair salary metric, we made the following assumptions:
+
+* AV contribution is linear. In other words, a player whose AV is 8 in a given year is worth twice as much as a player whose AV is 4 in a given year.
+* A player with 0 AV is worth $0
+* A practice squad player's pay is negligible
+
+Using these three assumptions, and inputting the salary cap for every year from 1994 to 2016 (ranging from 34.6 million in 1994 to 155.27 million in 2016), we were able to calculate the fair salary for each player in that given year, using the following formula:
+
+* Let $SC$ = total combined salary cap across all 32 teams (167 million times 32 for 2017)
+* Let $N$ = total number of players who can be on an NFL roster (53 times 32 for 2017)
+* Let $AVTotal$ = Summed AV of the top N NFL players in a given season (averaged per season from 1994 -2016, probably)
+
+Then Fair Salary is: \[p_av/AVTotal * SC\]
+
+We began by using the following SQL code to compose a CSV file to be used in R.
+
+```{r, eval = FALSE}
+sqlite3 -header -csv nfl_data.db 
+"SELECT m.year, player.id, player.name, m.team_id, 
+m.position_id, m.age, m.av_value, m.year, m.round, 
+m.pick, m.base_salary, m.cap_hit, m.dead_cap 
+FROM player, 
+((av LEFT OUTER JOIN salary 
+ON av.player_id == salary.player_id AND av.year == salary.year) k 
+LEFT OUTER JOIN draft ON k.player_id == draft.player_id) m 
+WHERE av.player_id == player.id 
+ORDER BY m.year ASC, m.av_value DESC" > ..\data\fair_salary.csv
+```
+Here is a view at the data:
+```{r, echo = FALSE, results = "hide"}
+setwd("C:/Users/Steven/OneDrive/Documents/Brown/Junior Year/Second Semester/CSCI1951a/cs1951a_project/data")
+# read in data
+av <- read.csv("fair_salary.csv")
+
+# check data to make sure each year has a similar number of players
+# i.e. we didn't do anything wrong in the sql
+table(av$m.year)
+
+# reset column names
+colnames(av) <- c('year', 'id', 'name', 'team_id', 'position_id', 'age', 'av_value', 'draft_year', 'round', 'pick', 'base', 'cap_hit', 'dead_cap')
+```
+```{r, echo = FALSE}
+head(av, 10)
+```
+
+After manually adding roster size, salary cap size (34.6 million in 1994 to 167 million this year), and number of teams in the league, we were able to use the aforementioned formula to calculate Approximate Value. We chose to use 'Cap Hit' as the salary for a player; this is not how much the player is actually paid, but how much the player counts against the salary cap. These values may be different depending on contract structure. We considered 'cap hit' a better representation for our purposes because this is how much money a team would save if they cut the player.
+
+Note that in every year in our analyses, AVTotal was simply the summed AV of all players, since the number of players with nonzero AV was always less than the number of rosterable players (N).
+``` {r, echo = FALSE, results = "hide"}
+# new column: roster_size
+av$roster_size <- 53
+
+# salary cap for each year
+sal_cap <- c(34.608, 37.1, 40.753, 41.454, 52.388, 57.288, 62.172, 67.405, 71.101, 75.007, 80.582, 85.5, 102, 109, 116, 123, 0, 120, 120.6, 123, 133, 143.28, 155.27)
+av$salary_cap <- sal_cap[av$year -1993]
+
+# no. teams for each year
+av$no_teams <- 28
+av$no_teams[av$year >= 1995] <- 30
+av$no_teams[av$year >= 1999] <- 31
+av$no_teams[av$year >= 2002] <- 32
+
+# total av for that year.
+# Note the number of non-zero av's is less than the number of roster spots
+table(av$year[av$av_value > 0])
+
+# av$av_total <- 0
+for (i in 1994:2016){
+  av$av_total[av$year == i] <- sum(av$av_value[av$year == i])
+}
+
+av$fair_value <- av$av_value/av$av_total*av$salary_cap*av$no_teams
+```
+Some of our findings included:
+
+* Matt Ryan, the player with the highest AV in 2016, had a fair salary of $16.13 million
+* The most overpaid player between 1994 and 2016 was Tony Romo in 2016, whose fair salary was 0, but whose cap hit was over 20 million
+* The most underpaid player between 1994 and 2016 was Dak Prescott, whose fair salary was 12.3 million, and whose cap hit was 546,000.
+
+## Draft Analyses
+
+The NFL draft is considered the key pipeline for cheap talent because the contract each draft pick receives is fixed in both length and salary (length is four years, salary depends on how high the selection was), due to stipulations in the NFL's Collective Bargaining Agreement. 
+
+This is not the case for NFL free agency, where players are free to sign with any team in what resembles a free market.
+
+If we can calculate the fair salary for each draft pick, based on historical AV data for each draft pick, we can then determine how underpaid each draft pick is (which is good for maximizing return on salary cap), if at all.
+
+We begin by creating CSV files for our analysis in R using SQL:
 ```{r eval = FALSE}
 sqlite3 -header -csv nfl_data.db 'SELECT player.id, player.name, drat.year, draft.round, draft.pick, av.year, av.av_value FROM av JOIN (player LEFT JOIN draft ON player.id == draft.player_id) p ON player.id == av.player-id ORDER BY player.id, av.year;' > ../data/draft_regression.csv
 ```
-If we just want drafted players, use this:
-```{r eval = FALSE}
+```{r eval = FALSE, echo = FALSE}
+#If we just want drafted players, use this:
 sqlite3 -header -csv nfl_data.db 'SELECT player.id, player.name, drat.year, draft.round, draft.pick, av.year, av.av_value FROM av JOIN (player JOIN draft ON player.id == draft.player_id) p ON player.id == av.player-id AND draft.year >= 1994 ORDER BY player.id, av.year;' > ../data/draft_regression.csv
 ```
 
@@ -23,7 +129,7 @@ sqlite3 -header -csv nfl_data.db 'SELECT player.id, player.name, drat.year, draf
 
 Importing the data:
 ```{r echo = "FALSE"}
-setwd("C:/Users/Steven/OneDrive/Documents/Brown/Junior Year/cs1951a_project/data")
+setwd("C:/Users/Steven/OneDrive/Documents/Brown/Junior Year/Second Semester/CSCI1951a/cs1951a_project/data")
 dr <- read.csv("draft_regression.csv")
 proj_salary <- read.csv("rookie_contracts.csv")
 #dr stands for draft regression
@@ -57,7 +163,7 @@ head(dr_filtered, 10)
 
 ## Aggregating Data into Picks Table
 
-Our data contains draft and av data for players from 1994 to 2016. We want our final product to be a table of all 240 picks, with their actual salary, fair salary, and 'value above fair salary.' 240 is the minimum number of picks in a draft between 1994 and 2016; this allows us to assume there are 23 (or are supposed to be 23) players for every pick, which makes calculations easier. Here we began constructing our Picks Table:
+Our data contains draft and AV data for players from 1994 to 2016. We want our final product to be a table of all 240 picks, with their actual salary, fair salary, and 'value above fair salary.' 240 is the minimum number of picks in a draft between 1994 and 2016; this allows us to assume there are 23 (or are supposed to be 23) players for every pick, which makes calculations easier. Here we began constructing our Picks Table:
 ```{r echo = FALSE}
 # This gives us the total av by pick, for all 261 picks
 av_counts <- aggregate(dr_filtered$av, by = list(dr_filtered$pick), FUN = sum)
@@ -82,10 +188,10 @@ head(av_counts, 50)
 First, let's take a look at our data:
 
 ```{r echo = FALSE}
-plot(average_av~pick, data = av_counts, main = "Average AV per Season (Over Rookie Contract) Against Pick Number", xlab = "Pick Number", ylab = "Average AV")
+plot(average_av~pick, data = av_counts, main = "Average AV Per Season Over Rookie Contract by Pick Number", xlab = "Pick Number", ylab = "AV")
 ```
 
-We regress our data using an exponential regression to best fit the data. We get the following regression formula:
+We regress our data using a logarithmic regression to best fit the data. We get the following regression formula:
 
 $\text{av} = 7.07347e^{-0.0099652\times \text{pick}}$
 
@@ -93,7 +199,7 @@ We have an R^2 of 0.8676.
 ```{r echo= FALSE}
 model <- lm(log_av~pick, data=av_counts)
 summary(model)
-plot(log_av~pick, data = av_counts, main = "Log(Average AV per Season Over Rookie Contract) Against Pick Number", xlab = "Pick Number", ylab = "Logarithm of Average AV Per Season Over Rookie Contract")
+plot(log_av~pick, data = av_counts, main = "Log(Average AV per Season Over Rookie Contract) by Pick Number", xlab = "Log(Average AV per Season Over Rookie Contract", ylab = "Pick Number")
 
 
 ## Model comes out to log(av) = 1.9563493 - 0.0099652*pick
@@ -103,7 +209,7 @@ abline(model)
 
 ## Fair Salary
 
-Here we calculate the expected AV according to our exponential regression. Using this expected AV, we then calculate the fair salary, assuming that:
+Here we calculate the expected AV according to our regression. Using this expected AV, we then calculate the fair salary, assuming that:
 
 1) The salary cap is that of 2017: $167,000,000
 2) The salary cap stays the same over the next four years
@@ -126,17 +232,33 @@ head(pick_chart, 25)
 ```
 
 ## Draft Pick Worth
-Finally, we have the fair salary for each draft pick per year! We also know that NFL draft picks have relatively fixed salaries. Now, we can calculate the difference between the fair salary of a draft pick, and how much the draft pick is actually paid, to determine the draft pick's theoretical worth!
+Finally, we have the fair salary for each draft pick per year! We also know that NFL draft picks have relatively fixed salaries. Now, we can calculate the difference between the fair salary of a draft pick, and how much the draft pick is actually paid, to determine the draft pick's theoretical worth ('return above fair salary'). Estimated salaries for 2017 NFL draft picks are scraped from Spotrac.
 
 ```{r echo = FALSE}
 # Now we merge the projected Spotrac salary with our pick chart
 colnames(proj_salary) = c("pick", "estimate")
 pick_chart <- merge(pick_chart, proj_salary, by ="pick")
-head(pick_chart, 10)
 
 pick_chart$total_fair_salary = pick_chart$fair_salary*4
 pick_chart$pick_worth = pick_chart$total_fair_salary - pick_chart$estimate
-barplot(pick_chart$pick_worth, names = pick_chart$pick, main = "Draft Pick Value in Dollars", xlab = "Draft Pick Number", ylab = "Pick Value")
+head(pick_chart, 10)
+barplot(pick_chart$pick_worth, names = pick_chart$pick, main = "Pick Number vs. Pick Worth", xlab = "Pick Number", ylab = "Pick Worth")
 ```
 
-## Final Thoughts
+## Discussion and Results
+Our results confirm the idea that draft picks do tend to be underpaid, and thus are great for maximizing returns on the salary cap. In addition, we find that high first round picks tend to be overpaid, and that the most underpaid pick is actually pick number 33, the top pick of the second round.
+
+These results imply myriad insights (some not necessarily obvious), including:
+
+* The 33rd overall pick is worth more than the 1st overall pick. Yes, you get a worse talent, but you get more bang for the buck. As a General Manager, this also means that trading down in the draft is generally a great strategy.
+* In trading for Brock Osweiler this past spring, the Browns essentially traded 18 million dollars for a second round pick. A mid-second round pick is expected to only provide 8 million dollars in contributions above fair value, implying that this trade was a poor one for the Browns if they valued Brock Osweiler at 10 million dollars or less. In other words, they would have been better off spending that money in free agency.
+
+These are impactful and meaningful insights, and provide substantial promise for future work. However, we note the following limitations (which we could also address in future work):
+
+* The fifth year option for first round picks is not factored into the valuation. For first round picks, teams get a 'option' to add an additional fifth year to the player's contract, usually at a more expensive salary than the previous four years. This past year, 23 of the 32 first round pick options were picked up. Thus, we can expect first round picks to be worth slightly more than what our model suggests. Quantifying this would be a worthy next step.
+* Another flaw in our model is that we did not account for possible increases in salary cap. The salary cap has increased substantially over the past 23 years, and it is reasonable to expect it to continue to increase. Accounting for this would increase the 'fair salary' for the draft picks, and further increase the 'worth' of each draft pick. This means that our current estimates for pick worth are almost certainly conservative. 
+* Finally, it is important to note that Approximate Value is just as its name indicates, an 'approximate' value of a player's contribution. Creating a better metric could be a sizeable undertaking but would potentially improve results.
+
+A final caveat to note is that these draft pick valuations are only valid for future, unknown draft picks. During the actual draft, these picks should be instead valued based the players available at each selection (which, of course, is not known until usually a few picks before).
+
+
